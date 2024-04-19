@@ -149,32 +149,51 @@ def project_detail_view(request, project_id):
 
     
 def edit_details_view(request, detail_id):
+    # Get the detail object using the provided detail_id
     detail = get_object_or_404(ProjectDetailModel, id=detail_id)
+    print("Loaded detail object:", detail)
 
-    if request.method == 'PUT':
-        # Handle form submission for updating the detail
-        data = QueryDict(request.body)
-        form = ProjectDetailForm(data, instance=detail)
+    if request.method == 'POST':
+        # Use the POST request body
+        data = request.POST
+        # Create the form instance with the submitted data and files
+        form = ProjectDetailForm(data, request.FILES, instance=detail)
+        print("Form data received:", data)
+        print("Files received:", request.FILES)
 
+        # Validate the form
         if form.is_valid():
+            print("Form is valid. Saving the detail...")
+            # Save the detail
             form.save()
-            # Redirect to the project detail view after successful update
+            print("Detail saved successfully.")
+            # Redirect to the project detail view
             return redirect('project_detail', project_id=detail.project.id)
-        
-        # If form is invalid, render the form with errors
-        context = {
-            'detail': detail,
-            'form': form,
-        }
-        return render(request, 'portfolio_app/edit_project_details.html', context)
-    
-    # If the request method is not PUT, handle other request methods accordingly
+        else:
+            # Print form errors for debugging
+            print("Form is invalid. Errors:")
+            for field, errors in form.errors.items():
+                print(f"{field}: {errors}")
+
+            # If form is invalid, render the form with errors
+            context = {
+                'detail': detail,
+                'form': form,
+            }
+            print("Rendering form with errors.")
+            return render(request, 'portfolio_app/edit_project_details.html', context)
+
+    # If the request method is not POST, handle other request methods accordingly
     form = ProjectDetailForm(instance=detail)
+    print("Rendering form for detail editing.")
     context = {
         'detail': detail,
         'form': form,
     }
     return render(request, 'portfolio_app/edit_project_details.html', context)
+
+    
+
 
 # view to add the project details
 def add_project_detail_view(request, project_id):
