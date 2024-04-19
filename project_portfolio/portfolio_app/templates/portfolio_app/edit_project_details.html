@@ -1,0 +1,5 @@
+<form hx-put="{% url 'project_detail' detail.id %}" hx-taarget="#project_details"> 
+    {% csrf_token %} 
+    {{ form.as_p }} 
+    <input class="btn btn-primary" type="submit" /> 
+</form>

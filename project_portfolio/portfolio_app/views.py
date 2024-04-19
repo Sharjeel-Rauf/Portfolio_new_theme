@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.files.images import get_image_dimensions
+from django.http import QueryDict
 
 
 
@@ -123,35 +124,75 @@ def create_project_view(request):
 def project_detail_view(request, project_id):
     # Fetch the specific project using the project_id
     project = get_object_or_404(ProjectModel, id=project_id)
-    
+
     # Fetch the project details associated with the project
     project_details = project.details.all()  # Use the related name 'details' to access the details
 
+    # Read the content of each Python file associated with the project details
     if project_details:
-        # Read the content of each Python file associated with the project details
         for detail in project_details:
-            # Initialize an attribute to hold the content of the Python file
             detail.python_file_content = None
-            
-            # Check if the detail has an associated Python file
             if detail.python_file:
                 try:
-                    # Open the Python file and read its content
                     with open(detail.python_file.path, 'r') as file:
                         detail.python_file_content = file.read()
                 except Exception as e:
-                    # Handle any exceptions that might occur during file reading
                     print(f"Error reading Python file {detail.python_file}: {e}")
-    
-    # Prepare the context
+
+    # Prepare the context for rendering the template
     context = {
         'project': project,
         'project_details': project_details,
         'no_details': len(project_details) == 0,
-        'page_title' : 'Project Detail'
+        'page_title': 'Project Detail',
     }
+
+    if request.method == 'GET':
+        # Render the project detail template for GET requests
+        return render(request, 'portfolio_app/project_detail.html', context)
+
+    # Handle PUT request for updating project details
+    if request.method == 'PUT':
+        # Convert the request body to a dictionary
+        data = QueryDict(request.body).dict()
+
+        detail_instance = get_object_or_404(ProjectDetailModel, project=project)
+
+        # Initialize the form with the data and specific detail instance
+        form = ProjectDetailForm(data, instance=detail_instance)
+
+        if form.is_valid():
+            # Save the updated detail instance
+            form.save()
+            
+            # Update the context for re-rendering the page
+            context['project_details'] = project.details.all()  # Refresh project details after update
+             # Prepare the context for rendering the template
+            return render(request, 'portfolio_app/project_detail.html', context)
+
+        # In case the form is not valid, render the edit form template with errors
+        context['form'] = form
+        return render(request, 'portfolio_app/edit_project_details.html', context)
     
-    return render(request, 'portfolio_app/project_detail.html', context)
+    
+
+
+    
+def edit_details_view(request, detail_id):
+    print("here//////")
+    # Fetch the ProjectDetail object using the detail_id
+    detail = get_object_or_404(ProjectDetailModel, id=detail_id)
+
+    form = ProjectDetailForm(instance = detail)
+    
+    # Prepare the context with the detail object
+    context = {
+        'detail': detail,
+        'form': form
+    }
+    print('hello')
+    # Render the template and pass the context
+    return render(request, 'portfolio_app/edit_project_details.html', context)
 
 # view to add the project details
 def add_project_detail_view(request, project_id):
@@ -176,3 +217,5 @@ def add_project_detail_view(request, project_id):
         form = ProjectDetailForm()
 
     return render(request, 'portfolio_app/add_project_detail.html', {'form': form, 'project': project})
+
+
