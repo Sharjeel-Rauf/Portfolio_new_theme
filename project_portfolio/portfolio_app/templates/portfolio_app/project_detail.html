@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ project.title }}</h1>
+
+{% if no_details %}
+    <p>No details added yet.</p>
+    <a href="{% url 'add_project_detail' project.id %}" class="btn btn-primary">Add Details</a>
+{% else %}
+    <h2>Code Details</h2>
+    {% for detail in project_details %}
+        <div>
+            <h3>{{ detail.code_title }}</h3>
+            <p><strong>Description:</strong> {{ detail.description }}</p>
+            {% if detail.python_file %}
+                <p><strong>File:</strong> <a href="{{ detail.python_file.url }}">Download</a></p>
+                
+                <!-- Display the content of the Python file in a box -->
+                <h4>Code:</h4>
+                <div class="code-container">
+                    <pre><code id="code-{{ detail.id }}" class="language-python">{{ detail.python_file_content|linebreaksbr }}</code></pre>
+                    <!-- Add a button to copy the code -->
+                    <button class="btn btn-secondary copy-btn" data-target="code-{{ detail.id }}">Copy Code</button>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}
+
+<!-- Add Prism.js for syntax highlighting -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Prism for syntax highlighting
+    Prism.highlightAll();
+
+    // Add click event listener for the copy buttons
+    document.querySelectorAll('.copy-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Get the target ID from the data-target attribute
+            var targetId = button.getAttribute('data-target');
+            console.log("Target ID:", targetId); // Debugging: Log the target ID
+
+            // Get the code element based on the target ID
+            var codeElement = document.querySelector(`#code-${targetId}`);
+            console.log("Code Element:", codeElement); // Debugging: Log the code element
+
+            // Check if the code element exists
+            if (!codeElement) {
+                console.log("Code element not found for target ID:", targetId);
+                return;
+            }
+
+            // Verify the content of the code element
+            console.log("Code Content:", codeElement.textContent);
+
+            // Create a temporary textarea element
+            var tempTextarea = document.createElement('textarea');
+            tempTextarea.value = codeElement.textContent;
+            document.body.appendChild(tempTextarea);
+
+            // Select and copy the content
+            tempTextarea.select();
+            document.execCommand('copy');
+
+            // Remove the temporary textarea element
+            document.body.removeChild(tempTextarea);
+
+            // Provide feedback to the user
+            alert('Code copied to clipboard!');
+        });
+    });
+});
+
+
+</script>
