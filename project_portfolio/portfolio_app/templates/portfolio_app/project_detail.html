@@ -9,13 +9,13 @@
 {% else %}
     <h2>Code Details</h2>
     {% for detail in project_details %}
-     
+      
             <h3>{{ detail.code_title }}</h3>
             <p><strong>Description:</strong> {{ detail.description }}</p>
             {% if detail.python_file %}
                 <p><strong>File:</strong> <a href="{{ detail.python_file.url }}">Download</a></p>
 
-            
+                
                 <!-- Display the content of the Python file in a box -->
                 <h4>Code:</h4>
                 <div class="code-container">
@@ -25,7 +25,7 @@
             {% endif %}
             <button class = "btn btn-primary" hx-get="{% url 'edit_details' detail.id %}"
             hx-target="#project_details">Edit Details</button>
-        
+    
     {% endfor %}
 {% endif %}
 
@@ -37,7 +37,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-<script defer>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Prism for syntax highlighting
     Prism.highlightAll();
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 
-</div> 
+</div>
 {% endblock %}
 
 

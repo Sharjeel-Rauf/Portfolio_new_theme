@@ -126,12 +126,11 @@ def project_detail_view(request, project_id):
     project = get_object_or_404(ProjectModel, id=project_id)
 
     # Fetch the project details associated with the project
-    project_details = project.details.all()  # Use the related name 'details' to access the details
+    project_details = project.details.all()
 
     # Read the content of each Python file associated with the project details
     if project_details:
         for detail in project_details:
-            detail.python_file_content = None
             if detail.python_file:
                 try:
                     with open(detail.python_file.path, 'r') as file:
@@ -139,59 +138,42 @@ def project_detail_view(request, project_id):
                 except Exception as e:
                     print(f"Error reading Python file {detail.python_file}: {e}")
 
-    # Prepare the context for rendering the template
     context = {
         'project': project,
         'project_details': project_details,
         'no_details': len(project_details) == 0,
         'page_title': 'Project Detail',
     }
-
-    if request.method == 'GET':
-        # Render the project detail template for GET requests
-        return render(request, 'portfolio_app/project_detail.html', context)
-
-    # Handle PUT request for updating project details
-    if request.method == 'PUT':
-        # Convert the request body to a dictionary
-        data = QueryDict(request.body).dict()
-
-        detail_instance = get_object_or_404(ProjectDetailModel, project=project)
-
-        # Initialize the form with the data and specific detail instance
-        form = ProjectDetailForm(data, instance=detail_instance)
-
-        if form.is_valid():
-            # Save the updated detail instance
-            form.save()
-            
-            # Update the context for re-rendering the page
-            context['project_details'] = project.details.all()  # Refresh project details after update
-             # Prepare the context for rendering the template
-            return render(request, 'portfolio_app/project_detail.html', context)
-
-        # In case the form is not valid, render the edit form template with errors
-        context['form'] = form
-        return render(request, 'portfolio_app/edit_project_details.html', context)
     
-    
-
+    return render(request, 'portfolio_app/project_detail.html', context)
 
     
 def edit_details_view(request, detail_id):
-    print("here//////")
-    # Fetch the ProjectDetail object using the detail_id
     detail = get_object_or_404(ProjectDetailModel, id=detail_id)
 
-    form = ProjectDetailForm(instance = detail)
+    if request.method == 'PUT':
+        # Handle form submission for updating the detail
+        data = QueryDict(request.body)
+        form = ProjectDetailForm(data, instance=detail)
+
+        if form.is_valid():
+            form.save()
+            # Redirect to the project detail view after successful update
+            return redirect('project_detail', project_id=detail.project.id)
+        
+        # If form is invalid, render the form with errors
+        context = {
+            'detail': detail,
+            'form': form,
+        }
+        return render(request, 'portfolio_app/edit_project_details.html', context)
     
-    # Prepare the context with the detail object
+    # If the request method is not PUT, handle other request methods accordingly
+    form = ProjectDetailForm(instance=detail)
     context = {
         'detail': detail,
-        'form': form
+        'form': form,
     }
-    print('hello')
-    # Render the template and pass the context
     return render(request, 'portfolio_app/edit_project_details.html', context)
 
 # view to add the project details
