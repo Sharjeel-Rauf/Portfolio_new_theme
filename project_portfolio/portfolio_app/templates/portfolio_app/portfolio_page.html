@@ -19,18 +19,63 @@
 
 
 
-<a style = "display: block; margin-top: 40px;" href="{% url 'logout_user' %}" >Logout</a></li>
-<a style = "display: block; margin-top: 40px;" href="{% url 'create_project' %}" >Create project</a></li>
 
-<div style="margin-top: 40px;">
-    {% for project in projects %}
-    <div class="project-card">
-        <h2>{{ project.title }}</h2>
-        <p><strong>Short Name:</strong> {{ project.short_name }}</p>
-        <a href="{% url 'project_detail' project.id %}" ><img src="{{ project.image.url }}" alt="{{ project.title }}" style="max-width: 100%; height: auto;"></a>
-    </div>
-    {% endfor %}
+
+<div class="hero">
+	<h1 class="slide delay01">Product Design. Interfaces. Systems. Strategy. UX. & More</h1>
 </div>
+
+
+
+<!-- ######################################################## -->
+
+<div class="grid slide delay02">
+
+	{% if projects %}
+	{% for project in projects %}
+	<a href="{% url 'project_detail' project.id %}"  class="work-item">
+		<div class="work-item-image">
+			<img src="{{ project.image.url }}" alt="{{ project.title }}">
+		</div>
+		<div class="work-item-info">
+			<div class="work-item-company">{{ project.title }}</div>
+			<div class="work-item-description">{{ project.short_name }}</div>
+		</div>
+	</a>
+	{% endfor %}
+
+	{% else %}
+	
+<div class="hero">
+	<h1 class="slide delay01">No projects yet. Please create a project.</h1>
+</div>
+{% endif %}
+</div>
+
+
+
+
+
+
+
+<!-- ######################################################## -->
+
+
+
+<div class="about-me slide delay03">
+<div class="description">
+	<p>I’m Dejan, a product designer based in Slovenia with over 12 years of diverse experience. I specialize in crafting product interfaces, aligning business objectives with user needs, and overseeing comprehensive design projects. My passion lies in tackling diverse challenges in the dynamic design landscape.</p>
+	<a href="about/index.html">More about me</a>
+</div>
+<div class="contact">
+	<p>Get in touch <span>(Click to copy)</span></p>
+	<div class="email" id="copyemail" data-clipboard-text="hey@dejan.works">hey@dejan.works</div>
+</div>
+</div>
+
+
+
+
     
  <!-- Include jQuery (if not already included) -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

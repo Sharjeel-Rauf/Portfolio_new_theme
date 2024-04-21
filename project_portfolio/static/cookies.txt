@@ -1,0 +1,5 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+www.dejan.works	TRUE	/	FALSE	1999999999	PH_HPXY_CHECK	s1
+dejan.works	TRUE	/	FALSE	1999999999	PH_HPXY_CHECK	s1
+
