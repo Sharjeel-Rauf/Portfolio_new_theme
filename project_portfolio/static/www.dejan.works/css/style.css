@@ -155,7 +155,7 @@ video {
     color: #111111;
     font-weight: 500;
     font-size: 1.375rem;
-    margin-left: 20px; /* Add space between links */
+    margin-left: 60px; /* Add space between links */
 }
 
 .header a:hover {

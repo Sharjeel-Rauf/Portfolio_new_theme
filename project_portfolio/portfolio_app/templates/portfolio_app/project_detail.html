@@ -4,29 +4,52 @@
 <h1>{{ project.title }}</h1>
 
 {% if no_details %}
-    <p>No details added yet.</p>
-    <a href="{% url 'add_project_detail' project.id %}" class="btn btn-primary">Add Details</a>
+    <div class="about-me slide delay03">
+        <div class="description">
+            <p>No details yet. Please <a href="{% url 'add_project_detail' project.id %}" style = "padding-top: 0px; display: inline-block;">add</a> the details for the project.</p>
+        </div>
+    </div>
 {% else %}
-    <h2>Code Details</h2>
-    {% for detail in project_details %}
-      
-            <h3>{{ detail.code_title }}</h3>
-            <p><strong>Description:</strong> {{ detail.description }}</p>
-            {% if detail.python_file %}
-                <p><strong>File:</strong> <a href="{{ detail.python_file.url }}">Download</a></p>
 
-                
-                <!-- Display the content of the Python file in a box -->
-                <h4>Code:</h4>
-                <div class="code-container">
-                    <pre><code id="code-3" class="language-python">{{ detail.python_file_content|linebreaksbr }}</code></pre>
-                    <button class="btn btn-secondary copy-btn" data-target="code-3">Copy Code</button>
-                </div>
-            {% endif %}
-            <button class = "btn btn-primary" hx-get="{% url 'edit_details' detail.id %}"
-            hx-target="#project_details">Edit Details</button>
+
+<!-- ############################################## -->
+
+<div class="work-page slide delay01">
+	<div class="work-page-content">
+        {% for detail in project_details %}
+		<h1>{{ detail.code_title }}</h1>
+		<h3 class=" text">
+			{{ detail.description }}
+		</h3>
+        {% if detail.python_file %}
+		<p>
+			<strong>File:</strong> <a href="{{ detail.python_file.url }}">Download</a>
+		</p>
+        <p>
+			<pre><code id="code-3" class="language-python">{{ detail.python_file_content|linebreaksbr }}</code></pre>
+            <button class="btn btn-secondary copy-btn" data-target="code-3">Copy Code</button>
+		</p>
+        {% endif %}
+        <button class = "btn btn-primary" hx-get="{% url 'edit_details' detail.id %}"
+        hx-target="#project_details">Edit Details</button>
+
+        {% endfor %}
+    </div>
+    <div class="back-to-projects">
+		<a href="{% url 'portfolio_page' %}">Back to all project </a>
+	</div>
     
-    {% endfor %}
+</div>
+    
+<!-- ############################################## -->
+
+
+
+
+
+
+
+
 {% endif %}
 
 
