@@ -52,7 +52,7 @@
               </label>
            
               <input class="formbold-form-input" type="text" id="title" name="{{ form.title.html_name }}"
-        value="{% if form.instance.title %}{{ form.instance.title }}{% endif %}" />
+              placeholder="{{ form.title.label }}" />
             </div>
 
             <div class="formbold-mb-5">
@@ -62,18 +62,14 @@
               </label>
           
         <input class="formbold-form-input" type="text" id="short_name" name="{{ form.short_name.html_name }}"
-        value="{% if form.short_name.value %}{{ form.short_name.value }}{% endif %}" />
+        placeholder="{{ form.short_name.label }}" />
             </div>
       
             <div class="mb-6 pt-4">
               <label for="{{ form.image.id_for_label }}" class="formbold-form-label formbold-form-label-2">
                 Upload Image
-              </label>
-   
-                        
+              </label>       
               <input style = "margin-bottom: 20px;" type="file" name="{{ form.image.name }}" id="{{ form.image.id }}" accept="image/*">
-              
-
             </div>
       
             <div>
