@@ -46,8 +46,10 @@
 
 	{% else %}
 	
-<div class="hero">
-	<h1 class="slide delay01">No projects yet. Please create a project.</h1>
+<div class="about-me slide delay03">
+	<div class="description">
+		<p>No projects yet. Please <a href="{% url 'create_project' %}" style = "padding-top: 0px; display: inline-block;">create</a> a project.</p>
+	</div>
 </div>
 {% endif %}
 </div>
