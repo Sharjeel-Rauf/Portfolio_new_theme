@@ -206,104 +206,105 @@ h1 {
 /* ------------ Homepage Work Section ------------ */
 
 .grid {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between; 
-	max-width: 1200px;
-	margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .work-item {
-	width: calc(50% - 60px);
-	margin-bottom: 100px;
-	text-align: center;
-	box-sizing: border-box;
+    width: calc(50% - 60px);
+    margin-bottom: 100px;
+    text-align: center;
+    box-sizing: border-box;
     display: inline-block;
 }
 
 .work-item:nth-child(2n-2) {
-	position: relative;
-	top: 200px;
-	top: 300px; /* CHANGE THIS for V2 */
+    position: relative;
+    top: 200px;
+    top: 300px; /* Change this for V2 */
 }
 
 .work-item-image {
-	border-radius: 24px;
-	overflow: hidden;
-	height: 640px;	
-	transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
+    border-radius: 24px;
+    overflow: hidden;
+    width: 100%; /* Fill the container */
+    height: 480px; /* Fixed height for all images */
+    transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 
 .work-item-image:hover {
-	transform: scale(.95);
-	transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
-	cursor: pointer;
+    transform: scale(.95);
+    transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
+    cursor: pointer;
 }
 
 .work-item img {
-	display: block;
-	width: 100%;
-	height: 100%;
- 	object-fit: cover;
-	transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
+    display: block;
+    width: 100%;
+    height: 100%; /* Fill the image box */
+    object-fit: cover; /* Scale image to fit within the container while maintaining aspect ratio */
+    transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 
 .work-item:hover img {
-	transform: scale(1.1);
-	transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
-	cursor: pointer;
+    transform: scale(1.1);
+    transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
+    cursor: pointer;
 }
+
 .work-item-info {
-	text-align: center;
-	margin-top: 24px;
+    text-align: center;
+    margin-top: 24px;
 }
 
 .work-item-company {
-	color: #111111;
+    color: #111111;
     font-family: 'Geist';
-	font-weight: 500;
-	font-size: 1.375rem;
-	line-height: 160%;
-	display: block;
-	text-decoration: none;
+    font-weight: 500;
+    font-size: 1.375rem;
+    line-height: 160%;
+    display: block;
+    text-decoration: none;
 }
 
 .work-item-description {
-	color: #666666;
+    color: #666666;
     font-family: 'Geist';
-	font-weight: 300;
-	font-size: 1.125rem;
-	display: block;
-	text-decoration: none;
+    font-weight: 300;
+    font-size: 1.125rem;
+    display: block;
+    text-decoration: none;
 }
 
 @media screen and (max-width: 767px) {
-	.grid {
-		padding: 20px;
-	}
-	.work-item  {
-	 	width: 100%;
-		margin-bottom: 40px;
-	}
-	.work-item:nth-child(2n-2) {
-		top: 0;
-	}
-	.work-item-image {
-		height: 480px;
-	}
-	.work-item-info {
-		margin-top: 12px;
-	}
-	.work-item-company {
-		font-size: 1.125rem;
-		font-weight: 600;
-	}
-	.work-item-description {
-		font-size: 1rem;
-		font-weight: 400;
-	}
-  }
-
+    .grid {
+        padding: 20px;
+    }
+    .work-item {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    .work-item:nth-child(2n-2) {
+        top: 0;
+    }
+    .work-item-image {
+        height: 320px; /* Reduce height for smaller screens */
+    }
+    .work-item-info {
+        margin-top: 12px;
+    }
+    .work-item-company {
+        font-size: 1.125rem;
+        font-weight: 600;
+    }
+    .work-item-description {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+}
 
 
 /* ------------ Homepage About Section ------------ */

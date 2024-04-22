@@ -1,12 +1,17 @@
 {% load static %}
 
 
-
+{% if user.is_authenticated %}
 <div class="header slide">
-    <a href="{% url 'title_page' %}" class="logo">Dejan Markovic</a>
+    <a href="{% url 'portfolio_page' %}" class="logo">Dejan Markovic</a>
     <div class="nav-links">
-   
+        <a href="#">About</a>
         <a href="{% url 'create_project' %}">Create project</a>
         <a href="{% url 'logout_user' %}">Logout</a>
     </div>
 </div>
+{% else %}
+<div class="header slide">
+    <a href="{% url 'portfolio_page' %}" class="logo">Dejan Markovic</a>
+</div>
+{%  endif %}

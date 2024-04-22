@@ -57,8 +57,7 @@ def title_page_view(request):
     return render(request, 'portfolio_app/title_page.html', context)
 
 
-# view of the landing page
-@login_required(login_url="title_page")
+
 def portfolio_page_view(request):
     context = {}
     context['page_title'] = 'Portfolio Page'
@@ -73,7 +72,7 @@ def portfolio_page_view(request):
     return render(request, 'portfolio_app/portfolio_page.html', context)
 
 # view of the create project page
-@login_required(login_url="title_page")
+@login_required(login_url="portfolio_page")
 def create_project_view(request):
     context = {}
     context['page_title'] = 'Create Project'
@@ -123,8 +122,7 @@ def create_project_view(request):
     return render(request, 'portfolio_app/create_project.html', context)
 
 
-# VIEW to get the details of the project
-@login_required(login_url="title_page")
+
 def project_detail_view(request, project_id):
     # Fetch the specific project using the project_id
     project = get_object_or_404(ProjectModel, id=project_id)
@@ -151,7 +149,7 @@ def project_detail_view(request, project_id):
     
     return render(request, 'portfolio_app/project_detail.html', context)
 
-@login_required(login_url="title_page")   
+@login_required(login_url="portfolio_page")   
 def edit_details_view(request, detail_id):
     # Get the detail object using the provided detail_id
     detail = get_object_or_404(ProjectDetailModel, id=detail_id)
@@ -198,7 +196,7 @@ def edit_details_view(request, detail_id):
 
 
 # view to add the project details
-@login_required(login_url="title_page")
+@login_required(login_url="portfolio_page")
 def add_project_detail_view(request, project_id):
     context = {}
     context['page_title'] = 'Add Project Detail'

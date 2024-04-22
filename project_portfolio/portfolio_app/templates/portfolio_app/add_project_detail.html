@@ -61,10 +61,12 @@
               
               <label class="formbold-form-label" for="{{ form.description.id_for_label }}">Description</label>
         
-
-        <input class="formbold-form-input" type="text" name="{{ form.description.name }}" id="{{ form.description.id }}" 
-    placeholder="{{ form.description.label }}" />
-
+              <textarea class="formbold-form-input" name="{{ form.description.name }}" id="{{ form.description.id }}"
+              placeholder="{{ form.description.label }}" rows="5" cols="40">
+              {% if form.description.data %}
+                  {{ form.description.data }}
+              {% endif %}
+          </textarea>
             </div>
       
             <div style = "margin-bottom: 20px;" class="mb-6 pt-4">
