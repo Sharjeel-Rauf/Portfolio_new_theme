@@ -14,7 +14,7 @@ from django.http import JsonResponse
 # logout view
 def logout_user(request):
     logout(request)
-    return redirect('title_page')
+    return redirect('portfolio_page')
 
 
 # view of the landing page
