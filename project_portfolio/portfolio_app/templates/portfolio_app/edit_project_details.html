@@ -5,6 +5,7 @@
 
 {% block content %}
 
+
 <!-- Error messages -->
 <div class="toast-container position-fixed top-0 end-0 p-3">
     {% for message in messages %}
@@ -46,7 +47,7 @@
         <!-- Author: FormBold Team -->
         <!-- Learn More: https://formbold.com -->
         <div class="formbold-form-wrapper">
-          <form method="post" action="{% url 'edit_details' detail.id %}" hx-post="{% url 'edit_details' detail.id %}" hx-target="#project_details" enctype="multipart/form-data">
+          <form method="post" action="{% url 'edit_details' detail.id %}" hx-post="{% url 'edit_details' detail.id %}" hx-target="#project_details" enctype="multipart/form-data" hx-push-url="{% url 'project_detail' detail.id %}">
             {% csrf_token %}
             <div class="formbold-mb-5">
               <label for="{{ form.code_title.id_for_label }}" class="formbold-form-label">
@@ -83,6 +84,68 @@
       </div>
 
 </div>
+
+<!-- Add Prism.js for syntax highlighting -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Prism for syntax highlighting
+    Prism.highlightAll();
+
+    // Add click event listener for the copy buttons
+    document.querySelectorAll('.copy-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Get the target ID from the data-target attribute
+            var targetId = button.getAttribute('data-target');
+            console.log("Target ID:", targetId); // Debugging: Log the target ID
+
+            // Ensure the target ID is correct
+            targetId = targetId.replace('code-', '');
+
+            // Get the code element based on the target ID
+            console.log("Searching for element with ID:", `#code-${targetId}`);
+            var codeElement = document.querySelector(`#code-${targetId}`);
+            console.log("Code Element:", codeElement); // Debugging: Log the code element
+
+            // Check if the code element exists
+            if (!codeElement) {
+                console.log("Code element not found for target ID:", targetId);
+                return;
+            }
+
+            // Verify the content of the code element
+            console.log("Code Content:", codeElement.textContent);
+
+            // Create a temporary textarea element
+            var tempTextarea = document.createElement('textarea');
+            tempTextarea.value = codeElement.textContent;
+            document.body.appendChild(tempTextarea);
+
+            // Select and copy the content
+            tempTextarea.select();
+            document.execCommand('copy');
+
+            // Remove the temporary textarea element
+            document.body.removeChild(tempTextarea);
+
+            // Provide feedback to the user
+            alert('Code copied to clipboard!');
+        });
+    });
+});
+document.addEventListener('htmx:afterSwap', function(event) {
+    // Check if the response contains the page_title header
+    if (event.detail.responseHeaders['page_title']) {
+        // Update the page title
+        document.title = 'Portfolio - ' + event.detail.responseHeaders['page_title'];
+    }
+});
+
+</script>
       
  <!-- Include jQuery (if not already included) -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

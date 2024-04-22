@@ -3,6 +3,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
 
 <!-- Error messages -->
@@ -62,11 +63,7 @@
               <label class="formbold-form-label" for="{{ form.description.id_for_label }}">Description</label>
         
               <textarea class="formbold-form-input" name="{{ form.description.name }}" id="{{ form.description.id }}"
-              placeholder="{{ form.description.label }}" rows="5" cols="40">
-              {% if form.description.data %}
-                  {{ form.description.data }}
-              {% endif %}
-          </textarea>
+              placeholder="{{ form.description.label }}" rows="4" cols="50"></textarea>
             </div>
       
             <div style = "margin-bottom: 20px;" class="mb-6 pt-4">
@@ -104,7 +101,9 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">		
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-       
+        .description-input {
+            height: 100px;
+        }
         
         .formbold-mb-5 {
           margin-bottom: 20px;

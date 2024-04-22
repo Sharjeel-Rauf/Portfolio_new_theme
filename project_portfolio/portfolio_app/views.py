@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.core.files.images import get_image_dimensions
 from django.http import QueryDict
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 
 
@@ -149,11 +150,10 @@ def project_detail_view(request, project_id):
     
     return render(request, 'portfolio_app/project_detail.html', context)
 
-@login_required(login_url="portfolio_page")   
+@login_required(login_url="portfolio_page")
 def edit_details_view(request, detail_id):
     # Get the detail object using the provided detail_id
     detail = get_object_or_404(ProjectDetailModel, id=detail_id)
-    print("Loaded detail object:", detail)
 
     if request.method == 'POST':
         # Use the POST request body
@@ -161,36 +161,32 @@ def edit_details_view(request, detail_id):
         # Create the form instance with the submitted data and files
         form = ProjectDetailForm(data, request.FILES, instance=detail)
 
-        # Validate the form
         if form.is_valid():
-            print("Form is valid. Saving the detail...")
             # Save the detail
             form.save()
-            print("Detail saved successfully.")
             # Redirect to the project detail view
             return redirect('project_detail', project_id=detail.project.id)
         else:
-            # Print form errors for debugging
-            print("Form is invalid. Errors:")
-            for field, errors in form.errors.items():
-                print(f"{field}: {errors}")
-
             # If form is invalid, render the form with errors
             context = {
                 'detail': detail,
                 'form': form,
+                'page_title': 'Edit Details',  # Page title for the response
             }
-            print("Rendering form with errors.")
-            return render(request, 'portfolio_app/edit_project_details.html', context)
-
-    # If the request method is not POST, handle other request methods accordingly
-    form = ProjectDetailForm(instance=detail)
-    print("Rendering form for detail editing.")
-    context = {
-        'detail': detail,
-        'form': form,
-    }
-    return render(request, 'portfolio_app/edit_project_details.html', context)
+            # Return the response as a JSON object
+            return JsonResponse({
+                'html': render(request, 'portfolio_app/edit_project_details.html', context).content.decode('utf-8'),
+                'page_title': context['page_title']
+            })
+    else:
+        # Handle the GET request (render the edit form)
+        form = ProjectDetailForm(instance=detail)
+        context = {
+            'detail': detail,
+            'form': form,
+            'page_title': 'Edit Details',  # Page title for the response
+        }
+        return render(request, 'portfolio_app/edit_project_details.html', context)
 
     
 
@@ -228,3 +224,11 @@ def add_project_detail_view(request, project_id):
     return render(request, 'portfolio_app/add_project_detail.html', {'form': form, 'project': project, 'page_title': 'Add Project Detail'})
 
 
+# view of the about page
+def about_page_view(request):
+    context = {}
+    context['page_title'] = 'About Page'
+    
+
+    # Render the template with the context
+    return render(request, 'portfolio_app/about.html', context)

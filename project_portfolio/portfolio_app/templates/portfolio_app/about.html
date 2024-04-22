@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Error messages -->
+<div class="toast-container position-fixed top-0 end-0 p-3">
+	{% for message in messages %}
+		<div class="toast align-items-center {% if message.tags == 'error' %}bg-danger {% else %} bg-success {% endif %} border-0" role="alert" aria-live="assertive" aria-atomic="true" style="margin-top: 100px;">
+			<div class="d-flex">
+				<div class="toast-body" style = "color: white;">
+					{{ message }}
+				</div>
+				<button style = "color: white; background-color: transparent;" type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+
+
+
+
+
+<div class="about-page slide delay01">
+	<div class="about">
+		<h2>
+			Senior product designer with 12 years of experience specializing in interface design.
+		</h2>
+		<p class="text">
+			With more then a decade of remote work experience, I've engaged with a diverse range of clients, projects, startups and full-time positions worldwide. Excelling in remote environments, I've conquered challenges through effective communication and collaboration, delivering exceptional results consistently.
+		</p>
+		<p class="text">Embracing startups and smaller teams, I thrive on challenges and take ownership. I excel in problem-solving, driving solutions from inception to completion. With a creative and visionary mindset, I specialize in crafting visually striking and functional user interfaces, prioritizing user-centric design. My flexible design process adapts seamlessly to project requirements, encompassing research, implementation, and evaluation stages.
+		</p>
+		<p class="text">
+			I foster open communication and teamwork, leveraging my technical proficiency in design tools and front-end development to challenges and learn continuously. I prioritize culture alongside product, believing a supportive and collaborative environment is key to success. I excel at tackling diverse design challenges and pushing boundaries. Always learning, I seek new experiences to improve.
+		</p>
+			
+	</div>
+	
+	<img src="{% static 'www.dejan.works/about/img/Dejan.webp' %}" class="photo-dejan">
+
+	<div class="about">
+		<h4>Work Experiences</h4>
+
+		<div class="multi-row-grid">
+			<div class="multi-row">
+				<p class="title">Senior Product Designer</p>
+				<p class="entity">@hotel</p>
+				<p class="years">2021 - 2024</p>
+			</div>
+
+			<div class="multi-row">
+				<p class="title">Product Designer</p>
+				<p class="entity">@InVision</p>
+				<p class="years">2016 - 2020</p>
+			</div>
+
+			<div class="multi-row">
+				<p class="title">Co-Founder and designer</p>
+				<p class="entity">Achievo</p>
+				<p class="years">2013 - 2015</p>
+			</div>
+
+			<div class="multi-row">
+				<p class="title">User Interface Designer</p>
+				<p class="entity">Centralway</p>
+				<p class="years">2013 - 2014</p>
+			</div>
+
+			<div class="multi-row">
+				<p class="title">Graphic Designer</p>
+				<p class="entity">iTatu</p>
+				<p class="years">2010 - 2011</p>
+			</div>
+
+			<div class="multi-row">
+				<p class="title">Designer and Director</p>
+				<p class="entity">Freelance</p>
+				<p class="years">2010 – Present</p>
+			</div>
+		</div>
+
+		<h4>Education</h4>
+
+		<div class="multi-row">
+			<p class="title">Master’s degree</p>
+			<p class="entity">Communication and Media Studies Faculty of Electrical Engineering and Computer Science</p>
+			<p class="years">2011 - 2013</p>
+		</div>
+
+		<div class="multi-row">
+			<p class="title">Bachelor of Engineering</p>
+			<p class="entity">Communication and Media Studies Faculty of Electrical Engineering and Computer Science</p>
+			<p class="years">2008 – 2011</p>
+		</div>
+
+		<div class="multi-row">
+			<p class="title">High School</p>
+			<p class="entity">Digital Communication and Media/Multimedia at School For Design</p>
+			<p class="years">2004 – 2008</p>
+		</div>
+
+		<h4>Disciplines</h4>
+		<div class="multi-row-grid">
+			<p>End-to-end Product Design</p>
+			<p>Interface Design</p>
+			<p>User Experience Design</p>
+			<p>Design Systems</p>
+			<p>Motion Design</p>
+			<p>Interaction Design</p>
+			<p>Consulting</p>
+			<p>Front-End</p>
+		</div>
+
+		<h4>Contact</h4>
+			<p>Feel free to reach out for projects, collaborations, or just to say hello! Currently seeking new opportunities.</p>
+		<div class="multi-row contact-options">
+			<a id="copyemail" data-clipboard-text="hey@dejan.works">hey@dejan.works</a>
+			<a href="#" target="_blank">Linkedin</a>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- ######################################################## -->
+
+
+
+    
+ <!-- Include jQuery (if not already included) -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- for toast -->
+	<script>
+		// Show toast when page loads
+		document.addEventListener('DOMContentLoaded', function () {
+			var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+			var toastList = toastElList.map(function (toastEl) {
+				return new bootstrap.Toast(toastEl);
+			});
+			toastList.forEach(function (toast) {
+				toast.show();
+			});
+		});
+	</script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">		
+{% endblock %}

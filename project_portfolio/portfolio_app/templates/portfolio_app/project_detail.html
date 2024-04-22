@@ -73,7 +73,10 @@
         {% endif %}
         <!-- Show "Edit Details" button only if the user is authenticated -->
         {% if user.is_authenticated %}
-            <button class="btn btn-primary" hx-get="{% url 'edit_details' detail.id %}" hx-target="#project_details">Edit Details</button>
+        <button hx-push-url="{% url 'edit_details' detail.id %}" class="btn btn-primary"
+        hx-get="{% url 'edit_details' detail.id %}" hx-target="#project_details">
+          Edit Details
+       </button>  
         {% endif %}
 
         {% endfor %}
@@ -169,9 +172,21 @@ document.addEventListener('DOMContentLoaded', function() {
  </script>
 
  <style>
+    @media screen and (max-width: 767px) {
     h1, p.text {
     max-width: 100%; /* Adjust the width as needed to match the code box width */
+    padding: 10px; /* Adjust the padding around the image */
     word-wrap: break-word; /* This will allow the text to wrap onto the next line */
+}
+    }
+
+    /* Desktop styles */
+@media screen and (min-width: 768px) {
+    h1, p.text {
+    max-width: 100%; /* Adjust the width as needed to match the code box width */
+    padding: 10px; /* Adjust the padding around the image */
+    word-wrap: break-word; /* This will allow the text to wrap onto the next line */
+    }
 }
  </style>
 

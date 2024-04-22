@@ -11,7 +11,6 @@ class ProjectForm(forms.ModelForm):
         fields = ['title', 'short_name', 'image']
 
 class ProjectDetailForm(forms.ModelForm):
-    description = forms.CharField(widget=forms.Textarea(attrs={'maxlength': 500}))
     class Meta:
         model = ProjectDetailModel
         fields = ['code_title', 'description', 'python_file']
