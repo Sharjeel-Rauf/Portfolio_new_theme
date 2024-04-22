@@ -59,11 +59,16 @@
 		</h3>
         {% if detail.python_file %}
 		<p>
-			<strong>File:</strong> <a style = "width: 120px;" href="{{ detail.python_file.url }}">Download</a>
+		
+            <strong>File:</strong> <a style="width: 120px;" href="{{ detail.python_file.url }}" download>Download</a>
+      
 		</p>
         <p>
-			<pre><code id="code-3" class="language-python">{{ detail.python_file_content|linebreaksbr }}</code></pre>
-            <button class="btn btn-secondary copy-btn" data-target="code-3">Copy Code</button>
+            <pre><code id="code-3" class="language-python" style="display: block; height: 400px; overflow-y: auto; white-space: pre-line;">
+                {{ detail.python_file_content }}
+            </code></pre>
+            
+            <button style = "margin-top: 20px;" class="btn btn-primary copy-btn" data-target="code-3">Copy Code</button>
 		</p>
         {% endif %}
         <button class = "btn btn-primary" hx-get="{% url 'edit_details' detail.id %}"
