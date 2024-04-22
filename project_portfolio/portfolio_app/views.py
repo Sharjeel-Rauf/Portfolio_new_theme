@@ -162,8 +162,6 @@ def edit_details_view(request, detail_id):
         data = request.POST
         # Create the form instance with the submitted data and files
         form = ProjectDetailForm(data, request.FILES, instance=detail)
-        print("Form data received:", data)
-        print("Files received:", request.FILES)
 
         # Validate the form
         if form.is_valid():
@@ -217,11 +215,18 @@ def add_project_detail_view(request, project_id):
             project_detail.project = project
             project_detail.save()
             
+            # Add a success message
+            messages.success(request, "Project detail has been successfully added!")
+            
             # Redirect to the project detail page
             return redirect('project_detail', project_id=project.id)
+        else:
+            # Add an error message if the form is invalid
+            messages.error(request, "There was an issue with your submission. Please check the form and try again.")
     else:
         form = ProjectDetailForm()
 
-    return render(request, 'portfolio_app/add_project_detail.html', {'form': form, 'project': project})
+    # Render the template with the form and project context
+    return render(request, 'portfolio_app/add_project_detail.html', {'form': form, 'project': project, 'page_title': 'Add Project Detail'})
 
 

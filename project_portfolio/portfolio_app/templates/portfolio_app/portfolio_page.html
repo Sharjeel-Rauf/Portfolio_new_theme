@@ -33,15 +33,18 @@
 
 	{% if projects %}
 	{% for project in projects %}
-	<a href="{% url 'project_detail' project.id %}"  class="work-item">
+	<div class="work-item">
+	<a href="{% url 'project_detail' project.id %}">
 		<div class="work-item-image">
 			<img src="{{ project.image.url }}" alt="{{ project.title }}">
 		</div>
-		<div class="work-item-info">
+	</a>
+		<div class="work-item-info" style = "margin-bottom: 100px;">
 			<div class="work-item-company">{{ project.title }}</div>
 			<div class="work-item-description">{{ project.short_name }}</div>
 		</div>
-	</a>
+	</div>
+	
 	{% endfor %}
 
 	{% else %}
@@ -67,7 +70,7 @@
 <div class="about-me slide delay03">
 <div class="description">
 	<p>I’m Dejan, a product designer based in Slovenia with over 12 years of diverse experience. I specialize in crafting product interfaces, aligning business objectives with user needs, and overseeing comprehensive design projects. My passion lies in tackling diverse challenges in the dynamic design landscape.</p>
-	<a href="about/index.html">More about me</a>
+	<a href="#">More about me</a>
 </div>
 <div class="contact">
 	<p>Get in touch <span>(Click to copy)</span></p>
