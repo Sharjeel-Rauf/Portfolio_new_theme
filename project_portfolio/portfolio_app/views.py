@@ -66,6 +66,16 @@ def portfolio_page_view(request):
     
     # Query all projects from the database and order them by the created_at field in descending order
     projects = ProjectModel.objects.all().order_by('-created_at')
+
+    user_profile = UserProfile.objects.all()
+
+    # Retrieve the summary for the logged-in user
+    summary = Summary.objects.first()
+    context['summary'] = summary
+
+    context['summary'] = summary
+
+    context['user_profile'] = user_profile
     
     # Add projects to the context
     context['projects'] = projects
@@ -326,30 +336,74 @@ def about_page_view(request):
 
 
 
+@login_required(login_url="portfolio_page")
+def add_summary(request):
+
+    # Handle POST request
+    if request.method == 'POST':
+        form = SummaryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Summary added successfully.')
+            return redirect('portfolio_page')
+    else:
+        form = SummaryForm()
+
+    context = {'form': form}
+    context['page_title'] = 'Add Summary'
+    return render(request, 'portfolio_app/add_summary.html', context)
+
+@login_required(login_url="portfolio_page")
+def edit_summary(request):
+    # Retrieve the current summary for the logged-in user
+    summary = Summary.objects.first()
+
+    # Handle POST request
+    if request.method == 'POST':
+        form = SummaryForm(request.POST, instance=summary)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Summary updated successfully.')
+            return redirect('portfolio_page')
+    else:
+        # Initialize the form with the current summary instance
+        form = SummaryForm(instance=summary)
+
+    context = {'form': form}
+    context['page_title'] = 'Edit Summary'
+    # Use a different template for editing summary (e.g. edit_summary.html)
+    return render(request, 'portfolio_app/edit_summary.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
 # view to add the user profile
 @login_required
 def add_user_profile(request):
-    # Check if the user already has a profile
-    if UserProfile.objects.filter(user=request.user).exists():
-        messages.error(request, 'You already have a profile.')
-        return redirect('edit_profile')  # Redirect to the edit profile page
-
+    
     if request.method == 'POST':
         # Handle form submission
         form = UserProfileForm(request.POST)
-        if form.is_valid():
-            # Create a new profile instance with the submitted data
-            user_profile = form.save(commit=False)
-            user_profile.user = request.user  # Associate the profile with the logged-in user
-            user_profile.save()  # Save the profile
+        if form.is_valid(): 
+            form.save()
             messages.success(request, 'Profile added successfully.')
-            return redirect('edit_profile')  # Redirect to the edit profile page
+            return redirect('portfolio_page')  # Redirect to the edit profile page
     else:
         # Handle GET request by providing a blank form
         form = UserProfileForm()
     
     # Render the form in the template
-    return render(request, 'add_profile.html', {'form': form})
+    context = {'form': form}
+    context['page_title'] = 'Add User Profile'
+    return render(request, 'portfolio_app/about.html',  context)
 
 
 # views to edit the profile

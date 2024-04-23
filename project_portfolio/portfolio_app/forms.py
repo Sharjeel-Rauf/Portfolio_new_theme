@@ -39,3 +39,8 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['description', 'email']
+
+class SummaryForm(forms.ModelForm):
+    class Meta:
+        model = Summary
+        fields = ['summary']

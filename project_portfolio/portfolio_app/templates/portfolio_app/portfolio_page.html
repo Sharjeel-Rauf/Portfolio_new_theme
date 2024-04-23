@@ -18,12 +18,26 @@
 </div>
 
 
+<!-- Display the user profile information -->
+{% if summary %}
 
+		<div class="hero">
+			<h1 class="slide delay01">{{ summary.summary }}</h1>
+			{% if user.is_authenticated %}
+			<a class="slide delay01" style = "font-size: 2rem; padding-top: 0px; display: inline-block;" href="{% url 'edit_summary' %}">Edit</a></p>
+			{% endif %}
+		</div>
+		
+	
 
+{% else %}
+{% if user.is_authenticated %}
+	<div class="hero">
+		<h1 class="slide delay01">No summary data available. Please <a class="slide delay01" href="{% url 'add_summary' %}">add</a> your summary</h1>
+	</div>
+{% endif %}
+{% endif %}
 
-<div class="hero">
-	<h1 class="slide delay01">Product Design. Interfaces. Systems. Strategy. UX. & More</h1>
-</div>
 
 
 
@@ -79,16 +93,27 @@
 
 
 
-<div class="about-me slide delay03">
-<div class="description">
-	<p>I’m Dejan, a product designer based in Slovenia with over 12 years of diverse experience. I specialize in crafting product interfaces, aligning business objectives with user needs, and overseeing comprehensive design projects. My passion lies in tackling diverse challenges in the dynamic design landscape.</p>
-	<a href="#">More about me</a>
-</div>
-<div class="contact">
-	<p>Get in touch <span>(Click to copy)</span></p>
-	<div class="email" id="copyemail" data-clipboard-text="hey@dejan.works">hey@dejan.works</div>
-</div>
-</div>
+<!-- Display the user profile information -->
+{% if user_profile %}
+    <div class="about-me slide delay03">
+        <div class="description">
+            <p>{{ user_profile.description }}</p>
+        </div>
+        <div class="contact">
+            <p>Get in touch <span>(Click to copy)</span></p>
+            <div class="email" id="copyemail" data-clipboard-text="{{ user_profile.email }}">{{ user_profile.email }}</div>
+        </div>
+    </div>
+{% else %}
+
+    <div class="about-me slide delay03">
+        <div class="description">
+			{% if user.is_authenticated %}  <p>No user profile data available. Please <a style = "padding-top: 0px; display: inline-block;" href="{% url 'add_user_profile' %}">add</a> your profile </p>{% endif %}
+        </div>
+    </div>
+
+	
+{% endif %}
 
 
 

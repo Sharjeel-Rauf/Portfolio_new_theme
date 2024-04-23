@@ -76,3 +76,6 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.email
+    
+class Summary(models.Model):
+    summary = models.CharField(max_length=255, default="")

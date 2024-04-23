@@ -181,6 +181,22 @@ video {
 
 	padding: 24vh 0 16vh 0;
 }
+
+/* Styling anchor tag in the .hero section */
+.hero a {
+    font-family: 'Geist'; /* Match font family with h1 */
+    font-weight: 600; /* Match font weight with h1 */
+    color: #111111; /* Match color with h1 */
+    text-decoration: none; /* Remove underline by default */
+    font-size: 4.5rem; /* Match font size with h1 */
+    line-height: 120%; /* Match line height with h1 */
+}
+
+/* Hover effect for anchor tag in the .hero section */
+.hero a:hover {
+    text-decoration: underline; /* Show underline on hover */
+}
+
 h1 {
 	font-size: 4.6vw;
 	font-size: 4.5rem;
@@ -201,6 +217,11 @@ h1 {
 		line-height: 120%;
 		max-width: 100%;
 	}
+	    /* Adjust the anchor styles for smaller screens */
+		.hero a {
+			font-size: 2.2rem; /* Match font size with h1 */
+			line-height: 120%; /* Match line height with h1 */
+		}
 }
 
 /* ------------ Homepage Work Section ------------ */
