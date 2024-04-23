@@ -69,3 +69,10 @@ class ProjectDetailModel(models.Model):
                 content = file.read()
             return content
         return None
+    
+class UserProfile(models.Model):
+    description = models.TextField()
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.email

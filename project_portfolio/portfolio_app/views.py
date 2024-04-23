@@ -123,8 +123,90 @@ def create_project_view(request):
     
     return render(request, 'portfolio_app/create_project.html', context)
 
+# view of the UPDATE project page
+@login_required(login_url="portfolio_page")
+def edit_project_view(request, project_id):
+    # Get the project object using the provided project_id
+    project = get_object_or_404(ProjectModel, id=project_id)
+    print(project)
 
+    if request.method == 'POST':
+        # Create a form instance with the submitted data and files, and bind it to the project instance
+        form = ProjectForm(request.POST, request.FILES, instance=project)
 
+        if form.is_valid():
+            # Validate the image
+            image = form.cleaned_data.get('image')
+
+            # Check if an image was uploaded
+            if image:
+                # Get image dimensions
+                width, height = get_image_dimensions(image)
+                
+                # Validate image dimensions (e.g., check if width or height is zero)
+                if width == 0 or height == 0:
+                    messages.error(request, "Invalid image format. Please upload a valid JPEG or PNG image.")
+                    return redirect('edit_project', project_id=project.id)
+                
+                # Additional checks for image format can be added here
+                
+            else:
+                messages.error(request, "No image uploaded.")
+                return redirect('edit_project', project_id=project.id)
+
+            # If everything is valid, save the project instance
+            form.save()
+            # Display a success message
+            messages.success(request, f'Project "{project.title}" updated successfully.')
+            # Redirect to the project detail view
+            return redirect('portfolio_page')
+        else:
+            # Display an error message if the form is invalid
+            messages.error(request, "There was an error updating the project. Please check the form and try again.")
+
+    else:
+        # Create a form instance pre-filled with the existing project details
+        form = ProjectForm(instance=project)
+
+    # Render the edit project template with the form and project context
+    context = {
+        'form': form,
+        'project': project,
+        'page_title': 'Edit Project'
+    }
+    return render(request, 'portfolio_app/edit_project.html', context)
+
+# View for deleting a project
+@login_required(login_url="portfolio_page")
+def delete_project_view(request, project_id):
+    # Get the project by ID, or return a 404 error if not found
+    project = get_object_or_404(ProjectModel, pk=project_id)
+
+    # Handle POST request
+    if request.method == 'POST':
+        try:
+            # Attempt to delete the project
+            project.delete()
+            
+            # Display a success message
+            messages.success(request, f'Project "{project.title}" deleted successfully!')
+            
+            # Redirect to the portfolio page
+            return redirect('portfolio_page')
+        except PermissionError as e:
+            # Handle PermissionError
+            messages.error(request, f'Error deleting project: {str(e)}')
+            return redirect('delete_project', project_id=project_id)
+    
+    # If request is GET, render the confirmation page
+    context = {
+        'project': project,
+        'page_title': 'Confirm Project Deletion'
+    }
+    
+    return render(request, 'portfolio_app/delete_project.html', context)
+
+# view to get the project details
 def project_detail_view(request, project_id):
     # Fetch the specific project using the project_id
     project = get_object_or_404(ProjectModel, id=project_id)
@@ -151,6 +233,7 @@ def project_detail_view(request, project_id):
     
     return render(request, 'portfolio_app/project_detail.html', context)
 
+# view to edit the project details
 @login_required(login_url="portfolio_page")
 def edit_details_view(request, detail_id):
     # Get the detail object using the provided detail_id
@@ -240,3 +323,50 @@ def about_page_view(request):
 
     # Render the template with the context
     return render(request, 'portfolio_app/about.html', context)
+
+
+
+# view to add the user profile
+@login_required
+def add_user_profile(request):
+    # Check if the user already has a profile
+    if UserProfile.objects.filter(user=request.user).exists():
+        messages.error(request, 'You already have a profile.')
+        return redirect('edit_profile')  # Redirect to the edit profile page
+
+    if request.method == 'POST':
+        # Handle form submission
+        form = UserProfileForm(request.POST)
+        if form.is_valid():
+            # Create a new profile instance with the submitted data
+            user_profile = form.save(commit=False)
+            user_profile.user = request.user  # Associate the profile with the logged-in user
+            user_profile.save()  # Save the profile
+            messages.success(request, 'Profile added successfully.')
+            return redirect('edit_profile')  # Redirect to the edit profile page
+    else:
+        # Handle GET request by providing a blank form
+        form = UserProfileForm()
+    
+    # Render the form in the template
+    return render(request, 'add_profile.html', {'form': form})
+
+
+# views to edit the profile
+def edit_profile(request):
+    # Retrieve the user's profile, creating a new instance if it doesn't exist
+    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        # Handle form submission
+        form = UserProfileForm(request.POST, instance=user_profile)
+        if form.is_valid():
+            form.save()  # Save the updated data
+            messages.success(request, 'Profile updated successfully.')
+            return redirect('edit_profile')  # Redirect to the same page
+    else:
+        # Handle GET request
+        form = UserProfileForm(instance=user_profile)
+    
+    # Render the form in the template
+    return render(request, 'edit_profile.html', {'form': form})

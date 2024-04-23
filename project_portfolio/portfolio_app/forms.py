@@ -34,3 +34,8 @@ class ProjectDetailForm(forms.ModelForm):
             if file_extension.lower() != 'py':
                 raise ValidationError("Only Python files with .py extension are allowed.")
         return python_file
+    
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['description', 'email']

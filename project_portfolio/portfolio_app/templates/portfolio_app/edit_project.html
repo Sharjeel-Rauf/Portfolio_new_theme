@@ -44,39 +44,45 @@
         <!-- Author: FormBold Team -->
         <!-- Learn More: https://formbold.com -->
         <div class="formbold-form-wrapper">
-          <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="formbold-mb-5">
-              <label for="{{ form.title.id_for_label }}" class="formbold-form-label">
-                Title
-              </label>
-           
-              <input class="formbold-form-input" type="text" id="title" name="{{ form.title.html_name }}"
-              placeholder="{{ form.title.label }}" />
-            </div>
-
-            <div class="formbold-mb-5">
-              <label for="{{ form.short_name.id_for_label }}" class="formbold-form-label">
-                Short Name
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="formbold-mb-5">
+                    <label for="{{ form.title.id_for_label }}" class="formbold-form-label">
+                        Title
+                    </label>
+                    <input class="formbold-form-input" type="text" id="{{ form.title.id_for_label }}"
+                        name="{{ form.title.html_name }}" placeholder="{{ form.title.label }}" value="{{ form.title.value }}" />
+                </div>
             
-              </label>
-          
-        <input class="formbold-form-input" type="text" id="short_name" name="{{ form.short_name.html_name }}"
-        placeholder="{{ form.short_name.label }}" />
-            </div>
-      
-            <div class="mb-6 pt-4">
-              <label for="{{ form.image.id_for_label }}" class="formbold-form-label formbold-form-label-2">
-                Upload Image
-              </label>       
-              <input type="file" name="{{ form.image.name }}" id="{{ form.image.id }}" accept="image/*" style="width: 213px; margin-bottom: 20px;">
-            </div>
-      
-            <div>
-              <button type="submit" class="formbold-btn w-full">Create Project</button>
-            </div>
-
-            </form>       
+                <div class="formbold-mb-5">
+                    <label for="{{ form.short_name.id_for_label }}" class="formbold-form-label">
+                        Short Name
+                    </label>
+                    <input class="formbold-form-input" type="text" id="{{ form.short_name.id_for_label }}"
+                        name="{{ form.short_name.html_name }}" placeholder="{{ form.short_name.label }}" value="{{ form.short_name.value }}" />
+                </div>
+            
+                <div class="mb-6 pt-4">
+                    <label for="{{ form.image.id_for_label }}" class="formbold-form-label formbold-form-label-2">
+                        Upload Image
+                    </label>
+                    <input type="file" name="{{ form.image.name }}" id="{{ form.image.id }}" accept="image/*" style="width: 213px; margin-bottom: 20px;">
+                </div>
+                
+                <!-- Display the current photo if it exists -->
+                {% if form.instance.image %}
+                <div class="textfield" style="margin-top: 10px;">
+                    <label for="current_image" class="formbold-form-label">
+                        Current Photo
+                    </label>
+                    <img src="{{ form.instance.image.url }}" alt="Current Photo" style="max-width: 200px;">
+                </div>
+                {% endif %}
+            
+                <div>
+                    <button type="submit" class="formbold-btn w-full" style = "margin-top: 20px;">Submit</button>
+                </div>
+            </form>
         </div>
       </div>
 
