@@ -428,6 +428,12 @@ def about_page_view(request):
 
     # Add work experiences to context
     context['work_experiences'] = work_experiences
+
+        # Query the database for education experiences
+    education_entries = Education.objects.all()
+    
+    # Add education entries to the context
+    context['education_entries'] = education_entries
     
     # Render the template with the context
     return render(request, 'portfolio_app/about.html', context)
@@ -537,6 +543,79 @@ def delete_work_experience_view(request, experience_id):
 
     # Display a success message
     messages.success(request, 'Work experience deleted successfully.')
+
+    # Redirect to the about page
+    return redirect('about_page')
+
+@login_required(login_url="portfolio_page")
+def edit_education_view(request, education_id):
+    # Retrieve the education instance
+    education = get_object_or_404(Education, id=education_id)
+
+    # Create a form instance pre-filled with the existing education instance
+    form = EducationForm(request.POST or None, instance=education)
+
+    if request.method == 'POST':
+        # Check if the form is valid
+        if form.is_valid():
+            # Save the form data
+            form.save()
+            
+            # Display success message and redirect
+            messages.success(request, 'Education entry updated successfully.')
+            return redirect('about_page')
+        else:
+            # Display form errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    # Display each field error using messages.error
+                    messages.error(request, f"{field.capitalize()}: {error}")
+
+    # Render the form if request.method is GET or if the form is invalid
+    context = {'form': form, 'education_id': education_id}
+    context['page_title'] = 'Edit Education'
+    return render(request, 'portfolio_app/edit_education.html', context)
+
+@login_required(login_url="portfolio_page")
+def add_education_view(request):
+    # Create a form instance for Education, with request.POST data if the request is POST
+    form = EducationForm(request.POST or None)
+
+    if request.method == 'POST':
+        # Check if the form is valid
+        if form.is_valid():
+            # Save the form data as a new Education instance
+            education = form.save(commit=False)
+            # If you want to associate the education entry with the user
+            education.user = request.user  # Assuming the Education model has a user field
+            education.save()
+            
+            # Display a success message and redirect to a success page (e.g., the about page)
+            messages.success(request, 'Education added successfully.')
+            return redirect('about_page')
+        else:
+            # Display form errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    # Display each field error using messages.error
+                    messages.error(request, f"{field.capitalize()}: {error}")
+
+    # Render the form if request.method is GET or if the form is invalid
+    # Render the template with the form
+    context = {'form': form}
+    context['page_title'] = 'Add Education'
+    return render(request, 'portfolio_app/add_education.html', context)
+
+@login_required(login_url="portfolio_page")
+def delete_education_view(request, education_id):
+    # Retrieve the Education instance for the given ID
+    education = get_object_or_404(Education, id=education_id)
+
+    # Delete the education instance
+    education.delete()
+
+    # Display a success message
+    messages.success(request, 'Education entry deleted successfully.')
 
     # Redirect to the about page
     return redirect('about_page')

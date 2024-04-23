@@ -69,3 +69,8 @@ class WorkExperienceForm(forms.ModelForm):
     class Meta:
         model = WorkExperience
         fields = ['job_title', 'company', 'start_year', 'end_year']
+
+class EducationForm(forms.ModelForm):
+    class Meta:
+        model = Education
+        fields = ['title', 'degree_institution', 'start_year', 'end_year']

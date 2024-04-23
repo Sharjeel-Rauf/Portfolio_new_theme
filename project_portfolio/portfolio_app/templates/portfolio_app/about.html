@@ -94,23 +94,34 @@
 
 		<h4>Education</h4>
 
-		<div class="multi-row">
-			<p class="title">Master’s degree</p>
-			<p class="entity">Communication and Media Studies Faculty of Electrical Engineering and Computer Science</p>
-			<p class="years">2011 - 2013</p>
-		</div>
-
-		<div class="multi-row">
-			<p class="title">Bachelor of Engineering</p>
-			<p class="entity">Communication and Media Studies Faculty of Electrical Engineering and Computer Science</p>
-			<p class="years">2008 – 2011</p>
-		</div>
-
-		<div class="multi-row">
-			<p class="title">High School</p>
-			<p class="entity">Digital Communication and Media/Multimedia at School For Design</p>
-			<p class="years">2004 – 2008</p>
-		</div>
+        {% if education_entries %}
+        <div class="multi-row-grid">
+            {% for education in education_entries %}
+            <div class="multi-row">
+                <p class="title">{{ education.title }}</p>
+                <p class="entity">{{ education.degree_institution }}</p>
+                <p class="years">{{ education.start_year }} - {{ education.end_year }}</p>
+                <!-- Add an edit button for each work experience -->
+                {% if user.is_authenticated %}
+                            <!-- Wrap the buttons in a span element and style them for inline display -->
+                <span style="display: inline;">
+                    <a href="{% url 'edit_education' education.id %}" class="edit-button" style="margin-right: 10px;">Edit</a>
+                    <a href="{% url 'delete_education' education.id %}" class="delete-button" onclick="return confirm('Are you sure you want to delete this education?');">Delete</a>
+                </span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% if user.is_authenticated %}
+        <p>Please <a href="{% url 'add_education' %}" style="padding-top: 0px; display: inline-block;">add</a> education.</p>
+        {% endif %}
+        
+        {% else %}
+        <!-- Display a message or button to add work experience -->
+        {% if user.is_authenticated %}
+        <p>Please <a href="{% url 'add_education' %}" style="padding-top: 0px; display: inline-block;">add</a> education.</p>
+        {% endif %}
+        {% endif %}
 
 		<h4>Disciplines</h4>
 		<div class="multi-row-grid">

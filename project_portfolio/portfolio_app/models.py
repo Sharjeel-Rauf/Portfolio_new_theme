@@ -102,3 +102,12 @@ class WorkExperience(models.Model):
     def __str__(self):
         return f"{self.job_title} at {self.company}"
     
+class Education(models.Model):
+    title = models.CharField(max_length=100, help_text='Degree or certification title.')
+    degree_institution = models.CharField(max_length=100, help_text='Name of the degree and institution.')
+    start_year = models.IntegerField(help_text='Start year of the education period.')
+    end_year = models.IntegerField(help_text='End year of the education period.')
+
+    def __str__(self):
+        return f"{self.title} at {self.degree_institution}"
+    
