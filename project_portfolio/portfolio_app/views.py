@@ -526,3 +526,17 @@ def add_work_experience_view(request):
     context = {'form': form}
     context['page_title'] = 'Add Work Experience'
     return render(request, 'portfolio_app/add_work_experience.html', context)
+
+@login_required(login_url="portfolio_page")
+def delete_work_experience_view(request, experience_id):
+    # Retrieve the WorkExperience instance for the given ID and user
+    work_experience = get_object_or_404(WorkExperience, id=experience_id)
+
+    # Delete the work experience
+    work_experience.delete()
+
+    # Display a success message
+    messages.success(request, 'Work experience deleted successfully.')
+
+    # Redirect to the about page
+    return redirect('about_page')

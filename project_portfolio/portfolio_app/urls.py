@@ -19,6 +19,7 @@ urlpatterns = [
     path('about/edit-profile-description/', views.profile_description_edit_add, name='add_edit_profile_description'),
     path('about/edit-work-experience/<int:experience_id>/', views.edit_work_experience_view, name='edit_work_experience'),
     path('about/add-work-experience/', views.add_work_experience_view, name='add_work_experience'),
+    path('about/delete/<int:experience_id>/', views.delete_work_experience_view, name='delete_work_experience'),
     
 ]
 
