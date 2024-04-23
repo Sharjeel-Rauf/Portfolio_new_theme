@@ -39,7 +39,12 @@
 {% if no_details %}
     <div class="about-me slide delay03">
         <div style = "text-align: center;" class="description">
-            <p>No details yet. Please <a href="{% url 'add_project_detail' project.id %}" style = "padding-top: 0px; display: inline-block;">add</a> the details for the project.</p>
+			{% if user.is_authenticated %}
+			<p>No details yet. Please <a href="{% url 'add_project_detail' project.id %}" style = "padding-top: 0px; display: inline-block;">add</a> the details for the project.</p>
+			{% else %}
+			<p>No details yet.</p>
+			{% endif %}
+
         </div>
     </div>
     <div style = "margin: 4vh auto 4vh auto;" class="back-to-projects">
@@ -53,7 +58,7 @@
 <div style = "padding: 1vh 0 16vh 0" class="work-page slide delay01">
 	<div class="work-page-content">
         {% for detail in project_details %}
-		<h1>{{ detail.code_title }}</h1>
+		<h1 style = "font-size: 44px;">{{ detail.code_title }}</h1>
 		<p class="text">
 			{{ detail.description }}
         </p>

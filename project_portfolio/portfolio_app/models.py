@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.utils import timezone
 
 class ProjectModel(models.Model):
     # Image associated with the project
@@ -14,6 +15,9 @@ class ProjectModel(models.Model):
     # Automatically created slug based on the title
     slug = models.SlugField(max_length=255, unique=True, blank=True)
 
+    # Created at field
+    created_at = models.DateTimeField(auto_now_add=True)
+    
     # Automatically create a slug from the title
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -41,7 +45,7 @@ class ProjectDetailModel(models.Model):
     code_title = models.CharField(max_length=255)
     
     # Description of the code
-    description = models.TextField(max_length=500)
+    description = models.TextField()
     
     # Python file associated with the project
     python_file = models.FileField(upload_to='projects/files/', blank=True, null=True)

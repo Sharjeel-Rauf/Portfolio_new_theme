@@ -59,12 +59,13 @@ def title_page_view(request):
 
 
 
+# view for the main page
 def portfolio_page_view(request):
     context = {}
     context['page_title'] = 'Portfolio Page'
     
-    # Query all projects from the database
-    projects = ProjectModel.objects.all()
+    # Query all projects from the database and order them by the created_at field in descending order
+    projects = ProjectModel.objects.all().order_by('-created_at')
     
     # Add projects to the context
     context['projects'] = projects
@@ -167,27 +168,28 @@ def edit_details_view(request, detail_id):
             # Redirect to the project detail view
             return redirect('project_detail', project_id=detail.project.id)
         else:
+            # Handle form errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    # Add each error to messages
+                    messages.error(request, error)
+                    
             # If form is invalid, render the form with errors
             context = {
                 'detail': detail,
                 'form': form,
-                'page_title': 'Edit Details',  # Page title for the response
+                'page_title': 'Edit Details',
             }
-            # Return the response as a JSON object
-            return JsonResponse({
-                'html': render(request, 'portfolio_app/edit_project_details.html', context).content.decode('utf-8'),
-                'page_title': context['page_title']
-            })
+            return render(request, 'portfolio_app/edit_project_details.html', context)
     else:
         # Handle the GET request (render the edit form)
         form = ProjectDetailForm(instance=detail)
         context = {
             'detail': detail,
             'form': form,
-            'page_title': 'Edit Details',  # Page title for the response
+            'page_title': 'Edit Details',
         }
         return render(request, 'portfolio_app/edit_project_details.html', context)
-
     
 
 
@@ -200,6 +202,7 @@ def add_project_detail_view(request, project_id):
     project = get_object_or_404(ProjectModel, id=project_id)
     
     if request.method == 'POST':
+        # Create a form instance with the submitted data and files
         form = ProjectDetailForm(request.POST, request.FILES)
         if form.is_valid():
             # Create a new ProjectDetailModel instance
@@ -215,13 +218,18 @@ def add_project_detail_view(request, project_id):
             # Redirect to the project detail page
             return redirect('project_detail', project_id=project.id)
         else:
-            # Add an error message if the form is invalid
-            messages.error(request, "There was an issue with your submission. Please check the form and try again.")
+            # Iterate over each form error
+            for field, errors in form.errors.items():
+                # Add a field-specific error message to Django messages
+                for error in errors:
+                    messages.error(request, f"Error in {field}: {error}")
     else:
         form = ProjectDetailForm()
 
     # Render the template with the form and project context
-    return render(request, 'portfolio_app/add_project_detail.html', {'form': form, 'project': project, 'page_title': 'Add Project Detail'})
+    context['form'] = form
+    context['project'] = project
+    return render(request, 'portfolio_app/add_project_detail.html', context)
 
 
 # view of the about page

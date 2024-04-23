@@ -11,10 +11,20 @@ class ProjectForm(forms.ModelForm):
         fields = ['title', 'short_name', 'image']
 
 class ProjectDetailForm(forms.ModelForm):
+    MAX_CODE_TITLE_LENGTH = 255  # Define the maximum length for the code title
+    
     class Meta:
         model = ProjectDetailModel
         fields = ['code_title', 'description', 'python_file']
     
+    def clean_code_title(self):
+        code_title = self.cleaned_data.get('code_title')
+        if len(code_title) > self.MAX_CODE_TITLE_LENGTH:
+            raise ValidationError(
+                f'Code Title must be {self.MAX_CODE_TITLE_LENGTH} characters or less.'
+            )
+        return code_title
+
     def clean_python_file(self):
         python_file = self.cleaned_data.get('python_file')
         if python_file:

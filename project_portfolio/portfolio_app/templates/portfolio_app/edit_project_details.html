@@ -49,13 +49,16 @@
         <div class="formbold-form-wrapper">
           <form method="post" action="{% url 'edit_details' detail.id %}" hx-post="{% url 'edit_details' detail.id %}" hx-target="#project_details" enctype="multipart/form-data" hx-push-url="{% url 'project_detail' detail.id %}">
             {% csrf_token %}
+                        <!-- Code Title Field -->
             <div class="formbold-mb-5">
               <label for="{{ form.code_title.id_for_label }}" class="formbold-form-label">
-                Code Title
+                  Code Title
               </label>
-        <input class="formbold-form-input" type="text" name="{{ form.code_title.name }}" id="{{ form.code_title.id }}" 
-        value="{{ form.code_title.value }}" placeholder="{{ form.code_title.label }}">
+              <input class="formbold-form-input" type="text" name="{{ form.code_title.name }}" id="{{ form.code_title.id }}" 
+                  value="{{ form.code_title.value }}" placeholder="{{ form.code_title.label }}">
 
+              <!-- Add a div to display the character count -->
+              <div id="code-title-char-count"></div>
             </div>
 
             <div class="formbold-mb-5">
@@ -72,7 +75,18 @@
               <label for="{{ form.python_file.id_for_label }}" class="formbold-form-label formbold-form-label-2">
                 Python File
               </label>       
-              {{ form.python_file }}
+                              <!-- Link to the uploaded Python file if it exists -->
+                {% if form.python_file.value %}
+                <!-- Link element -->
+                <a href="{{ form.python_file.value.url }}" class="file-link">
+                  {{ form.python_file.value.name }}
+                </a>
+                <input type="checkbox" name="python_file-clear" id="python_file-clear_id">
+                <label for="python_file-clear_id">Clear</label>
+            {% endif %}
+
+            <!-- File input for selecting a Python file -->
+            <input type="file" name="python_file" id="id_python_file" style="width: 213px; display:block;">
             </div>
       
             <div>
@@ -90,8 +104,36 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
 <script>
+  // Get the code title field element
+  var codeTitleField = document.getElementById("{{ form.code_title.id }}");
+
+  // Set the maximum length for the code title field
+  var codeTitleMaxLength = 255; // Assuming 255 is the maximum length
+
+  // Function to update character count
+  function updateCodeTitleCharCount() {
+      var charCountElement = document.getElementById("code-title-char-count");
+      var remainingChars = codeTitleMaxLength - codeTitleField.value.length;
+      charCountElement.textContent = remainingChars + " characters remaining";
+  }
+
+  // Bind input event listener to the code title field
+  codeTitleField.addEventListener("input", function () {
+      // Check if the code title length exceeds the maximum length
+      if (codeTitleField.value.length > codeTitleMaxLength) {
+          // Trim the code title text to the maximum length
+          codeTitleField.value = codeTitleField.value.slice(0, codeTitleMaxLength);
+      }
+      // Update character count
+      updateCodeTitleCharCount();
+  });
+
+  // Initialize character count on page load
+  updateCodeTitleCharCount();
+</script>
+<script>
+  
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Prism for syntax highlighting
     Prism.highlightAll();
@@ -166,7 +208,22 @@ document.addEventListener('htmx:afterSwap', function(event) {
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
        
-        
+            /* Default styles for the link */
+          a.file-link {
+              display: block;
+              max-width: 213px;
+              white-space: nowrap;
+              overflow: visible;
+              text-overflow: ellipsis;
+          }
+
+          /* Styles for screen widths of 460px or less */
+          @media screen and (max-width: 460px) {
+              a.file-link {
+                  white-space: normal;
+                  word-wrap: break-word;
+              }
+          }
         .formbold-mb-5 {
           margin-bottom: 20px;
         }
