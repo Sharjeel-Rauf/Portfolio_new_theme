@@ -67,7 +67,7 @@ def portfolio_page_view(request):
     # Query all projects from the database and order them by the created_at field in descending order
     projects = ProjectModel.objects.all().order_by('-created_at')
 
-    user_profile = UserProfile.objects.all()
+    user_profile = UserProfile.objects.first()
 
     # Retrieve the summary for the logged-in user
     summary = Summary.objects.first()
@@ -379,14 +379,8 @@ def edit_summary(request):
 
 
 
-
-
-
-
-
-
 # view to add the user profile
-@login_required
+@login_required(login_url="portfolio_page")
 def add_user_profile(request):
     
     if request.method == 'POST':
@@ -403,13 +397,14 @@ def add_user_profile(request):
     # Render the form in the template
     context = {'form': form}
     context['page_title'] = 'Add User Profile'
-    return render(request, 'portfolio_app/about.html',  context)
+    return render(request, 'portfolio_app/add_user_profile.html',  context)
 
 
 # views to edit the profile
-def edit_profile(request):
-    # Retrieve the user's profile, creating a new instance if it doesn't exist
-    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+@login_required(login_url="portfolio_page")
+def edit_user_profile(request):
+    # Retrieve the current summary for the logged-in user
+    user_profile = UserProfile.objects.first()
 
     if request.method == 'POST':
         # Handle form submission
@@ -417,10 +412,12 @@ def edit_profile(request):
         if form.is_valid():
             form.save()  # Save the updated data
             messages.success(request, 'Profile updated successfully.')
-            return redirect('edit_profile')  # Redirect to the same page
+            return redirect('portfolio_page')  # Redirect to the same page
     else:
         # Handle GET request
         form = UserProfileForm(instance=user_profile)
     
     # Render the form in the template
-    return render(request, 'edit_profile.html', {'form': form})
+    context = {'form': form}
+    context['page_title'] = 'Edit User Profile'
+    return render(request, 'portfolio_app/edit_user_profile.html', context)

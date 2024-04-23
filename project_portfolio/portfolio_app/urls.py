@@ -12,6 +12,7 @@ urlpatterns = [
     path('summary/add/', views.add_summary, name='add_summary'),
     path('summary/edit/', views.edit_summary, name='edit_summary'),
     path('user_profile/add/', views.add_user_profile, name='add_user_profile'),
+    path('user_profile/edit/', views.edit_user_profile, name='edit_user_profile'),
     path('project/<int:project_id>/', views.project_detail_view, name='project_detail'),
     path('project/<int:detail_id>/edit/', views.edit_details_view, name='edit_details'),
     path('project/<int:project_id>/add_detail/', views.add_project_detail_view, name='add_project_detail'),

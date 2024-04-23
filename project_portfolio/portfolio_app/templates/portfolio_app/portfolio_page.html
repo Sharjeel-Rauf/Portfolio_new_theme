@@ -98,11 +98,19 @@
     <div class="about-me slide delay03">
         <div class="description">
             <p>{{ user_profile.description }}</p>
+			<a href="{% url 'about_page' %}">More about me</a>
         </div>
         <div class="contact">
             <p>Get in touch <span>(Click to copy)</span></p>
             <div class="email" id="copyemail" data-clipboard-text="{{ user_profile.email }}">{{ user_profile.email }}</div>
         </div>
+		
+		{% if user.is_authenticated %}
+			<div class="description">
+			<a class="slide delay01" style = "font-size: 1.5rem; padding-top: 0px; display: inline-block;" href="{% url 'edit_user_profile' %}">Edit</a></p>
+			</div>
+
+		{% endif %}
     </div>
 {% else %}
 

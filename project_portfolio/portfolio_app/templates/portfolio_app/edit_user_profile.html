@@ -54,19 +54,19 @@
                 <label class="formbold-form-label" for="{{ form.description.id_for_label }}">Description</label>
           
                 <textarea class="formbold-form-input" name="{{ form.description.name }}" id="{{ form.description.id }}"
-                placeholder="{{ form.description.label }}" rows="4" cols="50"></textarea>
+                placeholder="{{ form.description.label }}" rows="4" cols="50">{{ form.description.value }}</textarea>
               </div>
 
               <div class="formbold-mb-5">
                 <label class="formbold-form-label" for="{{ form.email.id_for_label }}">Email</label>
                 <input class="formbold-form-input" type="email" name="{{ form.email.name }}" id="{{ form.email.id }}"
-                       placeholder="Enter your email address">
+                       placeholder="Enter your email address" value="{{ form.email.value }}">
             </div>
       
     
       
             <div>
-              <button type="submit" class="formbold-btn w-full">Add</button>
+              <button type="submit" class="formbold-btn w-full">Save</button>
             </div>
 
             </form>
