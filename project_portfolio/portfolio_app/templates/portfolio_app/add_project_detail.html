@@ -70,7 +70,8 @@
               <label for="{{ form.python_file.id_for_label }}" class="formbold-form-label formbold-form-label-2">
                 Python File
               </label>       
-              {{ form.python_file }}
+              <!-- Render the python_file form field as an input element with specified styles -->
+              <input type="file" name="{{ form.python_file.name }}" id="{{ form.python_file.id }}" style="width: 213px;" accept=".py">
             </div>
       
             <div>
