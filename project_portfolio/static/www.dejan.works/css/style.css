@@ -432,6 +432,29 @@ footer {
 	padding: 4vh 0;
 
 }
+
+
+/* Base styles for anchor tag in about-page */
+.about-page a {
+    /* Match the font family and size with other anchor tags */
+    font-family: 'Geist';
+    font-size: 1.375rem;
+    
+    /* Set color to match other anchor tags */
+    color: #111111;
+    
+    /* Match the font weight */
+    font-weight: 400;
+    
+    /* Additional styling (e.g., margin, padding) can be added if needed */
+}
+
+/* Add underline effect when hovering over the anchor tag */
+.about-page a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .about .text {
 	margin-bottom: 40px;
 }
@@ -504,6 +527,13 @@ p.years {
 		width: 80vw;
 	}
 }
+.about-page a {
+	/* Match the font size with other anchor tags for this screen size */
+	font-size: 1.25rem;  /* You can adjust the font size as needed */
+	
+	/* Additional style adjustments can be made here */
+}
+
 
 @media screen and (max-width: 767px) {
 	.about-page {
@@ -513,6 +543,12 @@ p.years {
 		margin: 0 20px;
 		max-width: 100%;
 	}
+	.about-page a {
+        /* Match the font size with other anchor tags for this screen size */
+        font-size: 1.125rem;  /* You can adjust the font size as needed */
+        
+        /* Additional style adjustments can be made here */
+    }
 	.about .text {
 		margin-bottom: 20px;
 	}

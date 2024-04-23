@@ -21,65 +21,62 @@
 
 
 
-
 <div class="about-page slide delay01">
-	<div class="about">
-		<h2>
-			Senior product designer with 12 years of experience specializing in interface design.
-		</h2>
-		<p class="text">
-			With more then a decade of remote work experience, I've engaged with a diverse range of clients, projects, startups and full-time positions worldwide. Excelling in remote environments, I've conquered challenges through effective communication and collaboration, delivering exceptional results consistently.
-		</p>
-		<p class="text">Embracing startups and smaller teams, I thrive on challenges and take ownership. I excel in problem-solving, driving solutions from inception to completion. With a creative and visionary mindset, I specialize in crafting visually striking and functional user interfaces, prioritizing user-centric design. My flexible design process adapts seamlessly to project requirements, encompassing research, implementation, and evaluation stages.
-		</p>
-		<p class="text">
-			I foster open communication and teamwork, leveraging my technical proficiency in design tools and front-end development to challenges and learn continuously. I prioritize culture alongside product, believing a supportive and collaborative environment is key to success. I excel at tackling diverse design challenges and pushing boundaries. Always learning, I seek new experiences to improve.
-		</p>
-			
-	</div>
+    {% if top_paragraph %}
+    <div class="about">
+        <h2>
+            {{ top_paragraph }}
+        </h2>
+        <p class="text">
+            {{ paragraph_1 }}
+        </p>
+        <p class="text">{{ paragraph_2 }}
+        </p>
+        <p class="text">
+            {{ paragraph_3 }}
+        </p>
+
+    </div>
+    <!-- Add image display if image_url is available -->
+    {% if image_url %}
+    <img src="{{ image_url }}" alt="Profile Image" class="photo-dejan">
+    {% endif %}
+    {% if user.is_authenticated %}
+    <div style = "text-align: center;" class="description">
+        <!-- If no data is found, display a button to add data -->
+        <p> <a href="{% url 'add_edit_profile_description' %}" style="padding-top: 0px; display: inline-block;">Edit</a></p>
+    </div>
+
+    {% elif add_data_button %}
+    <div class="about">
+        <!-- If no data is found, display a button to add data -->
+        <p>No details yet. Please <a href="{% url 'add_edit_profile_description' %}" style="padding-top: 0px; display: inline-block;">add</a> profile description.</p>
+    </div>
+    {% endif%}
+    {% else %}
+        <p>No data available for the about page.</p>
+    {% endif %}
+
 	
-	<img src="{% static 'www.dejan.works/about/img/Dejan.webp' %}" class="photo-dejan">
 
 	<div class="about">
-		<h4>Work Experiences</h4>
+        <h4>Work Experiences</h4>
+        
+            {% if work_experiences %}
+            <div class="multi-row-grid">
+                {% for experience in work_experiences %}
+                <div class="multi-row">
+                    <p class="title">{{ experience.job_title }}</p>
+                    <p class="entity">@{{ experience.company }}</p>
+                    <p class="years">{{ experience.start_year }} - {{ experience.end_year }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <!-- Display a message or button to add work experience -->
+            <p>No work experience yet. Please <a href="#" style="padding-top: 0px; display: inline-block;">add</a> work experience.</p>
+            {% endif %}
 
-		<div class="multi-row-grid">
-			<div class="multi-row">
-				<p class="title">Senior Product Designer</p>
-				<p class="entity">@hotel</p>
-				<p class="years">2021 - 2024</p>
-			</div>
-
-			<div class="multi-row">
-				<p class="title">Product Designer</p>
-				<p class="entity">@InVision</p>
-				<p class="years">2016 - 2020</p>
-			</div>
-
-			<div class="multi-row">
-				<p class="title">Co-Founder and designer</p>
-				<p class="entity">Achievo</p>
-				<p class="years">2013 - 2015</p>
-			</div>
-
-			<div class="multi-row">
-				<p class="title">User Interface Designer</p>
-				<p class="entity">Centralway</p>
-				<p class="years">2013 - 2014</p>
-			</div>
-
-			<div class="multi-row">
-				<p class="title">Graphic Designer</p>
-				<p class="entity">iTatu</p>
-				<p class="years">2010 - 2011</p>
-			</div>
-
-			<div class="multi-row">
-				<p class="title">Designer and Director</p>
-				<p class="entity">Freelance</p>
-				<p class="years">2010 – Present</p>
-			</div>
-		</div>
 
 		<h4>Education</h4>
 

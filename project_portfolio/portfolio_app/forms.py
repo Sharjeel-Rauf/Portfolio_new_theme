@@ -44,3 +44,28 @@ class SummaryForm(forms.ModelForm):
     class Meta:
         model = Summary
         fields = ['summary']
+
+class ProfileDescriptionForm(forms.ModelForm):
+    class Meta:
+        model = ProfileDescription
+        fields = ['top_paragraph', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'image']
+        labels = {
+            'top_paragraph': 'Top Paragraph',
+            'paragraph_1': 'Paragraph 1',
+            'paragraph_2': 'Paragraph 2',
+            'paragraph_3': 'Paragraph 3',
+            'image': 'Image',
+        }
+        help_texts = {
+            'top_paragraph': 'Enter the top paragraph of your profile description.',
+            'paragraph_1': 'Enter the first paragraph.',
+            'paragraph_2': 'Enter the second paragraph.',
+            'paragraph_3': 'Enter the third paragraph.',
+            'image': 'Upload an image for your profile.',
+        }
+
+
+class WorkExperienceForm(forms.ModelForm):
+    class Meta:
+        model = WorkExperience
+        fields = ['job_title', 'company', 'start_year', 'end_year']

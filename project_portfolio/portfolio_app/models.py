@@ -79,3 +79,25 @@ class UserProfile(models.Model):
     
 class Summary(models.Model):
     summary = models.CharField(max_length=255, default="")
+
+class ProfileDescription(models.Model):
+    # Field for the top paragraph
+    top_paragraph = models.TextField(blank=True, null=True, help_text='Enter the top paragraph of your profile description.')
+    
+    # Fields for other three paragraphs
+    paragraph_1 = models.TextField(blank=True, null=True, help_text='Enter the first paragraph.')
+    paragraph_2 = models.TextField(blank=True, null=True, help_text='Enter the second paragraph.')
+    paragraph_3 = models.TextField(blank=True, null=True, help_text='Enter the third paragraph.')
+    image = models.ImageField(blank=True, null=True, upload_to='portfolio_app/media/')
+    
+    def __str__(self):
+        return f"Profile Description: {self.id}"
+    
+class WorkExperience(models.Model):
+    job_title = models.CharField(max_length=100, help_text='Job title.', blank=True, null=True)
+    company = models.CharField(max_length=100, help_text='Company name.', blank=True, null=True)
+    start_year = models.IntegerField(help_text='Start year of the work period.', blank=True, null=True)
+    end_year = models.IntegerField(help_text='End year of the work period. Use the current year if still working.', blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.job_title} at {self.company}"

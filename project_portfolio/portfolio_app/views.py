@@ -86,13 +86,10 @@ def portfolio_page_view(request):
 # view of the create project page
 @login_required(login_url="portfolio_page")
 def create_project_view(request):
-    context = {}
-    context['page_title'] = 'Create Project'
+    context = {'page_title': 'Create Project'}
 
-    # Handle POST request
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
-        
         
         if form.is_valid():
             # Validate the image
@@ -103,82 +100,66 @@ def create_project_view(request):
                 # Get image dimensions
                 width, height = get_image_dimensions(image)
                 
-                # Validate image dimensions (e.g., check if width or height is zero)
+                # Validate image dimensions
                 if width == 0 or height == 0:
-                    messages.error(request, "Invalid image format. Please upload a valid JPEG or PNG image.")
-                    return redirect('create_project')
-                
-                # Additional checks for image format can be added here
-                
+                    form.add_error('image', "Invalid image format. Please upload a valid JPEG or PNG image.")
+                else:
+                    # If everything is valid, save the project instance
+                    project = form.save()
+                    messages.success(request, f'Project "{project.title}" created successfully!')
+                    return redirect('portfolio_page')
             else:
-                messages.error(request, "No image uploaded.")
-                return redirect('create_project')
-
-            # If everything is valid, save the project instance
-            project = form.save()
-            # Display a success message including the project title
-            messages.success(request, f'Project "{project.title}" created successfully!')
-            # Redirect to the desired page (e.g., list of projects)
-            return redirect('portfolio_page')
-        else:
-            # Display an error message if the form is invalid
-            messages.error(request, 'There was an error creating the project.')
+                form.add_error('image', "No image uploaded.")
+        
+        # Display form errors
+        for field, errors in form.errors.items():
+            for error in errors:
+                messages.error(request, f"{field}: {error}")
 
     else:
         # Handle GET request
         form = ProjectForm()
 
-    # Pass the form to the template
     context['form'] = form
-    
     return render(request, 'portfolio_app/create_project.html', context)
 
 # view of the UPDATE project page
 @login_required(login_url="portfolio_page")
 def edit_project_view(request, project_id):
-    # Get the project object using the provided project_id
     project = get_object_or_404(ProjectModel, id=project_id)
-    print(project)
-
+    
     if request.method == 'POST':
-        # Create a form instance with the submitted data and files, and bind it to the project instance
         form = ProjectForm(request.POST, request.FILES, instance=project)
 
         if form.is_valid():
             # Validate the image
             image = form.cleaned_data.get('image')
-
+            
             # Check if an image was uploaded
             if image:
                 # Get image dimensions
                 width, height = get_image_dimensions(image)
                 
-                # Validate image dimensions (e.g., check if width or height is zero)
+                # Validate image dimensions
                 if width == 0 or height == 0:
-                    messages.error(request, "Invalid image format. Please upload a valid JPEG or PNG image.")
-                    return redirect('edit_project', project_id=project.id)
-                
-                # Additional checks for image format can be added here
-                
+                    form.add_error('image', "Invalid image format. Please upload a valid JPEG or PNG image.")
+                else:
+                    # If everything is valid, save the project instance
+                    form.save()
+                    messages.success(request, f'Project "{project.title}" updated successfully.')
+                    return redirect('portfolio_page')
             else:
-                messages.error(request, "No image uploaded.")
-                return redirect('edit_project', project_id=project.id)
-
-            # If everything is valid, save the project instance
-            form.save()
-            # Display a success message
-            messages.success(request, f'Project "{project.title}" updated successfully.')
-            # Redirect to the project detail view
-            return redirect('portfolio_page')
-        else:
-            # Display an error message if the form is invalid
-            messages.error(request, "There was an error updating the project. Please check the form and try again.")
+                form.add_error('image', "No image uploaded.")
+        
+        # Display form errors
+        for field, errors in form.errors.items():
+            for error in errors:
+                messages.error(request, f"{field}: {error}")
 
     else:
-        # Create a form instance pre-filled with the existing project details
+        # Handle GET request
         form = ProjectForm(instance=project)
 
-    # Render the edit project template with the form and project context
     context = {
         'form': form,
         'project': project,
@@ -325,27 +306,19 @@ def add_project_detail_view(request, project_id):
     return render(request, 'portfolio_app/add_project_detail.html', context)
 
 
-# view of the about page
-def about_page_view(request):
-    context = {}
-    context['page_title'] = 'About Page'
-    
-
-    # Render the template with the context
-    return render(request, 'portfolio_app/about.html', context)
-
-
-
 @login_required(login_url="portfolio_page")
 def add_summary(request):
-
-    # Handle POST request
     if request.method == 'POST':
         form = SummaryForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Summary added successfully.')
             return redirect('portfolio_page')
+        else:
+            # Form is invalid, display the errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
     else:
         form = SummaryForm()
 
@@ -358,20 +331,23 @@ def edit_summary(request):
     # Retrieve the current summary for the logged-in user
     summary = Summary.objects.first()
 
-    # Handle POST request
     if request.method == 'POST':
         form = SummaryForm(request.POST, instance=summary)
         if form.is_valid():
             form.save()
             messages.success(request, 'Summary updated successfully.')
             return redirect('portfolio_page')
+        else:
+            # Form is invalid, display the errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
     else:
         # Initialize the form with the current summary instance
         form = SummaryForm(instance=summary)
 
     context = {'form': form}
     context['page_title'] = 'Edit Summary'
-    # Use a different template for editing summary (e.g. edit_summary.html)
     return render(request, 'portfolio_app/edit_summary.html', context)
 
 
@@ -382,42 +358,100 @@ def edit_summary(request):
 # view to add the user profile
 @login_required(login_url="portfolio_page")
 def add_user_profile(request):
-    
     if request.method == 'POST':
-        # Handle form submission
         form = UserProfileForm(request.POST)
-        if form.is_valid(): 
+        if form.is_valid():
             form.save()
             messages.success(request, 'Profile added successfully.')
-            return redirect('portfolio_page')  # Redirect to the edit profile page
+            return redirect('portfolio_page')
+        else:
+            # Display form errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
     else:
-        # Handle GET request by providing a blank form
         form = UserProfileForm()
-    
-    # Render the form in the template
+
     context = {'form': form}
     context['page_title'] = 'Add User Profile'
-    return render(request, 'portfolio_app/add_user_profile.html',  context)
+    return render(request, 'portfolio_app/add_user_profile.html', context)
 
-
-# views to edit the profile
 @login_required(login_url="portfolio_page")
 def edit_user_profile(request):
-    # Retrieve the current summary for the logged-in user
     user_profile = UserProfile.objects.first()
 
     if request.method == 'POST':
-        # Handle form submission
         form = UserProfileForm(request.POST, instance=user_profile)
         if form.is_valid():
-            form.save()  # Save the updated data
+            form.save()
             messages.success(request, 'Profile updated successfully.')
-            return redirect('portfolio_page')  # Redirect to the same page
+            return redirect('portfolio_page')
+        else:
+            # Display form errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
     else:
-        # Handle GET request
         form = UserProfileForm(instance=user_profile)
-    
-    # Render the form in the template
+
     context = {'form': form}
     context['page_title'] = 'Edit User Profile'
     return render(request, 'portfolio_app/edit_user_profile.html', context)
+
+
+
+# view of the about page
+def about_page_view(request):
+    # Query the database for the first instance of ProfileDescription
+    profile_description = ProfileDescription.objects.first()
+
+    context = {}
+    context['page_title'] = 'About Page'
+
+    if profile_description:
+        # If data exists, set the context with the data from the model
+        context['top_paragraph'] = profile_description.top_paragraph
+        context['paragraph_1'] = profile_description.paragraph_1
+        context['paragraph_2'] = profile_description.paragraph_2
+        context['paragraph_3'] = profile_description.paragraph_3
+        # Add image to context if available
+        context['image_url'] = profile_description.image.url if profile_description.image else None
+    else:
+        # If no data exists, provide a button or link to add data
+        context['add_data_button'] = True
+    
+        # Query the database for the user's work experiences
+    work_experiences = WorkExperience.objects.all()  # You can filter this to a specific user if needed
+    
+    # Check if work experiences exist and add to context
+    if work_experiences.exists():
+        context['work_experiences'] = work_experiences
+    else:
+        # Add a flag to indicate that no work experience is available
+        context['no_work_experience'] = True
+    
+    # Render the template with the context
+    return render(request, 'portfolio_app/about.html', context)
+
+# view to edit the profile description
+def profile_description_edit(request):
+    # Retrieve the first ProfileDescription instance
+    profile_description = ProfileDescription.objects.first()
+
+    if request.method == 'POST':
+        # Create a form instance with the request data and files
+        form = ProfileDescriptionForm(request.POST, request.FILES, instance=profile_description)
+        
+        # Check if the form is valid
+        if form.is_valid():
+            form.save()  # Save the form data
+            messages.success(request, 'Profile description saved successfully.')
+            return redirect('about_page')  # Redirect to the 'about_page_view' URL
+        else:
+            messages.error(request, 'Error saving profile description. Please check the form data.')
+    else:
+        # Create a form instance with the existing profile description instance
+        form = ProfileDescriptionForm(instance=profile_description)
+
+    # Render the template with the form
+    return render(request, 'portfolio_app/add_edit_profile_description.html', {'form': form})
