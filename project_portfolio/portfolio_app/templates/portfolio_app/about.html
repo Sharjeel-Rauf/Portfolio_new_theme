@@ -62,20 +62,30 @@
 	<div class="about">
         <h4>Work Experiences</h4>
         
-            {% if work_experiences %}
-            <div class="multi-row-grid">
-                {% for experience in work_experiences %}
-                <div class="multi-row">
-                    <p class="title">{{ experience.job_title }}</p>
-                    <p class="entity">@{{ experience.company }}</p>
-                    <p class="years">{{ experience.start_year }} - {{ experience.end_year }}</p>
-                </div>
-                {% endfor %}
+        {% if work_experiences %}
+        <div class="multi-row-grid">
+            {% for experience in work_experiences %}
+            <div class="multi-row">
+                <p class="title">{{ experience.job_title }}</p>
+                <p class="entity">@{{ experience.company }}</p>
+                <p class="years">{{ experience.start_year }} - {{ experience.end_year }}</p>
+                <!-- Add an edit button for each work experience -->
+                {% if user.is_authenticated %}
+                <a href="{% url 'edit_work_experience' experience.id %}" class="edit-button">Edit</a>
+                {% endif %}
             </div>
-            {% else %}
-            <!-- Display a message or button to add work experience -->
-            <p>No work experience yet. Please <a href="#" style="padding-top: 0px; display: inline-block;">add</a> work experience.</p>
-            {% endif %}
+            {% endfor %}
+        </div>
+        {% if user.is_authenticated %}
+        <p>Please <a href="{% url 'add_work_experience' %}" style="padding-top: 0px; display: inline-block;">add</a> work experience.</p>
+        {% endif %}
+        
+        {% else %}
+        <!-- Display a message or button to add work experience -->
+        {% if user.is_authenticated %}
+        <p>Please <a href="{% url 'add_work_experience' %}" style="padding-top: 0px; display: inline-block;">add</a> work experience.</p>
+        {% endif %}
+        {% endif %}
 
 
 		<h4>Education</h4>

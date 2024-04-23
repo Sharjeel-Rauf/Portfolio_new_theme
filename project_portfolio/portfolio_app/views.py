@@ -423,18 +423,18 @@ def about_page_view(request):
         # Query the database for the user's work experiences
     work_experiences = WorkExperience.objects.all()  # You can filter this to a specific user if needed
     
-    # Check if work experiences exist and add to context
-    if work_experiences.exists():
-        context['work_experiences'] = work_experiences
-    else:
-        # Add a flag to indicate that no work experience is available
-        context['no_work_experience'] = True
+      # Query the database for the user's work experiences
+    work_experiences = WorkExperience.objects.all()  # Filtering by current user
+
+    # Add work experiences to context
+    context['work_experiences'] = work_experiences
     
     # Render the template with the context
     return render(request, 'portfolio_app/about.html', context)
 
 # view to edit the profile description
-def profile_description_edit(request):
+@login_required(login_url="portfolio_page")
+def profile_description_edit_add(request):
     # Retrieve the first ProfileDescription instance
     profile_description = ProfileDescription.objects.first()
 
@@ -454,4 +454,75 @@ def profile_description_edit(request):
         form = ProfileDescriptionForm(instance=profile_description)
 
     # Render the template with the form
-    return render(request, 'portfolio_app/add_edit_profile_description.html', {'form': form})
+    context = {'form': form}
+    context['page_title'] = 'Add/Edit Profile Description'
+    return render(request, 'portfolio_app/add_edit_profile_description.html', context)
+
+@login_required(login_url="portfolio_page")
+def edit_work_experience_view(request, experience_id=None):
+    # If an experience ID is provided, retrieve the existing WorkExperience instance
+    if experience_id:
+        work_experience = get_object_or_404(WorkExperience, id=experience_id)
+    else:
+        work_experience = None
+
+    # Create a form instance for WorkExperience, pre-filled if an existing instance is provided
+    form = WorkExperienceForm(request.POST or None, instance=work_experience)
+
+    if request.method == 'POST':
+        # Check if the form is valid
+        if form.is_valid():
+            # Save the form data as a WorkExperience instance
+            work_experience = form.save(commit=False)
+            # If the instance is new, set the user field
+            if work_experience.pk is None:
+                work_experience.user = request.user
+            # Save the instance
+            work_experience.save()
+            
+            # Display success message
+            messages.success(request, 'Work experience updated successfully.')
+            # Redirect to a success page (e.g., the about page)
+            return redirect('about_page')
+        else:
+            # Display form errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    # Display each field error using messages.error
+                    messages.error(request, f"{field.capitalize()}: {error}")
+
+    # Render the form if request.method is GET or if the form is invalid
+    # Render the template with the form
+    context = {'form': form}
+    context['page_title'] = 'Edit Work Experience'
+    return render(request, 'portfolio_app/edit_work_experience.html', context)
+
+@login_required(login_url="portfolio_page")  # Ensure that only authenticated users can add work experience
+def add_work_experience_view(request):
+    # Create a form instance for WorkExperience, pre-filled if an existing instance is provided
+    form = WorkExperienceForm(request.POST or None)
+
+    if request.method == 'POST':
+        # Check if the form is valid
+        if form.is_valid():
+            # Save the form data as a WorkExperience instance
+            work_experience = form.save(commit=False)
+            # Optionally, set additional fields on the instance (e.g., user)
+            work_experience.user = request.user
+            work_experience.save()
+            
+            # Redirect to a success page (e.g., the about page)
+            messages.success(request, 'Work experience added successfully.')
+            return redirect('about_page')
+        else:
+            # Display form errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    # Display each field error using messages.error
+                    messages.error(request, f"{field.capitalize()}: {error}")
+
+    # Render the form if request.method is GET or if the form is invalid
+    # Render the template with the form
+    context = {'form': form}
+    context['page_title'] = 'Add Work Experience'
+    return render(request, 'portfolio_app/add_work_experience.html', context)

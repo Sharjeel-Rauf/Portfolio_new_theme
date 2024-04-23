@@ -16,7 +16,9 @@ urlpatterns = [
     path('project/<int:project_id>/', views.project_detail_view, name='project_detail'),
     path('project/<int:detail_id>/edit/', views.edit_details_view, name='edit_details'),
     path('project/<int:project_id>/add_detail/', views.add_project_detail_view, name='add_project_detail'),
-    path('edit-profile-description/', views.profile_description_edit, name='add_edit_profile_description'),
+    path('about/edit-profile-description/', views.profile_description_edit_add, name='add_edit_profile_description'),
+    path('about/edit-work-experience/<int:experience_id>/', views.edit_work_experience_view, name='edit_work_experience'),
+    path('about/add-work-experience/', views.add_work_experience_view, name='add_work_experience'),
     
 ]
 
