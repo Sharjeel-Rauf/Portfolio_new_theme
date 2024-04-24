@@ -69,9 +69,9 @@
       
 		</p>
         <p>
-            <pre><code id="code-3" class="language-python" style="display: block; height: 600px; overflow-y: auto; white-space: pre-line;">
-                {{ detail.python_file_content }}
-            </code></pre>
+          <pre><code id="code-3" class="language-python hljs" style="display: block; height: 600px; overflow-y: auto; white-space: pre-line;">
+            {{ detail.python_file_content }}
+        </code></pre>
             
             <button style = "margin-top: 20px;" class="btn btn-primary copy-btn" data-target="code-3">Copy Code</button>
 		</p>
@@ -110,8 +110,14 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+    hljs.highlightAll();
+});
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Prism for syntax highlighting
     Prism.highlightAll();

@@ -78,7 +78,7 @@
                               <!-- Link to the uploaded Python file if it exists -->
                 {% if form.python_file.value %}
                 <!-- Link element -->
-                <a href="{{ form.python_file.value.url }}" class="file-link">
+                <a href="{{ form.python_file.value.url }}" class="file-link" style = "font-size: 1rem;">
                   {{ form.python_file.value.name }}
                 </a>
                 <input type="checkbox" name="python_file-clear" id="python_file-clear_id">

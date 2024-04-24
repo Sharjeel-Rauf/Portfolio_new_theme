@@ -158,6 +158,10 @@ video {
     margin-left: 60px; /* Add space between links */
 }
 
+.create-project-link {
+    white-space: nowrap;
+}
+
 .header a:hover {
     text-decoration: underline;
     cursor: pointer;
