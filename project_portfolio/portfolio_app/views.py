@@ -68,6 +68,7 @@ def portfolio_page_view(request):
     projects = ProjectModel.objects.all().order_by('-created_at')
 
     user_profile = UserProfile.objects.first()
+ 
 
     # Retrieve the summary for the logged-in user
     summary = Summary.objects.first()
@@ -434,6 +435,15 @@ def about_page_view(request):
     
     # Add education entries to the context
     context['education_entries'] = education_entries
+
+    discipline_entries = Discipline.objects.all()
+    context['discipline_entries'] = discipline_entries
+
+    user_profile = UserProfile.objects.first()
+
+    # Add user profile information (email and LinkedIn URL) to context
+    context['user_email'] = user_profile.email
+    context['linkedin_url'] = user_profile.linkedin_url
     
     # Render the template with the context
     return render(request, 'portfolio_app/about.html', context)
@@ -618,4 +628,49 @@ def delete_education_view(request, education_id):
     messages.success(request, 'Education entry deleted successfully.')
 
     # Redirect to the about page
+    return redirect('about_page')
+
+@login_required(login_url="portfolio_page")
+def add_discipline_view(request):
+    form = DisciplineForm(request.POST or None)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            discipline = form.save(commit=False)
+            discipline.user = request.user  # Assign the user to the discipline
+            discipline.save()
+            
+            messages.success(request, 'Discipline added successfully.')
+            return redirect('about_page')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field.capitalize()}: {error}")
+
+    context = {'form': form, 'page_title': 'Add Discipline'}
+    return render(request, 'portfolio_app/add_discipline.html', context)
+
+@login_required(login_url="portfolio_page")
+def edit_discipline_view(request, discipline_id):
+    discipline = get_object_or_404(Discipline, id=discipline_id)
+    form = DisciplineForm(request.POST or None, instance=discipline)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Discipline updated successfully.')
+            return redirect('about_page')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field.capitalize()}: {error}")
+
+    context = {'form': form, 'page_title': 'Edit Discipline'}
+    return render(request, 'portfolio_app/edit_discipline.html', context)
+
+@login_required(login_url="portfolio_page")
+def delete_discipline_view(request, discipline_id):
+    discipline = get_object_or_404(Discipline, id=discipline_id)
+    discipline.delete()
+    messages.success(request, 'Discipline deleted successfully.')
     return redirect('about_page')

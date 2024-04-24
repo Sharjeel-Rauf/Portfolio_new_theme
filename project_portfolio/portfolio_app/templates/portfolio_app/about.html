@@ -124,23 +124,41 @@
         {% endif %}
 
 		<h4>Disciplines</h4>
-		<div class="multi-row-grid">
-			<p>End-to-end Product Design</p>
-			<p>Interface Design</p>
-			<p>User Experience Design</p>
-			<p>Design Systems</p>
-			<p>Motion Design</p>
-			<p>Interaction Design</p>
-			<p>Consulting</p>
-			<p>Front-End</p>
-		</div>
+		{% if discipline_entries %}
+                <div class="multi-row-grid">
+                    {% for discipline in discipline_entries %}
+                    <div class="multi-row">
+                        <p>{{ discipline.name }}</p>
+                        {% if user.is_authenticated %}
+                            <!-- Wrap the buttons in a span element and style them for inline display -->
+                        <span style="display: inline;">
+                        <a href="{% url 'edit_discipline' discipline.id %}" class="edit-button" style="margin-right: 10px;">Edit</a>
+                        <a href="{% url 'delete_discipline' discipline.id %}" class="delete-button" onclick="return confirm('Are you sure you want to delete this discipline?');">Delete</a>
+                        </span>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+    
+            {% if user.is_authenticated %}
+            <p>Please <a href="{% url 'add_discipline' %}" style="padding-top: 0px; display: inline-block;">add</a> a discipline.</p>
+            {% endif %}
+            
+            {% else %}
+            <!-- Display a message or button to add work experience -->
+            {% if user.is_authenticated %}
+            <p>Please <a href="{% url 'add_discipline' %}" style="padding-top: 0px; display: inline-block;">add</a>a discipline.</p>
+            {% endif %}
+            {% endif %}
 
 		<h4>Contact</h4>
 			<p>Feel free to reach out for projects, collaborations, or just to say hello! Currently seeking new opportunities.</p>
-		<div class="multi-row contact-options">
-			<a id="copyemail" data-clipboard-text="hey@dejan.works">hey@dejan.works</a>
-			<a href="#" target="_blank">Linkedin</a>
-		</div>
+            <div class="multi-row contact-options">
+                <!-- Email -->
+                <a id="copyemail" data-clipboard-text="{{ user_email }}">{{ user_email }}</a>
+                <!-- LinkedIn URL -->
+                <a href="{{ linkedin_url }}" target="_blank">LinkedIn</a>
+            </div>
 	</div>
 </div>
 

@@ -20,9 +20,12 @@ urlpatterns = [
     path('about/edit-work-experience/<int:experience_id>/', views.edit_work_experience_view, name='edit_work_experience'),
     path('about/add-work-experience/', views.add_work_experience_view, name='add_work_experience'),
     path('about/delete/<int:experience_id>/', views.delete_work_experience_view, name='delete_work_experience'),
-    path('education/edit/<int:education_id>/', views.edit_education_view, name='edit_education'),
-    path('education/delete/<int:education_id>/', views.delete_education_view, name='delete_education'),
-    path('education/add/', views.add_education_view, name='add_education'),
+    path('about/education/edit/<int:education_id>/', views.edit_education_view, name='edit_education'),
+    path('about/education/delete/<int:education_id>/', views.delete_education_view, name='delete_education'),
+    path('about/education/add/', views.add_education_view, name='add_education'),
+    path('about/discipline/add/', views.add_discipline_view, name='add_discipline'),
+    path('about/discipline/edit/<int:discipline_id>/', views.edit_discipline_view, name='edit_discipline'),
+    path('about/discipline/delete/<int:discipline_id>/', views.delete_discipline_view, name='delete_discipline'),
     
 ]
 

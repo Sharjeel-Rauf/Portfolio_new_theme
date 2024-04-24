@@ -73,7 +73,8 @@ class ProjectDetailModel(models.Model):
 class UserProfile(models.Model):
     description = models.TextField()
     email = models.EmailField()
-
+    linkedin_url = models.URLField(max_length=200, blank=True, null=True)  # LinkedIn URL field
+    
     def __str__(self):
         return self.email
     
@@ -110,4 +111,10 @@ class Education(models.Model):
 
     def __str__(self):
         return f"{self.title} at {self.degree_institution}"
+    
+class Discipline(models.Model):
+    name = models.CharField(max_length=100, help_text='Discipline name.')
+
+    def __str__(self):
+        return self.name
     

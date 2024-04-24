@@ -38,7 +38,7 @@ class ProjectDetailForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['description', 'email']
+        fields = ['description', 'email', 'linkedin_url']
 
 class SummaryForm(forms.ModelForm):
     class Meta:
@@ -74,3 +74,9 @@ class EducationForm(forms.ModelForm):
     class Meta:
         model = Education
         fields = ['title', 'degree_institution', 'start_year', 'end_year']
+
+class DisciplineForm(forms.ModelForm):
+    class Meta:
+        model = Discipline
+        fields = ['name']
+

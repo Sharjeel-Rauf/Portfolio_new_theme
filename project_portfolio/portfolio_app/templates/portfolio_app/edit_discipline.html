@@ -52,45 +52,20 @@
             
             <!-- Form field for the work experience title -->
             <div class="formbold-mb-5">
-                <label for="{{ form.job_title.id_for_label }}" class="formbold-form-label">
-                    Job Title
+                <label for="{{ form.name.id_for_label }}" class="formbold-form-label">
+                    Discipline Name
                 </label>
-                <input class="formbold-form-input" type="text" name="{{ form.job_title.name }}" id="{{ form.job_title.id }}" 
-                placeholder="{{ form.job_title.label }}">
+                <input class="formbold-form-input" type="text" name="{{ form.name.name }}" id="{{ form.name.id }}" 
+                placeholder="{{ form.name.label }}" value="{{ form.name.value }}">
             </div>
-            
-            <!-- Form field for the work experience company -->
-            <div class="formbold-mb-5">
-                <label for="{{ form.company.id_for_label }}" class="formbold-form-label">
-                    Company
-                </label>
-                <input class="formbold-form-input" type="text" name="{{ form.company.name }}" id="{{ form.company.id }}"
-                placeholder="{{ form.company.label }}">
-            </div>
+        
     
-            <!-- Form field for the start year -->
-            <div class="formbold-mb-5">
-                <label for="{{ form.start_year.id_for_label }}" class="formbold-form-label">
-                    Start Year
-                </label>
-                <input class="formbold-form-input" type="text" name="{{ form.start_year.name }}" id="{{ form.start_year.id }}"
-                placeholder="{{ form.start_year.label }}" >
-            </div>
-    
-            <!-- Form field for the end year -->
-            <div class="formbold-mb-5">
-                <label for="{{ form.end_year.id_for_label }}" class="formbold-form-label">
-                    End Year
-                </label>
-                <input class="formbold-form-input" type="text" name="{{ form.end_year.name }}" id="{{ form.end_year.id }}"
-                placeholder="{{ form.end_year.label }}">
-            </div>
     
         
     
             <!-- Submit button -->
             <div>
-                <button type="submit" class="formbold-btn w-full">Add</button>
+                <button type="submit" class="formbold-btn w-full">Save</button>
             </div>
         </form>
         </div>
