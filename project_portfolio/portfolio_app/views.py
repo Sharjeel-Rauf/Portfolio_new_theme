@@ -77,6 +77,8 @@ def portfolio_page_view(request):
     context['summary'] = summary
 
     context['user_profile'] = user_profile
+    context['user_email'] = user_profile.email
+    context['user_description'] = user_profile.description
     
     # Add projects to the context
     context['projects'] = projects
