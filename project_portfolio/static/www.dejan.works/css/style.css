@@ -125,58 +125,76 @@ video {
 
 
 /* ------------ Header ------------ */
-
+/* Styling for the header */
 .header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    padding: 40px 0;
-    box-sizing: border-box;
-    max-width: 1200px;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%; /* Full width of the screen */
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Top of the page */
+    z-index: 1000; /* High z-index for layering */
+    padding: 15px 0; /* Padding around the header */
+    background-color: #f8f9fa; /* Light gray background color */
+    box-sizing: border-box; /* Include padding in width calculations */
+    border-bottom: 1px solid #e0e0e0; /* Subtle border for separation */
+    transition: background-color 0.3s ease; /* Smooth transition for color changes */
 }
 
+/* Wrapper for header content to control margins */
+.header-content {
+    max-width: 1200px; /* Maximum width for content */
+    margin: 0 auto; /* Center the content */
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Vertically align items */
+}
+
+/* Styling for the logo */
 .logo {
     font-family: 'Geist';
-    color: #111111;
-    font-weight: 500;
-    font-size: 1.375rem;
+    font-weight: 600; /* Slightly bolder font weight */
+    font-size: 1.5rem; /* Larger font size for emphasis */
+    color: hsl(244.07,92.19%,74.9%); /* Dark gray color for the logo text */
 }
 
+/* Styling for navigation links */
 .nav-links a {
     font-family: 'Geist';
-    color: #111111;
     font-weight: 500;
-    font-size: 1.375rem;
-    margin-left: 60px; /* Add space between links */
+    font-size: 1.125rem; /* Consistent font size */
+    color: #343a40; /* Dark gray color for links */
+    margin-left: 40px; /* Space between links */
+    transition: color 0.3s ease; /* Smooth transition for color changes */
 }
 
+/* Hover effect for links */
+.nav-links a:hover {
+    color: hsl(244.07,92.19%,74.9%); /* Blue color on hover */
+    text-decoration: none; /* No underline on hover */
+}
+
+/* Additional styles for the 'Create project' link */
 .create-project-link {
     white-space: nowrap;
+    font-weight: 600; /* Slightly bolder for emphasis */
+    color: #007bff; /* Blue color to match hover effect */
 }
 
-.header a:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
+/* Responsive styles for smaller screens */
 @media screen and (max-width: 767px) {
     .header {
-        padding: 20px;
+        padding: 10px; /* Adjusted padding for smaller screens */
+    }
+    .header-content {
+        padding: 0 15px; /* Add padding to maintain margins */
     }
     .logo,
     .nav-links a {
-        font-weight: 500;
-        font-size: 1.125rem;
+        font-size: 1rem; /* Adjusted font size */
+    }
+    .nav-links a {
+        margin-left: 20px; /* Reduce space between links */
     }
 }
+
 /* ------------ Hero Home ------------ */
 
 /* Container styles */
@@ -193,7 +211,7 @@ h1 {
     line-height: 120%;
     font-family: 'Geist';
     font-weight: 600;
-    color: #111111;
+    color: #8c84fa;
     max-width: 100%; /* Set the maximum width to fill the container */
     word-wrap: break-word; /* Enable word wrapping */
 }
@@ -845,4 +863,18 @@ video {
 		font-size: 1.5rem;
 	}
 
+}
+
+
+.hero .text-21 .typed-cursor {
+    font-size: calc(1.775rem + 6.3vw) !important; /* Match the font size of the text */
+}
+
+@media (min-width: 1200px) {
+    .hero .text-21 .typed-cursor {
+        font-size: 4.0rem !important; /* Match the font size of the text for larger screens */
+    }
+}
+.fw-600 {
+  font-weight: 600 !important;
 }

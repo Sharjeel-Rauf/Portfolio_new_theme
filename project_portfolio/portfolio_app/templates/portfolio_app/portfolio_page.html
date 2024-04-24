@@ -22,11 +22,51 @@
 {% if summary %}
 
 		<div class="hero">
-			<h1 class="slide delay01">{{ summary.summary }}</h1>
+			<div class="typed-strings">
+				<h1>{{ summary.summary }}</h1>
+			</div>
+			<h1 style = "margin-top: 20px;" class="slide delay01 text-21 fw-600 text-uppercase mb-0 ms-n1"><span class="typed"></span></h1>
 			{% if user.is_authenticated %}
 			<a class="slide delay01" style = "font-size: 2rem; padding-top: 0px; display: inline-block;" href="{% url 'edit_summary' %}">Edit</a></p>
 			{% endif %}
 		</div>
+
+
+
+<!-- ############################# -->
+
+
+
+<script>
+$(document).ready(function() {
+    $(".typed").each(function() {
+        var typed = new Typed('.typed', {
+            stringsElement: '.typed-strings',
+            loop: true,
+            typeSpeed: 100,
+            backSpeed: 50,
+            backDelay: 1500,
+        });
+    });
+});
+</script>
+<style>
+/* Target the cursor element within the .typed element */
+.text-21 .typed {
+    font-size: calc(1.775rem + 6.3vw) !important; /* Match the font size of the text */
+}
+
+@media (min-width: 1200px) {
+    .text-21 .typed {
+        font-size: 4.0rem !important; /* Match the font size of the text for larger screens */
+    }
+}
+.fw-600 {
+  font-weight: 600 !important;
+}
+
+</style>
+<!-- ############################# -->
 		
 	
 
@@ -50,7 +90,7 @@
 	<div class="work-item">
 	<a href="{% url 'project_detail' project.id %}">
 		<div class="work-item-image">
-			<img src="{{ project.image.url }}" alt="{{ project.title }}">
+			<img src="{{ project.image.url }}" alt="{{ project.title }}" loading="lazy">
 		</div>
 	</a>
 		<div class="work-item-info" style = "margin-bottom: 100px;">

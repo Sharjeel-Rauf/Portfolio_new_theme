@@ -1,228 +1,141 @@
-
-
 {% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
 
-
-<!-- Error messages -->
+<!-- Toast container for error and success messages -->
 <div class="toast-container position-fixed top-0 end-0 p-3">
+    <!-- Loop through messages and display as toasts -->
     {% for message in messages %}
     <div
-      class="toast align-items-center {% if message.tags == 'error' %}bg-danger {% else %} bg-success {% endif %} border-0"
-      role="alert" aria-live="assertive" aria-atomic="true" style="margin-top: 100px;">
-      <div class="d-flex">
-        <div class="toast-body" style="color: white;">
-          {{ message }}
+        class="toast align-items-center {% if message.tags == 'error' %}bg-danger {% else %} bg-success {% endif %} border-0"
+        role="alert" aria-live="assertive" aria-atomic="true" style="margin-top: 100px;">
+        <div class="d-flex">
+            <div class="toast-body" style="color: white;">
+                {{ message }}
+            </div>
+            <button style="color: white; background-color: transparent;" type="button"
+                class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
-        <button style="color: white; background-color: transparent;" type="button"
-          class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
     </div>
     {% endfor %}
+    <!-- Display form image errors as toasts -->
     {% if form.image.errors %}
     <div class="toast align-items-center bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true"
-      style="margin-top: 100px;">
-      <div class="d-flex">
-        <div class="toast-body" style="color: white;">
-          {{ form.image.errors }}
+        style="margin-top: 100px;">
+        <div class="d-flex">
+            <div class="toast-body" style="color: white;">
+                {{ form.image.errors }}
+            </div>
+            <button style="color: white; background-color: transparent;" type="button"
+                class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
-        <button style="color: white; background-color: transparent;" type="button"
-          class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
     </div>
     {% endif %}
-  </div>
-
-
-
-
-
-
-
-  <div class="hero">
-
-      <div class="formbold-main-wrapper">
-        <!-- Author: FormBold Team -->
-        <!-- Learn More: https://formbold.com -->
-        <div class="formbold-form-wrapper">
-            <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-
-            <div class="formbold-mb-5">
-              
-              <label class="formbold-form-label" for="{{ form.top_paragraph.id_for_label }}">Professional Summary</label>
-        
-
-              <textarea class="formbold-form-input" name="{{ form.top_paragraph.name }}" id="{{ form.top_paragraph.id }}"
-              placeholder="{{ form.top_paragraph.label }}" rows="5" cols="40">{{ form.top_paragraph.value }}</textarea>
-
-            </div>
-
-            <div class="formbold-mb-5">
-              
-                <label class="formbold-form-label" for="{{ form.paragraph_1.id_for_label }}">Paragraph 1</label>
-          
-  
-                <textarea class="formbold-form-input" name="{{ form.paragraph_1.name }}" id="{{ form.paragraph_1.id }}"
-                placeholder="{{ form.paragraph_1.label }}" rows="5" cols="40">{{ form.paragraph_1.value }}</textarea>
-  
-              </div>
-
-              <div class="formbold-mb-5">
-              
-                <label class="formbold-form-label" for="{{ form.paragraph_2.id_for_label }}">Paragraph 2</label>
-          
-  
-                <textarea class="formbold-form-input" name="{{ form.paragraph_2.name }}" id="{{ form.paragraph_2.id }}"
-                placeholder="{{ form.paragraph_2.label }}" rows="5" cols="40">{{ form.paragraph_2.value }}</textarea>
-  
-              </div>
-
-              <div class="formbold-mb-5">
-              
-                <label class="formbold-form-label" for="{{ form.paragraph_3.id_for_label }}">Paragraph 3</label>
-          
-  
-                <textarea class="formbold-form-input" name="{{ form.paragraph_3.name }}" id="{{ form.paragraph_3.id }}"
-                placeholder="{{ form.paragraph_3.label }}" rows="5" cols="40">{{ form.paragraph_3.value }}</textarea>
-  
-              </div>
-      
-              <div class="mb-6 pt-4">
-                <label for="{{ form.image.id_for_label }}" class="formbold-form-label formbold-form-label-2">
-                    Upload Image
-                </label>
-                <input type="file" name="{{ form.image.name }}" id="{{ form.image.id }}" accept="image/*" style="width: 213px; margin-bottom: 20px;">
-            </div>
-            
-            <!-- Display the current photo if it exists -->
-            {% if form.instance.image %}
-            <div class="textfield" style="margin-top: 10px;">
-                <label for="current_image" class="formbold-form-label">
-                    Current Photo
-                </label>
-                <img src="{{ form.instance.image.url }}" alt="Current Photo" style="max-width: 200px;">
-            </div>
-            {% endif %}
-      
-            <div>
-              <button type="submit" class="formbold-btn w-full" style = "margin-top: 20px;">Save</button>
-            </div>
-
-            </form>       
-        </div>
-      </div>
-
 </div>
 
-<!-- Add Prism.js for syntax highlighting -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<!-- Main content section for the hero form -->
+<div class="hero">
+    <div class="formbold-main-wrapper">
+        <!-- Form wrapper for adding new content -->
+        <div class="formbold-form-wrapper">
+            <!-- Form for adding new content -->
+            <form method="POST" enctype="multipart/form-data">
+                <!-- CSRF token for security -->
+                {% csrf_token %}
+
+                <!-- Form field for professional summary -->
+                <div class="formbold-mb-5">
+                    <label class="formbold-form-label" for="{{ form.top_paragraph.id_for_label }}">
+                        Professional Summary
+                    </label>
+                    <textarea class="formbold-form-input" name="{{ form.top_paragraph.name }}"
+                              id="{{ form.top_paragraph.id }}" placeholder="{{ form.top_paragraph.label }}"
+                              rows="5" cols="40">{{ form.top_paragraph.value }}</textarea>
+                </div>
+
+                <!-- Form field for Paragraph 1 -->
+                <div class="formbold-mb-5">
+                    <label class="formbold-form-label" for="{{ form.paragraph_1.id_for_label }}">
+                        Paragraph 1
+                    </label>
+                    <textarea class="formbold-form-input" name="{{ form.paragraph_1.name }}"
+                              id="{{ form.paragraph_1.id }}" placeholder="{{ form.paragraph_1.label }}"
+                              rows="5" cols="40">{{ form.paragraph_1.value }}</textarea>
+                </div>
+
+                <!-- Form field for Paragraph 2 -->
+                <div class="formbold-mb-5">
+                    <label class="formbold-form-label" for="{{ form.paragraph_2.id_for_label }}">
+                        Paragraph 2
+                    </label>
+                    <textarea class="formbold-form-input" name="{{ form.paragraph_2.name }}"
+                              id="{{ form.paragraph_2.id }}" placeholder="{{ form.paragraph_2.label }}"
+                              rows="5" cols="40">{{ form.paragraph_2.value }}</textarea>
+                </div>
+
+                <!-- Form field for Paragraph 3 -->
+                <div class="formbold-mb-5">
+                    <label class="formbold-form-label" for="{{ form.paragraph_3.id_for_label }}">
+                        Paragraph 3
+                    </label>
+                    <textarea class="formbold-form-input" name="{{ form.paragraph_3.name }}"
+                              id="{{ form.paragraph_3.id }}" placeholder="{{ form.paragraph_3.label }}"
+                              rows="5" cols="40">{{ form.paragraph_3.value }}</textarea>
+                </div>
+
+                <!-- Form field for uploading image -->
+                <div class="mb-6 pt-4">
+                    <label for="{{ form.image.id_for_label }}" class="formbold-form-label formbold-form-label-2">
+                        Upload Image
+                    </label>
+                    <input type="file" name="{{ form.image.name }}" id="{{ form.image.id }}"
+                           accept="image/*" style="width: 213px; margin-bottom: 20px;">
+                </div>
+                
+                <!-- Display current photo if it exists -->
+                {% if form.instance.image %}
+                <div class="textfield" style="margin-top: 10px;">
+                    <label for="current_image" class="formbold-form-label">
+                        Current Photo
+                    </label>
+                    <img src="{{ form.instance.image.url }}" alt="Current Photo" loading="lazy"
+                         style="max-width: 200px;">
+                </div>
+                {% endif %}
+                
+                <!-- Submit button -->
+                <div>
+                    <button type="submit" class="formbold-btn w-full" style="margin-top: 20px;">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Include Bootstrap and jQuery if not already included -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Show toasts when the page loads -->
 <script>
-  // Get the code title field element
-  var codeTitleField = document.getElementById("{{ form.code_title.id }}");
-
-  // Set the maximum length for the code title field
-  var codeTitleMaxLength = 255; // Assuming 255 is the maximum length
-
-  // Function to update character count
-  function updateCodeTitleCharCount() {
-      var charCountElement = document.getElementById("code-title-char-count");
-      var remainingChars = codeTitleMaxLength - codeTitleField.value.length;
-      charCountElement.textContent = remainingChars + " characters remaining";
-  }
-
-  // Bind input event listener to the code title field
-  codeTitleField.addEventListener("input", function () {
-      // Check if the code title length exceeds the maximum length
-      if (codeTitleField.value.length > codeTitleMaxLength) {
-          // Trim the code title text to the maximum length
-          codeTitleField.value = codeTitleField.value.slice(0, codeTitleMaxLength);
-      }
-      // Update character count
-      updateCodeTitleCharCount();
-  });
-
-  // Initialize character count on page load
-  updateCodeTitleCharCount();
-</script>
-<script>
-  
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Prism for syntax highlighting
-    Prism.highlightAll();
-
-    // Add click event listener for the copy buttons
-    document.querySelectorAll('.copy-btn').forEach(function(button) {
-        button.addEventListener('click', function() {
-            // Get the target ID from the data-target attribute
-            var targetId = button.getAttribute('data-target');
-            console.log("Target ID:", targetId); // Debugging: Log the target ID
-
-            // Ensure the target ID is correct
-            targetId = targetId.replace('code-', '');
-
-            // Get the code element based on the target ID
-            console.log("Searching for element with ID:", `#code-${targetId}`);
-            var codeElement = document.querySelector(`#code-${targetId}`);
-            console.log("Code Element:", codeElement); // Debugging: Log the code element
-
-            // Check if the code element exists
-            if (!codeElement) {
-                console.log("Code element not found for target ID:", targetId);
-                return;
-            }
-
-            // Verify the content of the code element
-            console.log("Code Content:", codeElement.textContent);
-
-            // Create a temporary textarea element
-            var tempTextarea = document.createElement('textarea');
-            tempTextarea.value = codeElement.textContent;
-            document.body.appendChild(tempTextarea);
-
-            // Select and copy the content
-            tempTextarea.select();
-            document.execCommand('copy');
-
-            // Remove the temporary textarea element
-            document.body.removeChild(tempTextarea);
-
-            // Provide feedback to the user
-            alert('Code copied to clipboard!');
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get all toast elements
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+        // Initialize each toast element
+        var toastList = toastElList.map(function (toastEl) {
+            return new bootstrap.Toast(toastEl);
+        });
+        // Show each toast
+        toastList.forEach(function (toast) {
+            toast.show();
         });
     });
-});
-document.addEventListener('htmx:afterSwap', function(event) {
-    // Check if the response contains the page_title header
-    if (event.detail.responseHeaders['page_title']) {
-        // Update the page title
-        document.title = 'Portfolio - ' + event.detail.responseHeaders['page_title'];
-    }
-});
-
 </script>
-      
- <!-- Include jQuery (if not already included) -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
- <!-- for toast -->
- <script>
-   // Show toast when page loads
-   document.addEventListener('DOMContentLoaded', function () {
-     var toastElList = [].slice.call(document.querySelectorAll('.toast'));
-     var toastList = toastElList.map(function (toastEl) {
-       return new bootstrap.Toast(toastEl);
-     });
-     toastList.forEach(function (toast) {
-       toast.show();
-     });
-   });
- </script>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">		
+
+<!-- Include Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+		
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
        

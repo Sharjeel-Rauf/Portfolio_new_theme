@@ -25,6 +25,10 @@ urlpatterns = [
      path('accounts/', include('django.contrib.auth.urls')),  # Authentication URL paths under '/accounts/'
 ]
 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 # Add this line to serve media files during development
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
