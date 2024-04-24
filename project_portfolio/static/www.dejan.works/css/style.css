@@ -179,11 +179,23 @@ video {
 }
 /* ------------ Hero Home ------------ */
 
+/* Container styles */
 .hero {
-	max-width: 1200px;
-	margin: 0 auto;
+    max-width: 1200px; /* Set the maximum width for the hero container */
+    margin: 0 auto;
+    padding: 24vh 0 16vh 0;
+}
 
-	padding: 24vh 0 16vh 0;
+/* Summary text styles */
+h1 {
+    font-size: 4.6vw;
+    font-size: 4.5rem;
+    line-height: 120%;
+    font-family: 'Geist';
+    font-weight: 600;
+    color: #111111;
+    max-width: 100%; /* Set the maximum width to fill the container */
+    word-wrap: break-word; /* Enable word wrapping */
 }
 
 /* Styling anchor tag in the .hero section */
@@ -201,14 +213,6 @@ video {
     text-decoration: underline; /* Show underline on hover */
 }
 
-h1 {
-	font-size: 4.6vw;
-	font-size: 4.5rem;
-	line-height: 120%;
-    font-family: 'Geist';
-	font-weight: 600;
-	color: #111111;
-}
 
 @media screen and (max-width: 767px) {
 	.hero {

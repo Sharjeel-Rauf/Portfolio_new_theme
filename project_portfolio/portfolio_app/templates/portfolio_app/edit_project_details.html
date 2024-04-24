@@ -86,7 +86,8 @@
             {% endif %}
 
             <!-- File input for selecting a Python file -->
-            <input type="file" name="python_file" id="id_python_file" style="width: 213px; display:block;">
+            <!-- Render the python_file form field as an input element with specified styles -->
+            <input type="file" name="{{ form.python_file.name }}" id="{{ form.python_file.id }}" style="width: 213px;" accept=".py">
             </div>
       
             <div>

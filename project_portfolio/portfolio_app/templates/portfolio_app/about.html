@@ -22,37 +22,34 @@
 
 
 <div class="about-page slide delay01">
-    {% if top_paragraph %}
-    <div class="about">
-        <h2>
-            {{ top_paragraph }}
-        </h2>
-        <p class="text">
-            {{ paragraph_1 }}
-        </p>
-        <p class="text">{{ paragraph_2 }}
-        </p>
-        <p class="text">
-            {{ paragraph_3 }}
-        </p>
-
-    </div>
-    <!-- Add image display if image_url is available -->
-    {% if image_url %}
-    <img src="{{ image_url }}" alt="Profile Image" class="photo-dejan">
-    {% endif %}
-    {% if user.is_authenticated %}
-    <div style = "text-align: center;" class="description">
-        <!-- If no data is found, display a button to add data -->
-        <p> <a href="{% url 'add_edit_profile_description' %}" style="padding-top: 0px; display: inline-block;">Edit</a></p>
-    </div>
-
-    {% elif add_data_button %}
-    <div class="about">
-        <!-- If no data is found, display a button to add data -->
-        <p>No details yet. Please <a href="{% url 'add_edit_profile_description' %}" style="padding-top: 0px; display: inline-block;">add</a> profile description.</p>
-    </div>
-    {% endif%}
+    {% if top_paragraph or paragraph_1 or paragraph_2 or paragraph_3 %}
+        <div class="about">
+            {% if top_paragraph %}
+                <h2>
+                    {{ top_paragraph }}
+                </h2>
+            {% endif %}
+            {% if paragraph_1 %}
+                <p class="text">{{ paragraph_1 }}</p>
+            {% endif %}
+            {% if paragraph_2 %}
+                <p class="text">{{ paragraph_2 }}</p>
+            {% endif %}
+            {% if paragraph_3 %}
+                <p class="text">{{ paragraph_3 }}</p>
+            {% endif %}
+        </div>
+        <!-- Add image display if image_url is available -->
+        {% if image_url %}
+            <img src="{{ image_url }}" alt="Profile Image" class="photo-dejan">
+        {% endif %}
+        {% if user.is_authenticated %}
+            <div style="text-align: center;" class="description">
+                <p> 
+                    <a href="{% url 'add_edit_profile_description' %}" style="padding-top: 0px; display: inline-block;">Edit</a>
+                </p>
+            </div>
+        {% endif %}
     {% else %}
         <p>No data available for the about page.</p>
     {% endif %}
@@ -157,7 +154,9 @@
                 <!-- Email -->
                 <a id="copyemail" data-clipboard-text="{{ user_email }}">{{ user_email }}</a>
                 <!-- LinkedIn URL -->
+                {% if linkedin_url %}
                 <a href="{{ linkedin_url }}" target="_blank">LinkedIn</a>
+                {% endif %}
             </div>
 	</div>
 </div>

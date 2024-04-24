@@ -65,7 +65,7 @@
             <div class="formbold-mb-5">
                 <label class="formbold-form-label" for="{{ form.linkedin_url.id_for_label }}">Linked in</label>
                 <input class="formbold-form-input" type="url" name="{{ form.linkedin_url.name }}" id="{{ form.linkedin_url.id }}"
-                       placeholder="Enter your linked in url" value="{{ form.linkedin_url.value }}">
+                       placeholder="Enter your linked in url" value="{% if form.instance.linkedin_url %}{{ form.instance.linkedin_url }}{% endif %}">
             </div>
       
     
