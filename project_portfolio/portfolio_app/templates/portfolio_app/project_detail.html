@@ -40,7 +40,7 @@
     <div class="about-me slide delay03">
         <div style = "text-align: center;" class="description">
 			{% if user.is_authenticated %}
-			<p>No details yet. Please <a href="{% url 'add_project_detail' project.id %}" style = "padding-top: 0px; display: inline-block;">add</a> the details for the project.</p>
+			<p>No details yet. Please <a href="{% url 'add_project_detail' project.id %}" style = "color: #888b8b; padding-top: 0px; display: inline-block;">add</a> the details for the project.</p>
 			{% else %}
 			<p>No details yet.</p>
 			{% endif %}
@@ -73,15 +73,15 @@
             {{ detail.python_file_content }}
         </code></pre>
             
-            <button style = "margin-top: 20px;" class="btn btn-primary copy-btn" data-target="code-3">Copy Code</button>
+            <button style="background-color: #888b8d; margin-top: 20px; color: white; outline: none;" class="btn btn-primary copy-btn" data-target="code-3">Copy Code</button>
 		</p>
         {% endif %}
         <!-- Show "Edit Details" button only if the user is authenticated -->
         {% if user.is_authenticated %}
-        <button hx-push-url="{% url 'edit_details' detail.id %}" class="btn btn-primary"
-        hx-get="{% url 'edit_details' detail.id %}" hx-target="#project_details">
+        <button style="background-color: #888b8d; margin-top: 10px; color: white; outline: none !important;" hx-push-url="{% url 'edit_details' detail.id %}" class="btn btn-primary"
+              hx-get="{% url 'edit_details' detail.id %}" hx-target="#project_details">
           Edit Details
-       </button>  
+      </button>
         {% endif %}
 
         {% endfor %}
@@ -190,6 +190,10 @@ document.addEventListener('DOMContentLoaded', function() {
  </script>
 
  <style>
+.btn-primary {
+    --bs-btn-border-color: #888b8d;
+    --bs-btn-hover-bg: black;
+}
     @media screen and (max-width: 767px) {
     h1, p.text {
     max-width: 100%; /* Adjust the width as needed to match the code box width */

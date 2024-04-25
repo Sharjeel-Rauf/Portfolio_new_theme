@@ -53,11 +53,13 @@ $(document).ready(function() {
 <style>
 /* Target the cursor element within the .typed element */
 .text-21 .typed {
+	font-family: 'Rosie Light', sans-serif !important;
     font-size: calc(1.775rem + 6.3vw) !important; /* Match the font size of the text */
 }
 
 @media (min-width: 1200px) {
     .text-21 .typed {
+		font-family: 'Rosie Light', sans-serif !important;
         font-size: 4.0rem !important; /* Match the font size of the text for larger screens */
     }
 }
@@ -73,7 +75,7 @@ $(document).ready(function() {
 {% else %}
 {% if user.is_authenticated %}
 	<div class="hero">
-		<h1 class="slide delay01">No summary data available. Please <a class="slide delay01" href="{% url 'add_summary' %}">add</a> your summary</h1>
+		<h1 style = "color: black;" class="slide delay01">No summary data available. Please <a style = "color: #888b8b;" class="slide delay01" href="{% url 'add_summary' %}">add</a> your summary</h1>
 	</div>
 {% endif %}
 {% endif %}
@@ -94,7 +96,7 @@ $(document).ready(function() {
 		</div>
 	</a>
 		<div class="work-item-info" style = "margin-bottom: 100px;">
-			<div class="work-item-company">{{ project.title }}</div>
+			<div style = "color: #888b8d" class="work-item-company">{{ project.title }}</div>
 			<div class="work-item-description">{{ project.short_name }}</div>
 			{% if user.is_authenticated %}
 			<div class = "description">
@@ -118,7 +120,7 @@ $(document).ready(function() {
 	
 <div class="about-me slide delay03">
 	<div class="description">
-		<p>No projects yet. Please <a href="{% url 'create_project' %}" style = "padding-top: 0px; display: inline-block;">create</a> a project.</p>
+		<p>No projects yet. Please <a href="{% url 'create_project' %}" style = "color: #888b8b; padding-top: 0px; display: inline-block;">create</a> a project.</p>
 	</div>
 </div>
 {% endif %}
@@ -139,11 +141,11 @@ $(document).ready(function() {
     <div class="about-me slide delay03">
         <div class="description">
             <p>{{ user_description }}</p>
-			<a href="{% url 'about_page' %}">More about me</a>
+			<a style = "color: #888b8d" href="{% url 'about_page' %}">More about me</a>
         </div>
         <div class="contact">
             <p>Get in touch <span>(Click to copy)</span></p>
-            <div class="email" id="copyemail" data-clipboard-text="{{ user_email }}">{{ user_email }}</div>
+            <div style = "color: #888b8d" class="email" id="copyemail" data-clipboard-text="{{ user_email }}">{{ user_email }}</div>
         </div>
 		
 		{% if user.is_authenticated %}
@@ -158,7 +160,7 @@ $(document).ready(function() {
 
     <div class="about-me slide delay03">
         <div class="description">
-			{% if user.is_authenticated %}  <p>No user profile data available. Please <a style = "padding-top: 0px; display: inline-block;" href="{% url 'add_user_profile' %}">add</a> your profile </p>{% endif %}
+			{% if user.is_authenticated %}  <p>No user profile data available. Please <a style = "color: #888b8d; padding-top: 0px; display: inline-block;" href="{% url 'add_user_profile' %}">add</a> your profile </p>{% endif %}
         </div>
     </div>
 

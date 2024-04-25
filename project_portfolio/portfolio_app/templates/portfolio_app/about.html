@@ -23,7 +23,7 @@
         <div class="about">
             <!-- Display top paragraph -->
             {% if top_paragraph %}
-                <h2>{{ top_paragraph }}</h2>
+                <h2 style = "color: #888b8d">{{ top_paragraph }}</h2>
             {% endif %}
             <!-- Display additional paragraphs -->
             {% if paragraph_1 %}
@@ -50,7 +50,7 @@
         {% if user.is_authenticated %}
             <div style="text-align: center;" class="description">
                 <p>
-                    <a href="{% url 'add_edit_profile_description' %}" style="padding-top: 0px; display: inline-block;">Edit</a>
+                    <a style = "color: #888b8d" href="{% url 'add_edit_profile_description' %}" style="padding-top: 0px; display: inline-block;">Edit</a>
                 </p>
             </div>
         {% endif %}
@@ -58,9 +58,10 @@
         <p>No data available for the about page.</p>
     {% endif %}
 
+    
     <!-- Work experiences section -->
     <div class="about">
-        <h4>Work Experiences</h4>
+        <h4 style = "color: #888b8d" >Work Experiences</h4>
         
         {% if work_experiences %}
         <div class="multi-row-grid">
@@ -81,18 +82,18 @@
         </div>
         {% if user.is_authenticated %}
         <!-- Link to add new work experience (only for authenticated users) -->
-        <p>Please <a href="{% url 'add_work_experience' %}" style="padding-top: 0px; display: inline-block;">add</a> work experience.</p>
+        <p>Please <a style = "color: #888b8d" href="{% url 'add_work_experience' %}" style="padding-top: 0px; display: inline-block;">add</a> work experience.</p>
         {% endif %}
         
         {% else %}
         <!-- Message to add work experience (only for authenticated users) -->
         {% if user.is_authenticated %}
-        <p>Please <a href="{% url 'add_work_experience' %}" style="padding-top: 0px; display: inline-block;">add</a> work experience.</p>
+        <p>Please <a style = "color: #888b8d" href="{% url 'add_work_experience' %}" style="padding-top: 0px; display: inline-block;">add</a> work experience.</p>
         {% endif %}
         {% endif %}
         
         <!-- Education section -->
-        <h4>Education</h4>
+        <h4 style = "color: #888b8d">Education</h4>
         {% if education_entries %}
         <div class="multi-row-grid">
             {% for education in education_entries %}
@@ -112,18 +113,18 @@
         </div>
         {% if user.is_authenticated %}
         <!-- Link to add new education entry (only for authenticated users) -->
-        <p>Please <a href="{% url 'add_education' %}" style="padding-top: 0px; display: inline-block;">add</a> education.</p>
+        <p>Please <a style = "color: #888b8d" href="{% url 'add_education' %}" style="padding-top: 0px; display: inline-block;">add</a> education.</p>
         {% endif %}
         
         {% else %}
         <!-- Message to add education (only for authenticated users) -->
         {% if user.is_authenticated %}
-        <p>Please <a href="{% url 'add_education' %}" style="padding-top: 0px; display: inline-block;">add</a> education.</p>
+        <p>Please <a style = "color: #888b8d" href="{% url 'add_education' %}" style="padding-top: 0px; display: inline-block;">add</a> education.</p>
         {% endif %}
         {% endif %}
 
         <!-- Disciplines section -->
-        <h4>Disciplines</h4>
+        <h4 style = "color: #888b8d">Disciplines</h4>
         {% if discipline_entries %}
         <div class="multi-row-grid">
             {% for discipline in discipline_entries %}
@@ -141,25 +142,27 @@
         </div>
         <!-- Link to add new discipline (only for authenticated users) -->
         {% if user.is_authenticated %}
-        <p>Please <a href="{% url 'add_discipline' %}" style="padding-top: 0px; display: inline-block;">add</a> a discipline.</p>
+        <p>Please <a style = "color: #888b8d" href="{% url 'add_discipline' %}" style="padding-top: 0px; display: inline-block;">add</a> a discipline.</p>
         {% endif %}
         
         {% else %}
         <!-- Message to add discipline (only for authenticated users) -->
         {% if user.is_authenticated %}
-        <p>Please <a href="{% url 'add_discipline' %}" style="padding-top: 0px; display: inline-block;">add</a> a discipline.</p>
+        <p>Please <a style = "color: #888b8d" href="{% url 'add_discipline' %}" style="padding-top: 0px; display: inline-block;">add</a> a discipline.</p>
         {% endif %}
         {% endif %}
         
         <!-- Contact section -->
-        <h4>Contact</h4>
+        <h4 style = "color: #888b8d">Contact</h4>
         <p>Feel free to reach out for projects, collaborations, or just to say hello! Currently seeking new opportunities.</p>
         <div class="multi-row contact-options">
+            {% if user_email %}
             <!-- Display user email -->
-            <a id="copyemail" data-clipboard-text="{{ user_email }}">{{ user_email }}</a>
+            <a style = "color: #888b8d" id="copyemail" data-clipboard-text="{{ user_email }}">{{ user_email }}</a>
+            {% endif %}
             <!-- Display LinkedIn URL if available -->
             {% if linkedin_url %}
-            <a href="{{ linkedin_url }}" target="_blank">LinkedIn</a>
+            <a style = "color: #888b8d" href="{{ linkedin_url }}" target="_blank">LinkedIn</a>
             {% endif %}
         </div>
     </div>

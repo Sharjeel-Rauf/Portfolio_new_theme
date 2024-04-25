@@ -67,24 +67,30 @@ def portfolio_page_view(request):
     # Query all projects from the database and order them by the created_at field in descending order
     projects = ProjectModel.objects.all().order_by('-created_at')
 
+    # Retrieve the user profile if it exists
     user_profile = UserProfile.objects.first()
- 
 
     # Retrieve the summary for the logged-in user
     summary = Summary.objects.first()
     context['summary'] = summary
 
-    context['summary'] = summary
-
+    user_profile = UserProfile.objects.first()
     context['user_profile'] = user_profile
-    context['user_email'] = user_profile.email
-    context['user_description'] = user_profile.description
+
+    # Check if user_profile exists
+    if user_profile:
+        context['user_email'] = user_profile.email if hasattr(user_profile, 'email') else None
+        context['user_description'] = user_profile.description if hasattr(user_profile, 'description') else None
+    else:
+        context['user_email'] = None
+        context['user_description'] = None
     
     # Add projects to the context
     context['projects'] = projects
 
     # Render the template with the context
     return render(request, 'portfolio_app/portfolio_page.html', context)
+
 
 # view of the create project page
 @login_required(login_url="portfolio_page")
@@ -443,9 +449,14 @@ def about_page_view(request):
 
     user_profile = UserProfile.objects.first()
 
-    # Add user profile information (email and LinkedIn URL) to context
-    context['user_email'] = user_profile.email
-    context['linkedin_url'] = user_profile.linkedin_url
+    # Check if user_profile exists
+    if user_profile:
+        context['user_email'] = user_profile.email if hasattr(user_profile, 'email') else None
+        context['linkedin_url'] = user_profile.linkedin_url if hasattr(user_profile, 'linkedin_url') else None
+    else:
+        # Provide default values or handle the scenario when user profile is None
+        context['user_email'] = None
+        context['linkedin_url'] = None
     
     # Render the template with the context
     return render(request, 'portfolio_app/about.html', context)
