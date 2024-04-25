@@ -150,7 +150,11 @@
 
     <div class="about-me slide delay03">
         <div class="description">
-			{% if user.is_authenticated %}  <p>No user profile data available. Please <a style = "color: #888b8b; font-style: italic; padding-top: 0px; display: inline-block;" href="{% url 'add_user_profile' %}">add</a> your profile </p>{% endif %}
+			{% if user.is_authenticated %}  <p>No user profile data available. Please <a style = "color: #888b8b; font-style: italic; padding-top: 0px; display: inline-block;" href="{% url 'add_user_profile' %}">add</a> your profile </p>
+			{% else %}
+        	<p>No user profile data added yet.</p>
+     
+			{% endif %}
         </div>
     </div>
 

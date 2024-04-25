@@ -59,6 +59,18 @@
                 </p>
             </div>
         {% endif %}
+
+        {% else %}
+        <!-- Message to add work experience (only for authenticated users) -->
+        {% if user.is_authenticated %}
+        <div class="about">
+        <p>Please <a href="{% url 'add_edit_profile_description' %}" style="color: #888b8d; font-style: italic; padding-top: 0px; display: inline-block;">add</a> profile description.</p>
+        </div>
+        {% else %}
+        <div class="about">
+            <p>No profile description yet.</p>
+        </div>
+        {% endif %}
     {% endif %}
 
     
@@ -102,6 +114,9 @@
         <!-- Message to add work experience (only for authenticated users) -->
         {% if user.is_authenticated %}
         <p>Please <a href="{% url 'add_work_experience' %}" style="color: #888b8d; font-style: italic; padding-top: 0px; display: inline-block;">add</a> work experience.</p>
+        {% else %}
+        <p>No work experience yet.</p>
+     
         {% endif %}
         {% endif %}
         
@@ -143,6 +158,9 @@
         <!-- Message to add education (only for authenticated users) -->
         {% if user.is_authenticated %}
         <p>Please <a href="{% url 'add_education' %}" style="color: #888b8d; font-style: italic; padding-top: 0px; display: inline-block;">add</a> education.</p>
+        {% else %}
+        <p>No education added yet.</p>
+     
         {% endif %}
         {% endif %}
 
@@ -182,6 +200,9 @@
         <!-- Message to add discipline (only for authenticated users) -->
         {% if user.is_authenticated %}
         <p>Please <a href="{% url 'add_discipline' %}" style="color: #888b8d; font-style: italic; padding-top: 0px; display: inline-block;">add</a> a discipline.</p>
+        {% else %}
+        <p>No discipline added yet.</p>
+     
         {% endif %}
         {% endif %}
         

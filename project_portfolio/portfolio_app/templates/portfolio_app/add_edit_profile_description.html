@@ -50,8 +50,8 @@
                         Professional Summary
                     </label>
                     <textarea class="formbold-form-input" name="{{ form.top_paragraph.name }}"
-                              id="{{ form.top_paragraph.id }}" placeholder="{{ form.top_paragraph.label }}"
-                              rows="5" cols="40">{{ form.top_paragraph.value }}</textarea>
+                              id="{{ form.top_paragraph.id }}" placeholder="Professional summary"
+                              rows="5" cols="40">{% if form.instance.top_paragraph %}{{ form.instance.top_paragraph }}{% endif %}</textarea>
                 </div>
 
                 <!-- Form field for Paragraph 1 -->
@@ -61,7 +61,7 @@
                     </label>
                     <textarea class="formbold-form-input" name="{{ form.paragraph_1.name }}"
                               id="{{ form.paragraph_1.id }}" placeholder="{{ form.paragraph_1.label }}"
-                              rows="5" cols="40">{{ form.paragraph_1.value }}</textarea>
+                              rows="5" cols="40">{% if form.instance.paragraph_1 %}{{ form.instance.paragraph_1 }}{% endif %}</textarea>
                 </div>
 
                 <!-- Form field for Paragraph 2 -->
@@ -71,7 +71,7 @@
                     </label>
                     <textarea class="formbold-form-input" name="{{ form.paragraph_2.name }}"
                               id="{{ form.paragraph_2.id }}" placeholder="{{ form.paragraph_2.label }}"
-                              rows="5" cols="40">{{ form.paragraph_2.value }}</textarea>
+                              rows="5" cols="40">{% if form.instance.paragraph_2 %}{{ form.instance.paragraph_2 }}{% endif %}</textarea>
                 </div>
 
                 <!-- Form field for Paragraph 3 -->
@@ -81,7 +81,7 @@
                     </label>
                     <textarea class="formbold-form-input" name="{{ form.paragraph_3.name }}"
                               id="{{ form.paragraph_3.id }}" placeholder="{{ form.paragraph_3.label }}"
-                              rows="5" cols="40">{{ form.paragraph_3.value }}</textarea>
+                              rows="5" cols="40">{% if form.instance.paragraph_3 %}{{ form.instance.paragraph_3 }}{% endif %}</textarea>
                 </div>
 
                 <!-- Form field for uploading image -->

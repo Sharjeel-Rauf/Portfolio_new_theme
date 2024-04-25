@@ -40,7 +40,7 @@
     <div class="about-me slide delay03">
         <div style = "text-align: center;" class="description">
 			{% if user.is_authenticated %}
-			<p>No details yet. Please <a href="{% url 'add_project_detail' project.id %}" style = "color: #888b8b; padding-top: 0px; display: inline-block;">add</a> the details for the project.</p>
+			<p>No details yet. Please <a href="{% url 'add_project_detail' project.id %}" style = "font-style: italic; color: #888b8b; padding-top: 0px; display: inline-block;">add</a> the details for the project.</p>
 			{% else %}
 			<p>No details yet.</p>
 			{% endif %}
@@ -48,7 +48,7 @@
         </div>
     </div>
     <div style = "margin: 4vh auto 4vh auto;" class="back-to-projects">
-		<a href="{% url 'portfolio_page' %}">Back to all project </a>
+		<a style = "font-style: italic;" href="{% url 'portfolio_page' %}">Back to all project </a>
 	</div>
 {% else %}
 
@@ -65,7 +65,7 @@
         {% if detail.python_file %}
 		<p>
 		
-            <strong>File:</strong> <a style="width: 120px;" href="{{ detail.python_file.url }}" download>Download</a>
+            <strong>File:</strong> <a style="font-style: italic; width: 120px;" href="{{ detail.python_file.url }}" download>Download</a>
       
 		</p>
         <p>
@@ -73,15 +73,30 @@
             {{ detail.python_file_content }}
         </code></pre>
             
-            <button style="background-color: #888b8d; margin-top: 20px; color: white; outline: none;" class="btn btn-primary copy-btn" data-target="code-3">Copy Code</button>
+            
 		</p>
         {% endif %}
-        <!-- Show "Edit Details" button only if the user is authenticated -->
-        {% if user.is_authenticated %}
-        <button style="background-color: #888b8d; margin-top: 10px; color: white; outline: none !important;" hx-push-url="{% url 'edit_details' detail.id %}" class="btn btn-primary"
-              hx-get="{% url 'edit_details' detail.id %}" hx-target="#project_details">
-          Edit Details
-      </button>
+
+
+        <div style="display: flex; justify-content: center; gap: 40px; margin-top: 20px;">
+          <a style="color: #888b8d; outline: none;" class="copy-btn" data-target="code-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+              </svg>
+          </a>
+      
+          {% if user.is_authenticated %}
+          <a style="color: #888b8d; outline: none;" hx-push-url="{% url 'edit_details' detail.id %}"
+                hx-get="{% url 'edit_details' detail.id %}" hx-target="#project_details">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <!-- SVG paths -->
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502 .646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+              </svg>
+          </a>
+      </div>
+
+
         {% endif %}
 
         {% endfor %}
@@ -191,8 +206,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
  <style>
 .btn-primary {
+    --bs-btn-bg: #888b8d; /* Current background color */
     --bs-btn-border-color: #888b8d;
-    --bs-btn-hover-bg: black;
+    --bs-btn-hover-bg: #888b8d; /* Same color as background */
+    --bs-btn-hover-border-color: #888b8d;
 }
     @media screen and (max-width: 767px) {
     h1, p.text {
