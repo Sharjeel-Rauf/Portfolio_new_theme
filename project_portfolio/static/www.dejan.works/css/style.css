@@ -63,7 +63,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 	font-size: 16px; /* Base font size */
-    font-family: 'Rosie Light', sans-serif !important;
+    font-family: 'Geist', sans-serif !important;
 }
 
 a {
@@ -132,7 +132,7 @@ video {
     top: 0; /* Top of the page */
     z-index: 1000; /* High z-index for layering */
     padding: 15px 0; /* Padding around the header */
-    background-color: #f8f9fa; /* Light gray background color */
+    background-color: #f0f0ee; /* Light gray background color */
     box-sizing: border-box; /* Include padding in width calculations */
     border-bottom: 1px solid #e0e0e0; /* Subtle border for separation */
     transition: background-color 0.3s ease; /* Smooth transition for color changes */
@@ -209,7 +209,7 @@ h1 {
     font-size: 4.6vw;
     font-size: 4.5rem;
     line-height: 120%;
-    font-family: 'Rosie Light', sans-serif !important;
+    font-family: 'Geist', sans-serif !important;
     font-weight: 600;
     color: #888b8d;
     max-width: 100%; /* Set the maximum width to fill the container */

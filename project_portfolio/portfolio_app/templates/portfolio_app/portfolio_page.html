@@ -25,7 +25,7 @@
 			<div class="typed-strings">
 				<h1>{{ summary.summary }}</h1>
 			</div>
-			<h1 style = "margin-top: 20px;" class="slide delay01 text-21 fw-600 text-uppercase mb-0 ms-n1"><span class="typed"></span></h1>
+			<h1 style = "font-family: 'Rosie', sans-serif !important; margin-top: 20px;" class="slide delay01 text-21 fw-600 text-uppercase mb-0 ms-n1"><span class="typed"></span></h1>
 			{% if user.is_authenticated %}
 			<a class="slide delay01" href="{% url 'edit_summary' %}" style="color: #888b8d; padding-top: 0px; display: inline-block;">
 				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -124,7 +124,7 @@
     <div class="about-me slide delay03">
         <div class="description">
             <p>{{ user_description }}</p>
-			<a style = "color: #888b8d" href="{% url 'about_page' %}">More about me</a>
+			<a style = "font-style: italic; color: #888b8d" href="{% url 'about_page' %}">More about me</a>
         </div>
         <div class="contact">
             <p>Get in touch <span>(Click to copy)</span></p>
@@ -186,13 +186,11 @@
 }
 	/* Target the cursor element within the .typed element */
 	.text-21 .typed {
-		font-family: 'Rosie Light', sans-serif !important;
 		font-size: calc(1.775rem + 6.3vw) !important; /* Match the font size of the text */
 	}
 	
 	@media (min-width: 1200px) {
 		.text-21 .typed {
-			font-family: 'Rosie Light', sans-serif !important;
 			font-size: 4.0rem !important; /* Match the font size of the text for larger screens */
 		}
 	}
