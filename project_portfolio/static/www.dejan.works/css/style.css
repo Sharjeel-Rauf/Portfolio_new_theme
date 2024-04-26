@@ -131,8 +131,7 @@ video {
     position: fixed; /* Fixed positioning */
     top: 0; /* Top of the page */
     z-index: 1000; /* High z-index for layering */
-    padding: 15px 0; /* Padding around the header */
-    background-color: #f0f0ee; /* Light gray background color */
+    padding: 15px 0; /* Padding around the header */ /* Light gray background color */
     box-sizing: border-box; /* Include padding in width calculations */
     border-bottom: 1px solid #e0e0e0; /* Subtle border for separation */
     transition: background-color 0.3s ease; /* Smooth transition for color changes */
