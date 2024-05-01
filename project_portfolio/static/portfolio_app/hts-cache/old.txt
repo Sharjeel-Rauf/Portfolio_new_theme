@@ -1,5 +1,0 @@
-date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
-02:40:50	122/122	---M--	502	error ('Bad%20Gateway')	text/html	date:Fri,%2026%20Apr%202024%2021:40:50%20GMT	https://www.adityamankare.com/robots.txt		(from )
-02:40:50	122/122	---M--	502	error ('Bad%20Gateway')	text/html	date:Fri,%2026%20Apr%202024%2021:40:50%20GMT	https://www.adityamankare.com/	C:/Sharjeel/Software%20Engineering%20Career/Dawar_Bhai_bootcamp/HTTP%20Track/portfolio_app/www.adityamankare.com/index.html	(from )
-02:40:50	122/122	---M--	502	error ('Bad%20Gateway')	text/html	date:Fri,%2026%20Apr%202024%2021:40:50%20GMT	https://www.adityamankare.com/	C:/Sharjeel/Software%20Engineering%20Career/Dawar_Bhai_bootcamp/HTTP%20Track/portfolio_app/www.adityamankare.com/index.html	(from )
-02:40:51	122/122	---M--	502	error ('Bad%20Gateway')	text/html	date:Fri,%2026%20Apr%202024%2021:40:51%20GMT	https://www.adityamankare.com/	C:/Sharjeel/Software%20Engineering%20Career/Dawar_Bhai_bootcamp/HTTP%20Track/portfolio_app/www.adityamankare.com/index.html	(from )
