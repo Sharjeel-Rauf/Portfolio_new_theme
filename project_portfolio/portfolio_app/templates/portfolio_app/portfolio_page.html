@@ -3,6 +3,7 @@
 
 {% block content %}
 
+{% if messages %}
 <!-- Error messages -->
 <div class="toast-container position-fixed top-0 end-0 p-3">
 	{% for message in messages %}
@@ -16,247 +17,149 @@
 		</div>
 	{% endfor %}
 </div>
+{% endif %}
 
 
-<!-- Display the user profile information -->
-{% if summary %}
+<div id="qodef-page-inner" class="qodef-content-grid">
+    <main id="qodef-page-content" class="qodef-grid qodef-layout--columns qodef-gutter--huge">
+        <div class="qodef-grid-inner">
+            <div class="qodef-grid-item">
+                <div class="qodef-shortcode qodef-m qodef-portfolio-list qodef-item-layout--info-below qodef-grid qodef-layout--columns qodef-gutter--normal qodef-col-num--3 qodef-item-layout--info-below qodef-responsive--predefined">
+                    <div class="qodef-grid-inner">
+						{% if projects %}
+    {% for project in projects %}
+        <article class="qodef-e qodef-grid-item qodef-item--full post-103 portfolio-item type-portfolio-item status-publish has-post-thumbnail hentry portfolio-category-photography">
+            <div class="qodef-e-inner">
 
-		<div class="hero">
-			<div class="typed-strings">
-				<h1>{{ summary.summary }}</h1>
-			</div>
-			<h1 style = "font-family: 'Rosie', sans-serif !important; margin-top: 20px;" class="slide delay01 text-21 fw-600 text-uppercase mb-0 ms-n1"><span class="typed"></span></h1>
-			{% if user.is_authenticated %}
-			<a class="slide delay01" href="{% url 'edit_summary' %}" style="color: #888b8d; padding-top: 0px; display: inline-block;">
-				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-					<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-					<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-				</svg>
-			</a>
-			{% endif %}
-		</div>
+                <div class="qodef-e-image">
+                    <div class="qodef-e-media-image">
+                        <a itemprop="url" href="{% url 'project_detail' project.id %}">
+                            <img width="1300" height="1730" src="{{ project.image.url }}" class="attachment-full size-full wp-post-image" alt="{{ project.title }}" loading="lazy" sizes="(max-width: 1300px) 100vw, 1300px" />
+                        </a>
+                    </div>
+                </div>
 
+                <div class="qodef-e-content">
+                    <div class="qodef-e-info-category">
+                        <a href="index.html" rel="tag">{{ project.title }}</a>
+                    </div>
+                    <h5 itemprop="name" class="qodef-e-title entry-title">
+                        <a itemprop="url" class="qodef-e-title-link" href="{% url 'project_detail' project.id %}">{{ project.short_name }}</a>
+                    </h5>
+                    
+                    {% if user.is_authenticated %}
+                    <!-- Buttons container -->
+                    <div class="project-buttons">
+                        <!-- Edit button -->
+                        <a href="{% url 'edit_project' project.id %}" class="edit-button" style="color: #888b8d;">
+                            <!-- SVG for edit project -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <!-- SVG paths -->
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502 .646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                            </svg>
+                        </a>
+
+                        <!-- Delete button -->
+                        <a href="{% url 'delete_project' project.id %}" class="delete-button" style="color: #888b8d;">
+                            <!-- SVG for delete project -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+        </article>
+    {% endfor %}
 {% else %}
 {% if user.is_authenticated %}
-	<div class="hero">
-		<h1 style = "color: black;" class="slide delay01">No summary data available. Please <a style = "color: #888b8b; font-style: italic;" class="slide delay01" href="{% url 'add_summary' %}">add</a> your summary</h1>
-	</div>
-{% endif %}
-{% endif %}
-
-
-
-
-<!-- ######################################################## -->
-
-<div class="grid slide delay02">
-
-	{% if projects %}
-	{% for project in projects %}
-	<div class="work-item">
-	<a href="{% url 'project_detail' project.id %}">
-		<div class="work-item-image">
-			<img src="{{ project.image.url }}" alt="{{ project.title }}" loading="lazy">
-		</div>
-	</a>
-		<div class="work-item-info" style = "margin-bottom: 100px;">
-			<div style = "color: #888b8d" class="work-item-company">{{ project.title }}</div>
-			<div class="work-item-description">{{ project.short_name }}</div>
-			{% if user.is_authenticated %}
-			<!-- Flex container -->
-<div class="flex-container">
-    <!-- First description element -->
-    <div class="description">
-        <p>
-            <a href="{% url 'edit_project' project.id %}" style="color: #888b8d; padding-top: 0px; display: inline-block;">
-                <!-- SVG for edit project -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                    <!-- SVG paths -->
-                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502 .646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                </svg>
-            </a>
-        </p>
-    </div>
-    
-    <!-- Second description element -->
-    <div class="description">
-        <p>
-            <a href="{% url 'delete_project' project.id %}" style="color: #888b8d; padding-top: 0px; display: inline-block;">
-                <!-- SVG for delete project -->
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-					<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-					<path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-				</svg>
-            </a>
-        </p>
-    </div>
-</div>
-			
-			{% endif %}
-		</div>
-	</div>
-	
-	{% endfor %}
-
-	{% else %}
-	
-<div class="about-me slide delay03">
-	<div class="description">
-		<p>No projects yet. Please <a href="{% url 'create_project' %}" style = "color: #888b8b; font-style: italic; padding-top: 0px; display: inline-block;">create</a> a project.</p>
-	</div>
-</div>
-{% endif %}
-</div>
-
-
-
-
-
-
-
-<!-- ######################################################## -->
-
-
-
-<!-- Display the user profile information -->
-{% if user_profile %}
-    <div class="about-me slide delay03">
-        <div class="description">
-            <p>{{ user_description }}</p>
-			<a style = "font-style: italic; color: #888b8d" href="{% url 'about_page' %}">More about me</a>
-        </div>
-        <div class="contact">
-            <p>Get in touch <span>(Click to copy)</span></p>
-            <div style = "color: #888b8d" class="email" id="copyemail" data-clipboard-text="{{ user_email }}">{{ user_email }}</div>
-        </div>
-		
-		{% if user.is_authenticated %}
-			<div class="description">
-			<a class="slide delay01" href="{% url 'edit_user_profile' %}" style="color: #888b8d; font-size: 1.5rem; padding-top: 0px; display: inline-block;">
-                <!-- SVG for edit project -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                    <!-- SVG paths -->
-                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502 .646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                </svg>
-            </a>
-			
-			</div>
-
-		{% endif %}
-    </div>
+<h5 style="text-align: center; margin-top: 100px;" itemprop="name" class="qodef-e-title entry-title">
+            <p>No projects yet. Please <a href="{% url 'create_project' %}" style="color: #888b8d; font-style: italic; padding-top: 0px; display: inline-block;">create</a> a project.</p>
+</h5>
 {% else %}
 
-    <div class="about-me slide delay03">
-        <div class="description">
-			{% if user.is_authenticated %}  <p>No user profile data available. Please <a style = "color: #888b8b; font-style: italic; padding-top: 0px; display: inline-block;" href="{% url 'add_user_profile' %}">add</a> your profile </p>
-			{% else %}
-        	<p>No user profile data added yet.</p>
-     
-			{% endif %}
-        </div>
-    </div>
+<h5 style="text-align: center; margin-top: 100px;" itemprop="name" class="qodef-e-title entry-title">
+	<p>No projects added yet.</p>
+</h5>
 
-	
 {% endif %}
+{% endif %}
+	
+ </div> </div></div>
+	</div>
+	</main>
+	</div>
+	</div>
+	</div>
+	
 
-
-
-
-<!-- ############################# -->
-
-
-
-<script>
-	$(document).ready(function() {
-		$(".typed").each(function() {
-			var typed = new Typed('.typed', {
-				stringsElement: '.typed-strings',
-				loop: true,
-				typeSpeed: 100,
-				backSpeed: 50,
-				backDelay: 1500,
-			});
-		});
-	});
-	</script>
-	<style>
-		.flex-container {
+<style>
+			.flex-container {
     display: flex;
 	gap: 20px; /* Use flex display */
 	align-items: center;
 	justify-content: center;
 }
-	/* Target the cursor element within the .typed element */
-	.text-21 .typed {
-		font-size: calc(1.775rem + 6.3vw) !important; /* Match the font size of the text */
-	}
-	
-	@media (min-width: 1200px) {
-		.text-21 .typed {
-			font-size: 4.0rem !important; /* Match the font size of the text for larger screens */
-		}
-	}
-	.fw-600 {
-	  font-weight: 600 !important;
-	}
-	
-	</style>
-	<!-- ############################# -->
 
-    
- <!-- Include jQuery (if not already included) -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- for toast -->
-	<script>
-		// Show toast when page loads
-		document.addEventListener('DOMContentLoaded', function () {
-			var toastElList = [].slice.call(document.querySelectorAll('.toast'));
-			var toastList = toastElList.map(function (toastEl) {
-				return new bootstrap.Toast(toastEl);
-			});
-			toastList.forEach(function (toast) {
-				toast.show();
-			});
-		});
-	</script>
-			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">		
-
-
-<style>
-
-/* Base styles for the email text */
-.email {
-    font-family: 'Geist', sans-serif;
-    color: #111111;
-    font-weight: 600;
-    font-size: 2.5rem; /* Base size */
-    cursor: pointer;
-    margin: 0;
-    display: block; /* Allow the text to wrap */
-    word-wrap: break-word; /* Enable word wrapping */
-    white-space: normal; /* Allow the text to wrap normally */
-    line-height: 1.2; /* Consistent line height with hero elements */
+/* Style for the buttons container */
+.project-buttons {
+    display: flex; /* Use flexbox layout */
+    justify-content: center; /* Center the buttons horizontally */
+    margin-top: 10px; /* Add margin above the buttons for spacing */
 }
 
-/* Adjust font size based on screen width */
-@media screen and (max-width: 767px) {
-    .email {
-        font-size: 1.5rem; /* Similar to the hero a and h1 text size */
-    }
+/* Style for the edit and delete buttons */
+.edit-button,
+.delete-button {
+    margin: 0 10px; /* Add margin to separate the buttons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    border-radius: 50%; /* Make the buttons circular */
+    background-color: #f0f0f0; /* Light background color for the buttons */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-    .email {
-        font-size: 2rem; /* Slightly larger size for medium screens */
-    }
+/* Hover effect for the buttons */
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #d0d0d0; /* Darker background color on hover */
+}
+.qodef-e-media-image {
+    height: 550px; /* Fixed height for the container (adjust as needed) */
+    max-width: 100%; /* Set the container width to 100% */
+    overflow: hidden; /* Hide any overflow */
 }
 
-@media screen and (min-width: 1024px) {
-    .email {
-        font-size: 2.5rem; /* Retain base size for large screens */
-    }
+.qodef-e-image img {
+    width: 100%; /* Set the image width to fill the container */
+    height: 100%; /* Set the image height to fill the container */
+    object-fit: cover; /* Ensure the image covers the container and maintains aspect ratio */
+    object-position: center; /* Center the image within the container */
 }
-</style>			
+</style>
+
+	 <!-- Include jQuery (if not already included) -->
+	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	 <!-- for toast -->
+	 <script>
+		 // Show toast when page loads
+		 document.addEventListener('DOMContentLoaded', function () {
+			 var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+			 var toastList = toastElList.map(function (toastEl) {
+				 return new bootstrap.Toast(toastEl);
+			 });
+			 toastList.forEach(function (toast) {
+				 toast.show();
+			 });
+		 });
+	 </script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">	
+		
 {% endblock %}

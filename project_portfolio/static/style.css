@@ -1,0 +1,815 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-size: 16px; /* Base font size */
+	font-weight: 400;
+    font-family: 'Montserrat', sans-serif !important;
+}
+a {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+/* ------ Media ------ */
+img {
+	/*
+    max-width: 100%;
+    max-height: 100%;
+	*/
+	pointer-events: none !important;
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+video {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+/* ------------ Animations ----------- */
+.slide {
+	-webkit-animation:slide .6s cubic-bezier(0.2, 0.6, 0.2, 1);
+	-moz-animation:slide .6s cubic-bezier(0.2, 0.6, 0.2, 1);
+	animation:slide .6s cubic-bezier(0.2, 0.6, 0.2, 1);
+	-webkit-animation-fill-mode:backwards;
+	-moz-animation-fill-mode:backwards;
+	animation-fill-mode:backwards;
+}
+/* ------ Delays ------ */
+.delay01 { -webkit-animation-delay: .4s; animation-delay: .4s;}
+.delay02 { -webkit-animation-delay: .8s; animation-delay: .8s;}
+.delay03 { -webkit-animation-delay: .9s; animation-delay: .9s;}
+
+@-webkit-keyframes slide {
+	0% {
+    opacity: 0;
+    -webkit-transform: translateY(10vh);
+  }
+	100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+  }	
+}
+
+@keyframes slide {
+	0% {
+    opacity: 0;
+    -webkit-transform: translateY(10vh);
+  }
+	100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+  }	
+}
+
+
+/* ------------ Header ------------ */
+/* Styling for the header */
+.header {
+    width: 100%; /* Full width of the screen */
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Top of the page */
+    z-index: 1000; /* High z-index for layering */
+    padding: 15px 0; /* Padding around the header */ /* Light gray background color */
+    box-sizing: border-box; /* Include padding in width calculations */
+    border-bottom: 1px solid #e0e0e0; /* Subtle border for separation */
+    transition: background-color 0.3s ease; /* Smooth transition for color changes */
+}
+
+/* Wrapper for header content to control margins */
+.header-content {
+    max-width: 1200px; /* Maximum width for content */
+    margin: 0 auto; /* Center the content */
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Vertically align items */
+}
+
+/* Styling for the logo */
+.logo {
+
+    font-weight: 600; /* Slightly bolder font weight */
+    font-size: 1.5rem; /* Larger font size for emphasis */
+    color: #888b8d; /* Dark gray color for the logo text */
+}
+
+/* Styling for navigation links */
+.nav-links a {
+
+    font-weight: 500;
+    font-size: 1.125rem; /* Consistent font size */
+    color: #343a40; /* Dark gray color for links */
+    margin-left: 40px; /* Space between links */
+    transition: color 0.3s ease; /* Smooth transition for color changes */
+}
+
+/* Hover effect for links */
+.nav-links a:hover {
+    color: #888b8d; /* Blue color on hover */
+    text-decoration: none; /* No underline on hover */
+}
+
+/* Additional styles for the 'Create project' link */
+.create-project-link {
+    white-space: nowrap;
+    font-weight: 600; /* Slightly bolder for emphasis */
+    color: #007bff; /* Blue color to match hover effect */
+}
+
+/* Responsive styles for smaller screens */
+@media screen and (max-width: 767px) {
+    .header {
+        padding: 10px; /* Adjusted padding for smaller screens */
+    }
+    .header-content {
+        padding: 0 15px; /* Add padding to maintain margins */
+    }
+    .logo,
+    .nav-links a {
+        font-size: 1rem; /* Adjusted font size */
+    }
+    .nav-links a {
+        margin-left: 20px; /* Reduce space between links */
+    }
+}
+
+/* ------------ Hero Home ------------ */
+
+
+
+/* Summary text styles */
+h1 {
+    font-size: 4.6vw;
+    font-size: 4.5rem;
+    line-height: 120%;
+    font-weight: 600;
+    color: #888b8d;
+    max-width: 100%; /* Set the maximum width to fill the container */
+    word-wrap: break-word; /* Enable word wrapping */
+}
+
+/* Styling anchor tag in the .hero section */
+.hero a {
+    font-weight: 600; /* Match font weight with h1 */
+    color: #111111; /* Match color with h1 */
+    text-decoration: none; /* Remove underline by default */
+    font-size: 4.5rem; /* Match font size with h1 */
+    line-height: 120%; /* Match line height with h1 */
+}
+
+/* Hover effect for anchor tag in the .hero section */
+.hero a:hover {
+    text-decoration: underline; /* Show underline on hover */
+}
+
+
+@media screen and (max-width: 767px) {
+	.hero {
+		margin: 0 20px;
+		max-width: 100%;
+		padding: 16vh 0 8vh 0;
+	}	
+	h1 {
+		font-size: 2.2rem;
+		line-height: 120%;
+		max-width: 100%;
+	}
+	    /* Adjust the anchor styles for smaller screens */
+		.hero a {
+			font-size: 2.2rem; /* Match font size with h1 */
+			line-height: 120%; /* Match line height with h1 */
+		}
+}
+
+/* ------------ Homepage Work Section ------------ */
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.work-item {
+    width: calc(50% - 60px);
+    margin-bottom: 100px;
+    text-align: center;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.work-item:nth-child(2n-2) {
+    position: relative;
+    top: 200px;
+    top: 300px; /* Change this for V2 */
+}
+
+.work-item-image {
+    border-radius: 24px;
+    overflow: hidden;
+    width: 100%; /* Fill the container */
+    height: 480px; /* Fixed height for all images */
+    transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.work-item-image:hover {
+    transform: scale(.95);
+    transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
+    cursor: pointer;
+}
+
+.work-item img {
+    display: block;
+    width: 100%;
+    height: 100%; /* Fill the image box */
+    object-fit: cover; /* Scale image to fit within the container while maintaining aspect ratio */
+    transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.work-item:hover img {
+    transform: scale(1.1);
+    transition: all .8s cubic-bezier(0.2, 0.6, 0.2, 1);
+    cursor: pointer;
+}
+
+.work-item-info {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.work-item-company {
+    color: #111111;
+    font-weight: 500;
+    font-size: 1.375rem;
+    line-height: 160%;
+    display: block;
+    text-decoration: none;
+}
+
+.work-item-description {
+    color: #666666;
+    font-weight: 300;
+    font-size: 1.125rem;
+    display: block;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    .grid {
+        padding: 20px;
+    }
+    .work-item {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    .work-item:nth-child(2n-2) {
+        top: 0;
+    }
+    .work-item-image {
+        height: 320px; /* Reduce height for smaller screens */
+    }
+    .work-item-info {
+        margin-top: 12px;
+    }
+    .work-item-company {
+        font-size: 1.125rem;
+        font-weight: 600;
+    }
+    .work-item-description {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+}
+
+
+/* ------------ Homepage About Section ------------ */
+
+.about-me {
+    margin: 0px auto;
+	max-width: 45vw;
+    max-width: 760px;
+    padding: 20vw 0 12vw 0; 
+	padding: 10vw 0 12vw 0; /* CHANGE THIS for V2 */
+}
+p {
+	line-height: 160%;
+	color: #111111;
+	color: #333333;
+	font-weight: 400;
+	font-size: 1rem;
+	
+}
+.description a {
+	color: #111111;
+	font-weight: 500;
+	font-size: 1.375rem;
+	padding-top: 30px;
+	display: block;
+}
+.description a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+.contact {
+	margin-top: 12vw;;
+}
+p span {
+	line-height: 160%;
+	color: #666666;
+	font-weight: 300;
+	font-size: inherit;
+}
+.email {
+	color: #111111;
+	font-weight: 600;
+	font-size: 4rem;
+	font-size: 3.7vw;
+	cursor: pointer;
+}
+
+
+@media screen and (max-width: 767px) {
+	.about-me {
+		max-width: 100%;
+		margin: 0px 20px;
+		padding: 20vh 0;
+	}
+	p {
+		font-weight: 400;
+		font-size: 1.125rem;
+	}
+	.description a {
+		font-weight: 600;
+		font-size: 1.125rem;
+		padding-top: 20px;
+	}
+	.contact {
+		margin-top: 15vh;;
+	}
+	.email {
+		font-size: 8vw;
+	}
+}
+
+/* ------------ Footer ------------ */
+
+footer {
+	max-width: 760px;
+    margin: 0 auto;
+	color: #888888;
+	font-weight: 400;
+	font-size: 0.875rem;
+	padding: 40px;
+}
+
+@media screen and (max-width: 767px) {
+	footer {
+		max-width: 100%;
+		padding: 20px;
+	}
+}
+
+/* ------------ About Page ------------ */
+
+.about-page {
+	padding: 0 0;
+}
+.about {
+	margin: 0 auto;
+	box-sizing: border-box;
+	max-width: 780px;
+	padding: 4vh 0;
+
+}
+
+
+/* Base styles for anchor tag in about-page */
+.about-page a {
+
+    font-size: 1.00rem;
+    
+    /* Set color to match other anchor tags */
+    color: #111111;
+    
+    /* Match the font weight */
+    font-weight: 400;
+    
+    /* Additional styling (e.g., margin, padding) can be added if needed */
+}
+
+/* Add underline effect when hovering over the anchor tag */
+.about-page a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.about .text {
+	margin-bottom: 40px;
+}
+.photo-dejan {
+	margin: 0 auto;
+	width: 100%;
+    max-width: 980px;
+	max-width: 1200px;
+}
+h2 {
+	color: #111111;
+	font-weight: 500;
+	font-size: 2.75rem;
+	line-height: 120%;
+	margin: 60px 0 40px 0;
+}
+h4 {
+	color: #111111;
+	font-weight: 500;
+	font-size: 2rem;
+	line-height: 140%;
+	margin: 80px 0 20px 0;
+}
+.multi-row-grid {
+	display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.multi-row {
+	margin-bottom: 20px;
+	display: flex;
+    flex-direction: column;
+}
+p.title {
+	color: #111111;
+	font-weight: 400;
+}
+p.entity {
+	font-size: 1.1rem;
+	line-height: 160%;
+}
+p.years {
+	color: #666666;
+	font-size: 1rem;
+	font-weight: 300;
+	line-height: 160%;
+}
+.contact-options {
+	margin-top: 40px;
+}
+.contact-options a {
+	line-height: 160%;
+	color: #111111;
+	font-weight: 400;
+	font-size: 1.375rem;
+}
+.contact-options a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+	.about {
+		max-width: 70vw;
+	}
+	.photo-dejan {
+		width: 80vw;
+	}
+}
+.about-page a {
+	/* Match the font size with other anchor tags for this screen size */
+	font-size: 1.00rem;  /* You can adjust the font size as needed */
+	
+	/* Additional style adjustments can be made here */
+}
+
+
+@media screen and (max-width: 767px) {
+	.about-page {
+		padding: 12vh 0;
+	}
+	.about {
+		margin: 0 20px;
+		max-width: 100%;
+	}
+	.about-page a {
+        /* Match the font size with other anchor tags for this screen size */
+        font-size: 1.00rem;  /* You can adjust the font size as needed */
+        
+        /* Additional style adjustments can be made here */
+    }
+	.about .text {
+		margin-bottom: 20px;
+	}
+	.photo-dejan {
+		width: 100%;
+		display: block;
+		padding: 0 20px;
+		box-sizing: border-box;
+		height: 360px;
+		object-fit: cover;
+	}
+	h2 {
+		font-weight: 600;
+		font-size: 2rem;
+		margin: 40px 0 20px 0;
+	}
+	h4 {
+		font-weight: 600;
+		font-size: 1.5rem;
+		margin: 40px 0 20px 0;
+	}
+	.multi-row-grid {
+		grid-template-columns: repeat(1, 1fr);
+	}
+	p.title {
+		font-weight: 500;
+	}
+	p.years {
+		font-weight: 400;
+	}
+	.contact-options a {
+		font-size: 1.125rem;
+		font-weight: 500;
+	}
+}
+
+
+
+
+/* ------------ Case studies ------------ */
+
+
+.work-page {
+	padding: 0 0;
+}
+.work-page-content {
+	margin: 0 auto;
+	box-sizing: border-box;
+	max-width: 780px;
+	max-width: 680px;
+	padding: 12vh 0;
+	padding: 4vh 0;
+
+}
+.work-page-content p {
+	margin-bottom: 40px;
+}
+
+.work-page-content a {
+	color: #111111;
+	font-weight: 400;
+	font-size: inherit;
+	display: block;
+	text-decoration: none;
+	margin-bottom: 8px;
+}
+
+.work-page-content a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.work-page-image {
+	margin: 20px auto;
+	width: 100%;
+    max-width: 1200px;
+}
+
+.work-page-image-two {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+    max-width: 1200px;
+	margin: 0 auto;
+}
+
+.work-page-image-two img {
+	width: calc(50% - 10px);
+}
+
+
+h3 {
+	color: #111111;
+	font-weight: 400;
+	font-size: 2rem;
+	font-size: 1.75rem;
+	line-height: 140%;
+	margin: 60px 0 40px 0;
+}
+
+.iphone {
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+}
+
+.iphone img {
+	max-height: 50vw;
+	width: auto;
+	display: inline-block; 
+	vertical-align: middle;
+}
+
+video {
+	width: 100%;
+	max-width: 1200px;
+	margin: 20px auto;
+	height: auto;
+}
+
+
+/* iphone12 video container */
+.video-iphone {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 120px 0;
+	background: #F2F2F2;
+}
+
+.video-iphone-inner {
+	display: flex;
+    justify-content: center;
+    align-items: center; 
+    position: relative;
+	height: 70vh;
+}
+
+.device-iphone12 {
+    background-image: url(../img/iphone12/iphone12.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
+.video-iphone video {
+    position: relative;
+    z-index: 2;
+	width: auto;
+	height: 67vh;
+    border-radius: 4vh;
+	overflow: hidden;
+}
+
+
+
+/* iphone6 video container */
+
+.video-iphone-6 {
+	max-width: 1200px;
+	margin: 20px auto;
+	padding: 120px 0;
+	background: #F2F2F2;
+}
+
+.video-iphone-6-inner {
+	display: flex;
+    justify-content: center;
+    align-items: center; 
+    position: relative;
+	height: 70vh;
+}
+
+.device-iphone6 {
+    background-image: url(../img/iphone6/devices-iphone-6.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
+.video-iphone-6 video {
+    position: relative;
+    z-index: 2;
+	width: auto;
+	height: 51vh;
+	overflow: hidden;
+}
+
+
+
+
+/*  video container */
+.video-frame {
+	max-width: 1200px;
+	margin: 20px auto;
+	padding: 120px 0;
+	background: #DEDEDE;
+
+	display: flex;
+    justify-content: center;
+    align-items: center; 
+    position: relative;
+}
+
+.video-frame video {
+    position: relative;
+    z-index: 2;
+	width: auto;
+	height: 70vh;
+	overflow: hidden;
+}
+
+
+/*  back to projects */
+
+.back-to-projects {
+	margin: 20vh auto 4vh auto;
+	max-width: 1200px;
+	text-align: center;
+}
+
+
+.back-to-projects a {
+	text-align: center;
+	color: #111111;
+	font-weight: 600;
+	font-size: 2.2rem;
+	line-height: 140%;
+	cursor: pointer;
+	font-style: italic;
+}
+
+.back-to-projects a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+
+@media screen and (max-width: 767px) {
+	.work-page {
+		padding: 12vh 20px;
+	}
+	.work-page-image {
+		margin: 10px auto;
+	}
+	.work-page-image-two img {
+		width: 100%;
+	}
+	.work-page-image-two img:first-child {
+		margin-bottom: 20px;
+	}
+	.work-page-content {
+		max-width: 100%;
+		padding: 12vh 5vh 2vh 5vh;
+	}
+	.work-page-content a {
+		font-weight: 600;
+	}
+	.video-frame {
+		margin: 10px auto;
+		padding: 60px 0;
+	}
+	.video-iphone {
+		padding: 60px 0;
+	}
+	video {
+		margin: 10px 0;
+	}
+	.iphone img {
+		max-height: 120vw;
+	}
+	h3 {
+		font-weight: 500;
+		font-size: 1.5rem;
+		font-size: 1.375rem;
+		margin: 40px 0;
+	}
+	.back-to-projects a {
+		font-size: 1.5rem;
+	}
+
+}
+
+
+.hero .text-21 .typed-cursor {
+    font-size: calc(1.775rem + 6.3vw) !important; /* Match the font size of the text */
+}
+
+@media (min-width: 1200px) {
+    .hero .text-21 .typed-cursor {
+        font-size: 4.0rem !important; /* Match the font size of the text for larger screens */
+    }
+}
+.fw-600 {
+  font-weight: 600 !important;
+}

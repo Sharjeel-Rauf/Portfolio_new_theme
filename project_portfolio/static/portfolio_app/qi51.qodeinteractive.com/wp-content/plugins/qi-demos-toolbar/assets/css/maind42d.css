@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../fonts/DMSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display:swap;
+}
+.qi-demos-toolbar-holder {
+  position: fixed;
+  z-index: 999;
+  width: 0;
+  height: 100%;
+  min-height: 100%;
+  right: 0;
+  top: 0;
+  visibility: visible;
+  opacity: 1;
+  transform: scale3d(.96, .96, .96);
+  transition: transform .33s ease-out, opacity .33s cubic-bezier(0.22, 0.61, 0.36, 1),visibility 0s .4s;
+}
+
+.qi-demos-toolbar-opened .qi-demos-toolbar-holder{
+  opacity: 1;
+  transform: scale3d(1, 1, 1);
+  visibility: visible;
+  transition-duration: .45s,.33s,0.1s;
+  transition-delay: .01s, .01s, .01s;
+}
+
+.qi-demos-toolbar-tab  {
+  position: absolute;
+  z-index: 999;
+  font-family: 'DM Sans';
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  width: 138px;
+  left: -138px;
+  top: 25%;
+  transition: all .2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.qi-demos-toolbar-tab a {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  width: 100%;
+  color: #fff;
+  text-decoration: none;
+}
+.qi-demos-toolbar-demos {
+  background-color: #343434;
+}
+.qi-demos-toolbar-purchase {
+  top: calc( 25% + 51px );
+  background-color: #ee2852;
+}
+.qi-demos-toolbar-icon {
+  width: 44px;
+  text-align: center;
+}
+.qi-demos-toolbar-icon svg {
+  vertical-align: middle;
+  position:relative;
+}
+.qi-demos-toolbar-text {
+  position: relative;
+  top: 1px;
+}
+.qi-demos-toolbar-demos .qi-demos-toolbar-icon svg {
+  top: -1px;
+  left: 2px;
+}
+.qi-toolbar-open .qi-demos-toolbar-tab:hover {
+  transform: translateX(0);
+}
+.qi-toolbar-open .qi-demos-toolbar-tab {
+  transform: translateX(94px);
+}

@@ -4,135 +4,282 @@
         <title>Portfolio - {{ page_title }}</title>
         {% load static %}
         {% block head %}
-
+        <!-- External Stylesheets. -->
+        <link rel="stylesheet" href="{% static 'style.css' %}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-        <script src="https://unpkg.com/htmx.org@1.9.0/dist/htmx.min.js"></script>
-        <!-- Typed --> 
-        <script src="{% static 'js/typed.min.js' %}"></script> 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <meta charset = 'UTF-8'>
-            <!-- Priority tags. These must come first. -->
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge; chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-	<!-- Document Title -->
-    <title>Dejan Markovic</title>
-
-  	<!-- Primary Meta Tags -->
-	<meta name="title" content="Dejan Markovic - Product designer" />
-	<meta name="author" content="Dejan Markovic"/>
-	<meta name="description" content="Product designer with 12 years of experience specializing in interface design, aligning business objective and tackling dynamic design challenges"/>
-	<meta name="keywords"  content="dejan,markovic,dejan markovic,dejan markovič,portfolio,ux,ui,graphic,design,experience,iOS,product,manager,freelance,interface,dizajn,oblikovalec,uporabniška izkušnja,slovenija"/>
-
-	<!-- Search engine robots Meta Tags. -->
-    <meta name="robots" content="index, follow, noodp, noydir, noarchive"> <!-- Disable from all search engines.-->
-
-	<!-- Open Graph Meta Tags (ogp.me) -->
-    <meta property="og:image"            content="{% static 'dejan.works/img/dejanmarkovic.png' %}">
-    <meta property="og:site_name"        content="Dejan Markovic - Product designer">
-    <meta property="og:title"            content="Dejan Markovic - Product designer">
-    <meta property="og:description"      content="Product designer with 12 years of experience specializing in interface design, aligning business objective and tackling dynamic design challenges">
-    <meta property="og:type"             content="website">
-    <meta property="og:url"              content="index.html">
-    <meta property="og:locale"           content="si_SI">
-    <meta property="og:country-name"     content="SI">
-    <meta property="og:email"            content="hey@dejan.works">
- 
-	<!-- Twitter Meta Tags. -->
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Dejan Markovic - Product designer">
-    <meta name="twitter:description" content="Product designer with 12 years of experience specializing in interface design, aligning business objective and tackling dynamic design challenges">
-	<meta name="twitter:url" content="{% static 'index.html' %}">
-	<meta name="twitter:image" content="{% static 'dejan.works/img/dejanmarkovic.png' %}">
-
-	<!-- Icons -->			
-	<link rel="apple-touch-icon" sizes="57x57" href="{% static 'www.dejan.works/img/icon/apple-icon-57x57.png' %}">
-	<link rel="apple-touch-icon" sizes="60x60" href="{% static 'www.dejan.works/img/icon/apple-icon-60x60.png' %}">
-	<link rel="apple-touch-icon" sizes="72x72" href="{% static 'www.dejan.works/img/icon/apple-icon-72x72.png' %}">
-	<link rel="apple-touch-icon" sizes="76x76" href="{% static 'www.dejan.works/img/icon/apple-icon-76x76.png' %}">
-	<link rel="apple-touch-icon" sizes="114x114" href="{% static 'www.dejan.works/img/icon/apple-icon-114x114.png' %}">
-	<link rel="apple-touch-icon" sizes="120x120" href="{% static 'www.dejan.works/img/icon/apple-icon-120x120.png' %}">
-	<link rel="apple-touch-icon" sizes="144x144" href="{% static 'www.dejan.works/img/icon/apple-icon-144x144.png' %}">
-	<link rel="apple-touch-icon" sizes="152x152" href="{% static 'www.dejan.works/img/icon/apple-icon-152x152.png' %}">
-	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'www.dejan.works/img/icon/apple-icon-180x180.png' %}">
-	<link rel="icon" type="image/png" sizes="192x192"  href="{% static 'www.dejan.works/img/icon/android-icon-192x192.png' %}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'www.dejan.works/img/icon/favicon-32x32.png' %}">
-	<link rel="icon" type="image/png" sizes="96x96" href="{% static 'www.dejan.works/img/icon/favicon-96x96.png' %}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'www.dejan.works/img/icon/favicon-16x16.png' %}">
-	<link rel="manifest" href="{% static 'www.dejan.works/img/manifest.html' %}">
-
-    <!-- External Stylesheets. -->
-    <link rel="stylesheet" href="{% static 'www.dejan.works/css/style.css' %}">
-
-    <!-- Humans -->
-    <link rel="author" href="{% static 'www.dejan.works/humans.txt' %}">	
-
-	<!-- Schema markup for structured data -->
-	<script type="application/ld+json">
-		{
-		"@context": "https://schema.org",
-		"@type": "Person",
-		"@id": "https://dejan.works",
-		"name": "Dejan Markovic - Product designer",
-		"logo": "https://dejan.works/img/dejanmarkovic.png",
-		"email": "hey@dejan.works",
-		"description": "Product designer with 12 years of experience specializing in interface design, aligning business objective and tackling dynamic design challenges",
-		"url": "https://dejan.works",
-		"image": "https://dejan.works/img/dejanmarkovic.png"
-		}
-	</script>
-    <script src="https://kit.fontawesome.com/a50dc07351.js" crossorigin="anonymous"></script>
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Red+Rose:wght@300..700&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
+        <title>Photography &#8211; Qi</title>
+        <meta name="robots" content="max-image-preview:large" />
+        
+        <script data-cfasync="false" data-pagespeed-no-defer>
+            var gtm4wp_datalayer_name = "dataLayer";
+            var dataLayer = dataLayer || [];
+        </script>
+        <link rel="dns-prefetch" href="http://fonts.googleapis.com/" />
+        <link rel="dns-prefetch" href="http://s.w.org/" />
+        <link rel="alternate" type="application/rss+xml" title="Qi &raquo; Feed" href="../../feed/index.html" />
+        <link rel="alternate" type="application/rss+xml" title="Qi &raquo; Comments Feed" href="../../comments/feed/index.html" />
+        <link rel="alternate" type="application/rss+xml" title="Qi &raquo; Photography Portfolio Category Feed" href="feed/index.html" />
+        <script type="text/javascript">
+        window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/qi51.qodeinteractive.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.0.8"}};
+        /*! This file is auto-generated */
+        !function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+        </script>
+        <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 0.07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+        </style>
+        <link rel="stylesheet" id="wp-block-library-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-includes/css/dist/block-library/style.mind42d.css' %}?ver=6.0.8" type="text/css" media="all" />
+        <style id="global-styles-inline-css" type="text/css">
+        body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+        </style>
+        <link rel="stylesheet" id="titan-adminbar-styles-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/anti-spam/assets/css/admin-barba31.css' %}?ver=7.3.3" type="text/css" media="all" />
+        <link rel="stylesheet" id="swiper-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qi-addons-for-elementor/assets/plugins/swiper/swiper.mind42d.css' %}?ver=6.0.8" type="text/css" media="all" />
+        <link rel="stylesheet" id="qi-addons-for-elementor-grid-style-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qi-addons-for-elementor/assets/css/grid.mind42d.css' %}?ver=6.0.8" type="text/css" media="all" />
+        <link rel="stylesheet" id="qi-addons-for-elementor-helper-parts-style-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qi-addons-for-elementor/assets/css/helper-parts.mind42d.css' %}?ver=6.0.8" type="text/css" media="all" />
+        <link rel="stylesheet" id="qi-addons-for-elementor-style-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qi-addons-for-elementor/assets/css/main.mind42d.css' %}?ver=6.0.8" type="text/css" media="all" />
+        <link rel="stylesheet" id="perfect-scrollbar-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/plugins/perfect-scrollbar/perfect-scrollbard42d.css' %}?ver=6.0.8" type="text/css" media="all" />
+        <link rel="stylesheet" id="qode-essential-addons-style-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/css/main.mind42d.css' %}?ver=6.0.8" type="text/css" media="all" />
+        <link rel="stylesheet" id="qi-google-fonts-css" href="https://fonts.googleapis.com/css?family=DM+Sans%3A400%2C500%2C600%2C700%7CMontserrat%3A400%2C500%2C600%2C700%7CIstok+Web%3A400%2C500%2C600%2C700&amp;subset=latin-ext&amp;display=swap&amp;ver=1.0.0" type="text/css" media="all" />
+        <link rel="stylesheet" id="qi-grid-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/themes/qi/assets/css/grid.mind42d.css' %}?ver=6.0.8" type="text/css" media="all" />
+        <link rel="stylesheet" id="qi-main-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/themes/qi/assets/css/main.mind42d.css' %}?ver=6.0.8" type="text/css" media="all" />
+        <style id="qi-main-inline-css" type="text/css">
+        #qodef-back-to-top .qodef-back-to-top-icon { background-color: rgba(255,255,255,0);}#qodef-back-to-top:hover .qodef-back-to-top-icon { background-color: rgba(255,255,255,0);}#qodef-single-portfolio-navigation .qodef-m-nav, .qodef-m-pagination.qodef--wp .page-numbers, .qodef-m-pagination.qodef--wp .page-numbers.next, .qodef-m-pagination.qodef--wp .page-numbers.prev, #qodef-woo-page .woocommerce-pagination .page-numbers, #qodef-woo-page .woocommerce-pagination .page-numbers.next, #qodef-woo-page .woocommerce-pagination .page-numbers.prev, .qodef-shortcode .qodef-m-pagination.qodef--standard .page-numbers, .qodef-shortcode .qodef-m-pagination.qodef--standard .page-numbers.next, .qodef-shortcode .qodef-m-pagination.qodef--standard .page-numbers.prev { color: #000000;}#qodef-single-portfolio-navigation .qodef-m-nav:hover, .qodef-m-pagination.qodef--wp .page-numbers:hover, .qodef-m-pagination.qodef--wp .page-numbers.current, .qodef-m-pagination.qodef--wp .page-numbers.next:hover, .qodef-m-pagination.qodef--wp .page-numbers.prev:hover, #qodef-woo-page .woocommerce-pagination .page-numbers:hover, #qodef-woo-page .woocommerce-pagination .page-numbers.current, #qodef-woo-page .woocommerce-pagination .page-numbers.next:hover, #qodef-woo-page .woocommerce-pagination .page-numbers.prev:hover, .qodef-shortcode .qodef-m-pagination.qodef--standard .page-numbers:hover, .qodef-shortcode .qodef-m-pagination.qodef--standard .page-numbers.current, .qodef-shortcode .qodef-m-pagination.qodef--standard .page-numbers.prev:hover, .qodef-shortcode .qodef-m-pagination.qodef--standard .page-numbers.next:hover { color: #414141;}#qodef-page-footer-top-area { background-color: #ffffff;}#qodef-page-footer-top-area-inner { padding-top: 30px;padding-bottom: 30px;padding-left: 69px !important;padding-right: 69px !important;}#qodef-page-footer-top-area .widget { margin-bottom: 0px;}#qodef-page-footer-top-area .widget .qodef-widget-title { margin-bottom: 0px;}#qodef-page-inner { padding: 100px 0 31px 0;}@media only screen and (max-width: 1024px) { #qodef-page-inner { padding: 100px 0 31px 0;}}#qodef-page-header .widget.woocommerce.widget_shopping_cart .widgettitle { color: #000000;font-family: "Montserrat";font-size: 12px;font-style: normal;font-weight: 800;letter-spacing: 0px;text-transform: uppercase;}.qodef-header-navigation> ul > li > a, #qodef-page-header .widget_qode_essential_addons_icon_svg .qodef-m-text { color: #000000;font-family: "Montserrat";font-size: 12px;font-style: normal;font-weight: 800;letter-spacing: 0px;text-transform: uppercase;}.qodef-header-navigation> ul > li > a:hover, .qodef-header-navigation> ul > li > a:focus { color: #000000;text-decoration: none;}.qodef-header-navigation> ul > li.current-menu-ancestor > a, .qodef-header-navigation> ul > li.current-menu-item > a { color: #000000;}.qodef-header-navigation > ul > li.qodef-menu-item--narrow ul li a { color: #000000;font-family: "Montserrat";font-size: 12px;font-style: normal;font-weight: 700;text-decoration: none;letter-spacing: 0px;text-transform: uppercase;}.qodef-header-navigation > ul > li.qodef-menu-item--narrow ul li:hover > a, .qodef-header-navigation > ul > li.qodef-menu-item--narrow ul li:focus > a { color: #000000;text-decoration: underline;}.qodef-header-navigation > ul > li.qodef-menu-item--narrow ul li.current-menu-ancestor > a, .qodef-header-navigation > ul > li.qodef-menu-item--narrow ul li.current-menu-item > a { color: #000000;}.qodef-portfolio-list .qodef-e-info-category { color: #000000;}.qodef-portfolio-list .qodef-e-info-category a, .qodef-e-content-follow .qodef-e-content .qodef-e-category-holder .qodef-e-info-category { color: #000000;font-family: "Istok Web";font-size: 15px;line-height: 23px;font-weight: 400;letter-spacing: 0px;text-transform: none;}.qodef-portfolio-list .qodef-e-info-category a:hover, .qodef-portfolio-list .qodef-e-info-category a:focus { color: #414141;}#qodef-side-area { background: #ffffff;}.qodef-side-area-opener .qodef-m-icon { width: 46px;}#qodef-side-area-close .qodef-m-icon { width: 35px;}body { font-family: "Istok Web";font-size: 15px;line-height: 23px;font-weight: 400;letter-spacing: 0px;}.mfp-bottom-bar .mfp-counter, .mfp-bottom-bar .mfp-title { font-family: "Istok Web";font-size: 15px;line-height: 23px;font-weight: 400;letter-spacing: 0px;}p { margin-top: 0px;margin-bottom: 0px;}h1, .qodef-h1 { font-family: "Montserrat";font-weight: 800;letter-spacing: 0px;margin-top: 0px;margin-bottom: 0px;}h2, .qodef-h2 { font-family: "Montserrat";font-size: 30px;line-height: 40px;font-weight: 800;letter-spacing: 1px;text-transform: uppercase;margin-top: 0px;margin-bottom: 0px;}#qodef-woo-page.qodef--checkout #customer_details h3, #qodef-woo-page.qodef--checkout #order_review_heading { font-family: "Montserrat";font-size: 30px;line-height: 40px;font-weight: 800;letter-spacing: 1px;text-transform: uppercase;}h3, .qodef-h3 { margin-top: 0px;margin-bottom: 0px;}h4, .qodef-h4 { margin-top: 0px;margin-bottom: 0px;}h5, .qodef-h5 { color: #000000;font-family: "Montserrat";font-size: 18px;line-height: 28px;font-style: normal;font-weight: 800;letter-spacing: 0px;text-transform: uppercase;margin-top: 0px;margin-bottom: 0px;}.woocommerce-page div.woocommerce .shop_table th, #qodef-woo-page.qodef--cart .shop_table td.product-name a { color: #000000;font-family: "Montserrat";font-size: 18px;line-height: 28px;font-style: normal;font-weight: 800;letter-spacing: 0px;text-transform: uppercase;}#qodef-woo-page.qodef--single .woocommerce-tabs .wc-tabs li a { font-family: "Montserrat";font-size: 18px;line-height: 28px;font-style: normal;font-weight: 800;letter-spacing: 0px;text-transform: uppercase;}a, p a { text-decoration: none;}a:hover, p a:hover, a:focus, p a:focus, .woocommerce-account .woocommerce-MyAccount-navigation ul li.is-active a, #qodef-woo-page.qodef--single .woocommerce-product-rating .woocommerce-review-link:hover, .qodef-page-title .qodef-breadcrumbs a:hover, #qodef-page-comments-list .qodef-comment-item .qodef-e-links a:hover { text-decoration: none;outline: none;}h5 a:hover, h5 a:focus, #qodef-woo-page.qodef--cart .shop_table td.product-name a:hover, #qodef-woo-page.qodef--single .woocommerce-tabs .wc-tabs li a:hover, #qodef-woo-page.qodef--single .woocommerce-tabs .wc-tabs li.active a, #qodef-woo-page.qodef--single .woocommerce-tabs .wc-tabs li.ui-state-active a, #qodef-woo-page.qodef--single .woocommerce-tabs .wc-tabs li.ui-state-hover a, .qodef-woo-shortcode-product-list .qodef-woo-product-inner:hover h5.qodef-woo-product-title { color: #414141;text-decoration: none;}.qodef-header--standard #qodef-page-header { height: 130px;background-color: #ffffff;}.qodef-header--standard #qodef-page-header-inner { padding-left: 70px;padding-right: 70px;}.qodef-mobile-header--standard #qodef-page-mobile-header { height: 80px;}.qodef-mobile-header--standard #qodef-page-mobile-header-inner { padding-left: 30px;padding-right: 30px;}.qodef-mobile-header--standard .qodef-mobile-header-navigation > ul:not(.qodef-content-grid) { padding-left: 30px;padding-right: 30px;}.qodef-mobile-header-opener { color: #000000;}.qodef-mobile-header-opener:hover { color: #414141;}.qodef-mobile-header-navigation> ul > li > a { color: #000000;font-family: "Montserrat";font-size: 12px;font-style: normal;font-weight: 700;text-decoration: none;letter-spacing: 0px;text-transform: uppercase;}.qodef-mobile-header-navigation> ul > li > .qodef-mobile-menu-item-icon { color: #000000;}.qodef-mobile-header-navigation> ul > li > a:hover, .qodef-mobile-header-navigation> ul > li > a:focus { color: #000000;text-decoration: underline;}.qodef-mobile-header-navigation> ul > li > .qodef-mobile-menu-item-icon:hover, .qodef-mobile-header-navigation> ul > li > .qodef-mobile-menu-item-icon:focus { color: #000000;}.qodef-mobile-header-navigation> ul > li.current-menu-ancestor > a, .qodef-mobile-header-navigation> ul > li.current-menu-item > a { color: #000000;text-decoration: underline;}.qodef-mobile-header-navigation> ul > li.current-menu-ancestor > .qodef-mobile-menu-item-icon, .qodef-mobile-header-navigation> ul > li.current-menu-item > .qodef-mobile-menu-item-icon { color: #000000;}
+        </style>
+        <link rel="stylesheet" id="qi-style-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/themes/qi/styled42d.css' %}?ver=6.0.8" type="text/css" media="all" />
+        <link rel="stylesheet" id="qi-demos-toolbar-css" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qi-demos-toolbar/assets/css/maind42d.css' %}?ver=6.0.8" type="text/css" media="all" />
+        <script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-includes/js/jquery/jquery.minaf6c.js' %}?ver=3.6.0" id="jquery-core-js"></script>
+        <script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-includes/js/jquery/jquery-migrate.mind617.js' %}?ver=3.3.2" id="jquery-migrate-js"></script>
+        <script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qi-demos-toolbar/assets/js/maind42d.js' %}?ver=6.0.8" id="qi-demos-toolbar-js"></script>
+        <link rel="https://api.w.org/" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-json/index.html' %}" /><link rel="alternate" type="application/json" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-json/wp/v2/portfolio-category/3.json' %}" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.html?rsd" />
+        <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-includes/wlwmanifest.xml' %}" />
+        <meta name="generator" content="WordPress 6.0.8" />
+        <script type="text/javascript">
+        (function(url){
+            if(/(?:Chrome\/26\.0\.1410\.63 Safari\/537\.31|WordfenceTestMonBot)/.test(navigator.userAgent)){ return; }
+            var addEvent = function(evt, handler) {
+                if (window.addEventListener) {
+                    document.addEventListener(evt, handler, false);
+                } else if (window.attachEvent) {
+                    document.attachEvent('on' + evt, handler);
+                }
+            };
+            var removeEvent = function(evt, handler) {
+                if (window.removeEventListener) {
+                    document.removeEventListener(evt, handler, false);
+                } else if (window.detachEvent) {
+                    document.detachEvent('on' + evt, handler);
+                }
+            };
+            var evts = 'contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop keydown keypress keyup mousedown mousemove mouseout mouseover mouseup mousewheel scroll'.split(' ');
+            var logHuman = function() {
+                if (window.wfLogHumanRan) { return; }
+                window.wfLogHumanRan = true;
+                var wfscr = document.createElement('script');
+                wfscr.type = 'text/javascript';
+                wfscr.async = true;
+                wfscr.src = url + '&r=' + Math.random();
+                (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(wfscr);
+                for (var i = 0; i < evts.length; i++) {
+                    removeEvent(evts[i], logHuman);
+                }
+            };
+            for (var i = 0; i < evts.length; i++) {
+                addEvent(evts[i], logHuman);
+            }
+        })('../../index0424.html?wordfence_lh=1&amp;hid=36B39F01AAE7533350985F656557EAED');
+        </script>
+        
+        
+        <script data-cfasync="false" data-pagespeed-no-defer>
+            var dataLayer_content = {"pagePostType":"portfolio-item","pagePostType2":"tax-portfolio-item","pageCategory":[]};
+            dataLayer.push( dataLayer_content );
+        </script>
+        <script data-cfasync="false">
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.'+'js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N6TG7SZ');
+        </script>
+        
+        <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/uploads/2021/04/cropped-qi-favicon-32x32.png' %}" sizes="32x32" />
+        <link rel="icon" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/uploads/2021/04/cropped-qi-favicon-192x192.png' %}" sizes="192x192" />
+        <link rel="apple-touch-icon" href="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/uploads/2021/04/cropped-qi-favicon-180x180.png' %}" />
+        <meta name="msapplication-TileImage" content="https://qi51.qodeinteractive.com/wp-content/uploads/2021/04/cropped-qi-favicon-270x270.png" />
         {% endblock %}
     </head>
-    	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T20N0M0XCE"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+    <body class="archive tax-portfolio-category term-photography term-3 wp-embed-responsive qodef-qi--no-touch qi-addons-for-elementor-1.5.4  qodef-content-grid-1300 qodef-header--standard qodef-header-appearance--none qodef-mobile-header--standard qodef-nav-1st-lvl--draw-hover-underline qode-essential-addons-1.4.6 theme-qi qi-1.0.10 qode-export-1.0 qodef-header-standard--right qodef-search--covers-header elementor-default elementor-kit-5" itemscope itemtype="https://schema.org/WebPage">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><div class="qi-demos-toolbar-holder">
+        <div class="qi-demos-toolbar-inner">
+        
+       
+        </div>
+        </div>
+        <a class="skip-link screen-reader-text" href="#qodef-page-content">Skip to the content</a> <div id="qodef-page-wrapper" class>
+      
 
-	gtag('config', 'G-T20N0M0XCE');
-	</script>
-  
-    <body>
-        {% block navbar %}
+
+
+            {% block navbar %}
             {% include 'navbar.html' %}
 		{% endblock %}
-
 
         {% block content %}
         {% endblock %}
 
         {% include 'footer.html' %}
-                <!-- External JavaScript Libraries -->
-        <script src="{% static 'ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js' %}"></script>
+	
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6TG7SZ" height="0" width="0" style="display:none;visibility:hidden" aria-hidden="true"></iframe>
+        </noscript>
+        <div id="qodef-side-area">
+            <a id="qodef-side-area-close" href="javascript:void(0)" class="qodef-opener-icon qodef-m">
+                <span class="qodef-m-icon">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="34.1px" height="34.1px" viewBox="0 0 34.1 34.1" style="enable-background:new 0 0 34.1 34.1;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:none;stroke:#010101;stroke-miterlimit:10;}
+                        </style>
+                        <polygon class="st0" points="0.9,6.4 6.6,0.7 17.2,11.4 27.8,0.8 33.4,6.4 22.7,17.1 33.2,27.7 27.5,33.4 17,22.8 6.6,33.3 0.7,27.4 11.3,16.9" />
+                    </svg>
+                </span>
+            </a>
+            <div id="qodef-side-area-inner">
+                <div id="media_image-2" class="widget widget_media_image" data-area="side-area">
+                    <a href="{% url 'portfolio_page' %}">
+                        <img width="245" height="21" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/uploads/2020/10/logo.png' %}" class="image wp-image-14 attachment-full size-full" alt="m" loading="lazy" style="max-width: 100%; height: auto;" />
+                    </a>
+                </div>
+                <div id="qode_essential_addons_spacer-2" class="widget widget_qode_essential_addons_spacer" data-area="side-area">
+                    <div class="qodef-spacer-widget qodef--vertical" style="height: 17px"></div>
+                </div>
+                <div id="text-2" class="widget widget_text" data-area="side-area">
+                    <div class="textwidget">
+                        {% if user_profile %}
+                            <p>{{ user_description }}</p>
+                    </div>
+                </div>
+                
+                <div id="custom_html-2" class="widget_text widget widget_custom_html" data-area="side-area">
+                    <div class="textwidget custom-html-widget">
+                        <br/>
+                        {% if user_email %}
+                        <a class="qodef-qi-link--hover-underline" href="mailto:{{ user_email }}">
+                          {{ user_email }}
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="qode_essential_addons_spacer-5" class="widget widget_qode_essential_addons_spacer" data-area="side-area">
+                    <div class="qodef-spacer-widget qodef--vertical" style="height: 23px"></div>
+                </div>
+                <div id="qode_essential_addons_icon_svg-2" class="widget widget_qode_essential_addons_icon_svg" data-area="side-area">
+                    <div class="qodef-addons-icon-svg-widget">
+                        <!-- Display LinkedIn URL if available -->
+                        {% if linkedin_url %}
+                        <a href="{{ linkedin_url }}" target="_blank">
+                            <div class="qodef-m-holder" style="align-items:center">
+                                <div class="qodef-m-icon" style="margin: 0 0 0 0;--stroke-color: transparent;--stroke-hover-color: transparent;--fill-hover-color: #414141;width: 16px;height: 10px">
+                                    <svg x="0px" y="0px" width="12px" height="11px" viewbox="0 0 12 11">
+                                        <path d="M2.6-29.4c1.7,0,3.1,0.5,3.1,2.4c0,1-0.5,1.6-1.3,2c1.2,0.3,1.8,1.3,1.8,2.5c0,2-1.7,2.9-3.5,2.9H-2v-9.8H2.6z M2.4-25.4
+                                                 c0.8,0,1.3-0.3,1.3-1.2c0-0.9-0.7-1.1-1.5-1.1h-2v2.3H2.4z M2.5-21.2c0.9,0,1.6-0.3,1.6-1.3c0-1-0.6-1.4-1.6-1.4H0.2v2.7H2.5z
+                                                 M12.1-21.8h1.7c-0.5,1.6-1.6,2.4-3.3,2.4c-2.2,0-3.6-1.5-3.6-3.7c0-2.1,1.5-3.8,3.6-3.8c2.2,0,3.5,1.8,3.5,3.9c0,0.1,0,0.2,0,0.4
+                                                 H8.8c0,1.1,0.6,1.8,1.8,1.8C11.2-20.9,12-21.2,12.1-21.8z M8.4-28.7v1h4v-1H8.4z M8.8-23.9H12c-0.1-0.9-0.6-1.5-1.6-1.5
+                                                 C9.5-25.4,8.9-24.8,8.8-23.9z" />
+                                        <path d="M1.4,2.6L1.4,2.6C0.6,2.6,0,2,0,1.3C0,0.6,0.6,0,1.5,0c0.9,0,1.4,0.6,1.4,1.3C2.9,2,2.3,2.6,1.4,2.6z M2.7,11H0.1V3.6h2.6
+                                               V11z M12,11H9.4V7c0-1-0.4-1.7-1.3-1.7C7.4,5.4,7,5.8,6.8,6.2C6.7,6.4,6.7,6.6,6.7,6.9V11H4.1c0-6.7,0-7.4,0-7.4h2.6v1.1h0
+                                               C7,4.1,7.6,3.4,9,3.4c1.7,0,3,1.1,3,3.3V11z" />
+                                        <path d="M9.6,34.8H8.3c-1,0-1.2,0.5-1.2,1.1v1.5h2.4l-0.3,2.3H7.2v5.9H4.7v-5.9H2.6v-2.3h2.1v-1.7c0-2,1.3-3.1,3.1-3.1
+                                               c0.9,0,1.6,0.1,1.8,0.1V34.8z" />
+                                      </svg>
+                                </div>
+                            </div>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="description" style="text-align: center;">
+                    <a class="slide delay01" href="{% url 'edit_user_profile' %}" style="margin-top: 10px; color: #888b8d; font-size: 1.5rem; padding-top: 0px; display: inline-block;">
+                        <!-- SVG for edit project -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <!-- SVG paths -->
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502 .646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                        </svg>
+                    </a>
+                </div>
+            {% endif %}
 
+                {% else %}
+                {% if user.is_authenticated %}  <p>No user profile data available. Please <a style = "color: #888b8b; font-style: italic; padding-top: 0px; display: inline-block;" href="{% url 'add_user_profile' %}">add</a> your profile </p>
+                {% else %}
+                <p>No user profile data added yet.</p>
+         
+                {% endif %}
+            {% endif %}
+       
+       
+       </div>
+       </div>
+   <style>
+    /* Style for the edit and delete buttons */
+.edit-button {
+    margin: 0 10px; /* Add margin to separate the buttons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    border-radius: 50%; /* Make the buttons circular */
+    background-color: #f0f0f0; /* Light background color for the buttons */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
 
-        <!-- Copy to clipboard -->
-        <script src="{% static 'cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js' %}"></script>
-        <script>
-        $(function() {
-            var clipboard = new ClipboardJS('#copyemail');
+/* Hover effect for the buttons */
+.edit-button:hover {
+    background-color: #d0d0d0; /* Darker background color on hover */
+}
+   </style>
 
-            clipboard.on('success', function(e) {
-            // Change button text to "Copied"
-            $('#copyemail').text('Email Copied');
-
-            // Reset button text to "Copy" after 2 seconds
-            setTimeout(function() {
-                $('#copyemail').text('{{ user_email }}');
-            }, 2000);
-            });
-        });
+        <script data-cfasync="false" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script><script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-includes/js/jquery/ui/core.min0028.js' %}?ver=1.13.1" id="jquery-ui-core-js"></script>
+        <script type="text/javascript" id="qi-addons-for-elementor-script-js-extra">
+        /* <![CDATA[ */
+        var qodefQiAddonsGlobal = {"vars":{"adminBarHeight":0,"iconArrowLeft":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" x=\"0px\" y=\"0px\" width=\"21px\" height=\"12.4px\" viewBox=\"0 0 21 12.4\" xml:space=\"preserve\" style=\"stroke: none;\"><g><path d=\"M0,6.2C0,6.1,0,6,0.1,5.9c0-0.1,0.1-0.2,0.2-0.3l5.3-5.3c0.4-0.4,0.8-0.4,1.2,0c0.4,0.4,0.4,0.8,0,1.2L3,5.3h17.1c0.3,0,0.5,0.1,0.6,0.2S21,5.9,21,6.2c0,0.3-0.1,0.5-0.2,0.6s-0.4,0.2-0.6,0.2H3l3.7,3.8c0.4,0.4,0.4,0.8,0,1.2c-0.4,0.4-0.8,0.4-1.2,0L0.3,6.8C0.2,6.7,0.1,6.6,0.1,6.5C0,6.4,0,6.3,0,6.2z\"\/><\/g><\/svg>","iconArrowRight":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" x=\"0px\" y=\"0px\" width=\"21px\" height=\"12.4px\" viewBox=\"0 0 21 12.4\" xml:space=\"preserve\" style=\"stroke: none;\"><g><path d=\"M20.9,6.5c0,0.1-0.1,0.2-0.2,0.3L15.5,12c-0.4,0.4-0.8,0.4-1.2,0c-0.4-0.4-0.4-0.8,0-1.2L18,7.1H0.9C0.6,7.1,0.4,7,0.2,6.8S0,6.4,0,6.2c0-0.3,0.1-0.5,0.2-0.6s0.4-0.2,0.6-0.2H18l-3.7-3.8c-0.4-0.4-0.4-0.8,0-1.2c0.4-0.4,0.8-0.4,1.2,0l5.3,5.3c0.1,0.1,0.2,0.2,0.2,0.3C21,6,21,6.1,21,6.2S21,6.4,20.9,6.5z\"\/><\/g><\/svg>","iconClose":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 9.1 9.1\" xml:space=\"preserve\"><g><path d=\"M8.5,0L9,0.6L5.1,4.5L9,8.5L8.5,9L4.5,5.1L0.6,9L0,8.5L4,4.5L0,0.6L0.6,0L4.5,4L8.5,0z\"\/><\/g><\/svg>"}};
+        /* ]]> */
         </script>
-        <script>
-            document.body.addEventListener('htmx:configRequest', (event) => {
-                event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
-            })
+        <script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qi-addons-for-elementor/assets/js/main.mind42d.js' %}?ver=6.0.8" id="qi-addons-for-elementor-script-js"></script>
+        <script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-includes/js/hoverIntent.min3e5a.js' %}?ver=1.10.2" id="hoverIntent-js"></script>
+        <script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/plugins/modernizr/modernizrd42d.js' %}?ver=6.0.8" id="modernizr-js"></script>
+        <script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qi-addons-for-elementor/assets/plugins/fslightbox/fslightbox.mind42d.js' %}?ver=6.0.8" id="fslightbox-js"></script>
+        <script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/elementor/assets/lib/swiper/swiper.min48f5.js' %}?ver=5.3.6" id="swiper-js"></script>
+        <script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/plugins/perfect-scrollbar/perfect-scrollbar.jquery.mind42d.js' %}?ver=6.0.8" id="perfect-scrollbar-js"></script>
+        <script type="text/javascript" id="qode-essential-addons-script-js-extra">
+        /* <![CDATA[ */
+        var qodefGlobal = {"vars":{"adminBarHeight":0,"iconArrowLeft":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" x=\"0px\" y=\"0px\" width=\"21px\" height=\"12.4px\" viewBox=\"0 0 21 12.4\" xml:space=\"preserve\" style=\"stroke: none;\"><g><path d=\"M0,6.2C0,6.1,0,6,0.1,5.9c0-0.1,0.1-0.2,0.2-0.3l5.3-5.3c0.4-0.4,0.8-0.4,1.2,0c0.4,0.4,0.4,0.8,0,1.2L3,5.3h17.1c0.3,0,0.5,0.1,0.6,0.2S21,5.9,21,6.2c0,0.3-0.1,0.5-0.2,0.6s-0.4,0.2-0.6,0.2H3l3.7,3.8c0.4,0.4,0.4,0.8,0,1.2c-0.4,0.4-0.8,0.4-1.2,0L0.3,6.8C0.2,6.7,0.1,6.6,0.1,6.5C0,6.4,0,6.3,0,6.2z\"\/><\/g><\/svg>","iconArrowRight":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" x=\"0px\" y=\"0px\" width=\"21px\" height=\"12.4px\" viewBox=\"0 0 21 12.4\" xml:space=\"preserve\" style=\"stroke: none;\"><g><path d=\"M20.9,6.5c0,0.1-0.1,0.2-0.2,0.3L15.5,12c-0.4,0.4-0.8,0.4-1.2,0c-0.4-0.4-0.4-0.8,0-1.2L18,7.1H0.9C0.6,7.1,0.4,7,0.2,6.8S0,6.4,0,6.2c0-0.3,0.1-0.5,0.2-0.6s0.4-0.2,0.6-0.2H18l-3.7-3.8c-0.4-0.4-0.4-0.8,0-1.2c0.4-0.4,0.8-0.4,1.2,0l5.3,5.3c0.1,0.1,0.2,0.2,0.2,0.3C21,6,21,6.1,21,6.2S21,6.4,20.9,6.5z\"\/><\/g><\/svg>","iconClose":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 9.1 9.1\" xml:space=\"preserve\"><g><path d=\"M8.5,0L9,0.6L5.1,4.5L9,8.5L8.5,9L4.5,5.1L0.6,9L0,8.5L4,4.5L0,0.6L0.6,0L4.5,4L8.5,0z\"\/><\/g><\/svg>","topAreaHeight":0,"headerHeight":130}};
+        /* ]]> */
         </script>
-    </body>
-</html>
+        <script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/js/main.mind42d.js' %}?ver=6.0.8" id="qode-essential-addons-script-js"></script>
+        <script type="text/javascript" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/themes/qi/assets/js/main.mind42d.js' %}?ver=6.0.8" id="qi-main-js-js"></script>
+        <script>
+                        /(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
+                    </script>
+        </body>
+        
+        <!-- Mirrored from qi51.qodeinteractive.com/portfolio-category/photography/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2024 22:38:21 GMT -->
+        </html>

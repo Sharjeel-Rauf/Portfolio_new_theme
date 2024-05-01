@@ -17,8 +17,8 @@
 </div>
 
 
-<div class="about-me slide delay03">
-    <div style="text-align: center;" class="description">
+		<div class="qodef-e-content">
+			<div style="text-align: center;" class="qodef-e-info-category">
         <!-- Display the confirmation message for deleting the project -->
         <p>Are you sure you want to delete the project "{{ project.title }}"?</p> 
 
@@ -26,15 +26,15 @@
         <form method="POST">
             {% csrf_token %}
             <!-- Anchor tag for the deletion link -->
-            <button type="submit" class="btn" style="background-color: #888b8d; margin-top: 50px; color: white;">Delete</button>
+            <button type="submit" class="btn" style="background-color: black; margin-top: 50px; color: white;">Delete</button>
         </form>
     </div>
 </div>
 
 <!-- Back to all projects link -->
-<div style="margin: 4vh auto 4vh auto;" class="back-to-projects">
+<h5 style="text-align: center; margin-top: 100px;" itemprop="name" class="qodef-e-title entry-title">
     <a href="{% url 'portfolio_page' %}">Back to all projects</a>
-</div>
+</h5>
 
 
  <!-- Include jQuery (if not already included) -->

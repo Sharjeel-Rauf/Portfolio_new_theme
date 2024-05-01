@@ -1,0 +1,101 @@
+HTTrack3.49-2+htsswf+htsjava launched on Sat, 27 Apr 2024 03:37:03 at https://qi51.qodeinteractive.com/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qiC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://qi51.qodeinteractive.com/ -O1 "C:\Sharjeel\Software Engineering Career\Dawar_Bhai_bootcamp\HTTP Track\portfolio_app" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+03:38:05	Error: 	"Not Found" (404) at link https://qi51.qodeinteractive.com/xmlrpc.php?rsd (from https://qi51.qodeinteractive.com/)
+03:38:06	Warning: 	Moved Permanently for qi51.qodeinteractive.com/robots.txt
+03:38:06	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/robots.txt and https://qi51.qodeinteractive.com/robots.txt
+03:38:06	Warning: 	Warning moved treated for qi51.qodeinteractive.com/robots.txt (real one is https://qi51.qodeinteractive.com/robots.txt)
+03:38:06	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=7507F2D51DD3F941A4CEBB47EA4D0A23
+03:38:06	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=7507F2D51DD3F941A4CEBB47EA4D0A23 and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=7507F2D51DD3F941A4CEBB47EA4D0A23
+03:38:06	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=7507F2D51DD3F941A4CEBB47EA4D0A23 to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=7507F2D51DD3F941A4CEBB47EA4D0A23
+03:38:52	Warning: 	Link https://qi51.qodeinteractive.com/cdn-cgi/l/email-protection not scanned (follow robots meta tag)
+03:38:52	Error: 	"Not Found" (404) at link https://qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/fonts/Roboto-Regular.ttf (from https://qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/css/main.min.css?ver=6.0.8)
+03:38:52	Error: 	"Not Found" (404) at link https://qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/fonts/Heebo-Light.ttf (from https://qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/css/main.min.css?ver=6.0.8)
+03:38:52	Error: 	"Not Found" (404) at link https://qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/fonts/Heebo-Regular.ttf (from https://qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/css/main.min.css?ver=6.0.8)
+03:38:52	Error: 	"Not Found" (404) at link https://qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/fonts/Heebo-Medium.ttf (from https://qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/css/main.min.css?ver=6.0.8)
+03:38:52	Error: 	"Not Found" (404) at link https://qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/img/search-icon.svg (from https://qi51.qodeinteractive.com/wp-content/plugins/qode-essential-addons/assets/css/main.min.css?ver=6.0.8)
+03:38:53	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=7507F2D51DD3F941A4CEBB47EA4D0A23
+03:38:53	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=7507F2D51DD3F941A4CEBB47EA4D0A23 to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3D7507F2D51DD3F941A4CEBB47EA4D0A23
+03:38:53	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?p=140
+03:38:53	Warning: 	File has moved from https://qi51.qodeinteractive.com/?p=140 to https://qi51.qodeinteractive.com/about/
+03:38:53	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=BDC0F7D079A210A60E7371AF0DFDE3F8
+03:38:53	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=BDC0F7D079A210A60E7371AF0DFDE3F8 and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=BDC0F7D079A210A60E7371AF0DFDE3F8
+03:38:53	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=BDC0F7D079A210A60E7371AF0DFDE3F8 to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=BDC0F7D079A210A60E7371AF0DFDE3F8
+03:38:53	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?p=103
+03:38:53	Warning: 	File has moved from https://qi51.qodeinteractive.com/?p=103 to https://qi51.qodeinteractive.com/portfolio-item/see-the-magic/
+03:38:53	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=67B87DEB3E741EDC516BD46338F74EA8
+03:38:53	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=67B87DEB3E741EDC516BD46338F74EA8 and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=67B87DEB3E741EDC516BD46338F74EA8
+03:38:53	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=67B87DEB3E741EDC516BD46338F74EA8 to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=67B87DEB3E741EDC516BD46338F74EA8
+03:38:54	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=36B39F01AAE7533350985F656557EAED
+03:38:54	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=36B39F01AAE7533350985F656557EAED and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=36B39F01AAE7533350985F656557EAED
+03:38:54	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=36B39F01AAE7533350985F656557EAED to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=36B39F01AAE7533350985F656557EAED
+03:38:56	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?p=99
+03:38:56	Warning: 	File has moved from https://qi51.qodeinteractive.com/?p=99 to https://qi51.qodeinteractive.com/portfolio-item/key-to-design/
+03:38:56	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=B1156C3154860633A37FAEF55380EED2
+03:38:56	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=B1156C3154860633A37FAEF55380EED2 and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=B1156C3154860633A37FAEF55380EED2
+03:38:56	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=B1156C3154860633A37FAEF55380EED2 to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=B1156C3154860633A37FAEF55380EED2
+03:39:46	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?p=95
+03:39:46	Warning: 	File has moved from https://qi51.qodeinteractive.com/?p=95 to https://qi51.qodeinteractive.com/portfolio-item/photo-and-art/
+03:39:46	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=101BBD2141C1FE494B8CF085FC6B2023
+03:39:46	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=101BBD2141C1FE494B8CF085FC6B2023 and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=101BBD2141C1FE494B8CF085FC6B2023
+03:39:46	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=101BBD2141C1FE494B8CF085FC6B2023 to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=101BBD2141C1FE494B8CF085FC6B2023
+03:39:46	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?p=91
+03:39:46	Warning: 	File has moved from https://qi51.qodeinteractive.com/?p=91 to https://qi51.qodeinteractive.com/portfolio-item/viewpoints/
+03:39:46	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=EAF4045F38FEA97B3A2C388E087609F6
+03:39:46	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=EAF4045F38FEA97B3A2C388E087609F6 and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=EAF4045F38FEA97B3A2C388E087609F6
+03:39:46	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=EAF4045F38FEA97B3A2C388E087609F6 to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=EAF4045F38FEA97B3A2C388E087609F6
+03:39:48	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?p=87
+03:39:48	Warning: 	File has moved from https://qi51.qodeinteractive.com/?p=87 to https://qi51.qodeinteractive.com/portfolio-item/before-fading-away/
+03:39:48	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=625500A66F0063EB406D35EDD36FC45A
+03:39:48	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=625500A66F0063EB406D35EDD36FC45A and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=625500A66F0063EB406D35EDD36FC45A
+03:39:48	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=625500A66F0063EB406D35EDD36FC45A to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=625500A66F0063EB406D35EDD36FC45A
+03:39:48	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?p=78
+03:39:48	Warning: 	File has moved from https://qi51.qodeinteractive.com/?p=78 to https://qi51.qodeinteractive.com/portfolio-item/a-photogenic-face/
+03:39:48	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=D90318D09C01B9F18B449E25D4913723
+03:39:48	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=D90318D09C01B9F18B449E25D4913723 and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=D90318D09C01B9F18B449E25D4913723
+03:39:48	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=D90318D09C01B9F18B449E25D4913723 to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=D90318D09C01B9F18B449E25D4913723
+03:39:55	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?p=73
+03:39:55	Warning: 	File has moved from https://qi51.qodeinteractive.com/?p=73 to https://qi51.qodeinteractive.com/portfolio-item/digital-photo-artist/
+03:39:55	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=355191B535929A56F33A10D0139CAF88
+03:39:55	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=355191B535929A56F33A10D0139CAF88 and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=355191B535929A56F33A10D0139CAF88
+03:39:55	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=355191B535929A56F33A10D0139CAF88 to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=355191B535929A56F33A10D0139CAF88
+03:39:58	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?p=67
+03:39:58	Warning: 	File has moved from https://qi51.qodeinteractive.com/?p=67 to https://qi51.qodeinteractive.com/portfolio-item/photo-memory/
+03:39:58	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=A1C0E3C41FBD5C929A825881B8419B45
+03:39:58	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=A1C0E3C41FBD5C929A825881B8419B45 and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=A1C0E3C41FBD5C929A825881B8419B45
+03:39:58	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=A1C0E3C41FBD5C929A825881B8419B45 to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=A1C0E3C41FBD5C929A825881B8419B45
+03:40:39	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?p=15
+03:40:39	Warning: 	File has moved from https://qi51.qodeinteractive.com/?p=15 to https://qi51.qodeinteractive.com/portfolio-item/we-are-mirroring/
+03:40:39	Warning: 	Moved Permanently for qi51.qodeinteractive.com/?wordfence_lh=1&hid=2315D99924971C07FA8CC35DD0AA8311
+03:40:39	Warning: 	Redirected link is identical because of 'URL Hack' option: qi51.qodeinteractive.com/?wordfence_lh=1&hid=2315D99924971C07FA8CC35DD0AA8311 and https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=2315D99924971C07FA8CC35DD0AA8311
+03:40:39	Warning: 	File has moved from qi51.qodeinteractive.com/?wordfence_lh=1&hid=2315D99924971C07FA8CC35DD0AA8311 to https://qi51.qodeinteractive.com/?wordfence_lh=1&hid=2315D99924971C07FA8CC35DD0AA8311
+03:40:40	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=BDC0F7D079A210A60E7371AF0DFDE3F8
+03:40:40	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=BDC0F7D079A210A60E7371AF0DFDE3F8 to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3DBDC0F7D079A210A60E7371AF0DFDE3F8
+03:40:40	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=67B87DEB3E741EDC516BD46338F74EA8
+03:40:40	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=67B87DEB3E741EDC516BD46338F74EA8 to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3D67B87DEB3E741EDC516BD46338F74EA8
+03:40:50	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=36B39F01AAE7533350985F656557EAED
+03:40:50	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=36B39F01AAE7533350985F656557EAED to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3D36B39F01AAE7533350985F656557EAED
+03:41:31	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=B1156C3154860633A37FAEF55380EED2
+03:41:31	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=B1156C3154860633A37FAEF55380EED2 to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3DB1156C3154860633A37FAEF55380EED2
+03:41:44	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=101BBD2141C1FE494B8CF085FC6B2023
+03:41:44	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=101BBD2141C1FE494B8CF085FC6B2023 to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3D101BBD2141C1FE494B8CF085FC6B2023
+03:41:45	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=EAF4045F38FEA97B3A2C388E087609F6
+03:41:45	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=EAF4045F38FEA97B3A2C388E087609F6 to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3DEAF4045F38FEA97B3A2C388E087609F6
+03:41:54	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=625500A66F0063EB406D35EDD36FC45A
+03:41:54	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=625500A66F0063EB406D35EDD36FC45A to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3D625500A66F0063EB406D35EDD36FC45A
+03:42:36	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=D90318D09C01B9F18B449E25D4913723
+03:42:36	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=D90318D09C01B9F18B449E25D4913723 to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3DD90318D09C01B9F18B449E25D4913723
+03:42:49	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=355191B535929A56F33A10D0139CAF88
+03:42:49	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=355191B535929A56F33A10D0139CAF88 to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3D355191B535929A56F33A10D0139CAF88
+03:42:49	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=A1C0E3C41FBD5C929A825881B8419B45
+03:42:49	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=A1C0E3C41FBD5C929A825881B8419B45 to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3DA1C0E3C41FBD5C929A825881B8419B45
+03:42:58	Warning: 	Moved Permanently for https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=2315D99924971C07FA8CC35DD0AA8311
+03:42:58	Warning: 	File has moved from https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid=2315D99924971C07FA8CC35DD0AA8311 to https://qi51.qodeinteractive.com/?wordfence_lh=1%26hid%3D2315D99924971C07FA8CC35DD0AA8311
+
+HTTrack Website Copier/3.49-2 mirror complete in 6 minutes 37 seconds : 201 links scanned, 159 files written (7520939 bytes overall), 160 files updated [4319488 bytes received at 10880 bytes/sec], 4665109 bytes transferred using HTTP compression in 131 files, ratio 22%, 6.9 requests per connection
+(6 errors, 84 warnings, 0 messages)

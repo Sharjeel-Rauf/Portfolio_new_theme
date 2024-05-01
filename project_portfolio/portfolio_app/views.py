@@ -26,8 +26,7 @@ def title_page_view(request):
         if request.user.is_staff:
             return redirect('portfolio_page')  # Redirect admin to admin portal
         else:
-            return redirect('title_page')  # Redirect guest to guest portal
-
+            return redirect('title_page')
     next_url = request.GET.get('next')
     if next_url:
         request.session['next_url'] = next_url
@@ -74,16 +73,6 @@ def portfolio_page_view(request):
     summary = Summary.objects.first()
     context['summary'] = summary
 
-    user_profile = UserProfile.objects.first()
-    context['user_profile'] = user_profile
-
-    # Check if user_profile exists
-    if user_profile:
-        context['user_email'] = user_profile.email if hasattr(user_profile, 'email') else None
-        context['user_description'] = user_profile.description if hasattr(user_profile, 'description') else None
-    else:
-        context['user_email'] = None
-        context['user_description'] = None
     
     # Add projects to the context
     context['projects'] = projects
@@ -236,43 +225,36 @@ def project_detail_view(request, project_id):
 # view to edit the project details
 @login_required(login_url="portfolio_page")
 def edit_details_view(request, detail_id):
-    # Get the detail object using the provided detail_id
+    # Retrieve the detail object using the provided detail_id
     detail = get_object_or_404(ProjectDetailModel, id=detail_id)
 
     if request.method == 'POST':
-        # Use the POST request body
-        data = request.POST
-        # Create the form instance with the submitted data and files
-        form = ProjectDetailForm(data, request.FILES, instance=detail)
+        # Instantiate the form with the submitted data and files
+        form = ProjectDetailForm(request.POST, request.FILES, instance=detail)
 
         if form.is_valid():
-            # Save the detail
             form.save()
-            # Redirect to the project detail view
+            messages.success(request, 'Details updated successfully!')
             return redirect('project_detail', project_id=detail.project.id)
-        else:
-            # Handle form errors
-            for field, errors in form.errors.items():
-                for error in errors:
-                    # Add each error to messages
-                    messages.error(request, error)
-                    
-            # If form is invalid, render the form with errors
-            context = {
-                'detail': detail,
-                'form': form,
-                'page_title': 'Edit Details',
-            }
-            return render(request, 'portfolio_app/edit_project_details.html', context)
+
+        
+        # Display form errors
+        for field, errors in form.errors.items():
+            for error in errors:
+                messages.error(request, f"{field}: {error}")
+
     else:
-        # Handle the GET request (render the edit form)
+        # Handle GET request by rendering the edit form
         form = ProjectDetailForm(instance=detail)
-        context = {
-            'detail': detail,
-            'form': form,
-            'page_title': 'Edit Details',
-        }
-        return render(request, 'portfolio_app/edit_project_details.html', context)
+
+    # Define the context for rendering the template
+    context = {
+        'detail': detail,
+        'form': form,
+        'page_title': 'Edit Details',
+    }
+    # Render the template
+    return render(request, 'portfolio_app/edit_project_details_new.html', context)
     
 
 
@@ -687,3 +669,6 @@ def delete_discipline_view(request, discipline_id):
     discipline.delete()
     messages.success(request, 'Discipline deleted successfully.')
     return redirect('about_page')
+
+
+

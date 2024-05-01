@@ -30,15 +30,15 @@
   </div>
 
 <div id = "project_details">
-<div style = "text-align: center; padding: 16vh 0 1vh 0" class="work-page slide delay01">
+<div style = "text-align: center;" class="work-page slide delay01">
     <div class="work-page-content">
         <h1>{{ project.title }}</h1>
     </div>
 </div>
 
 {% if no_details %}
-    <div class="about-me slide delay03">
-        <div style = "text-align: center;" class="description">
+<div class="qodef-e-content">
+  <div style="text-align: center; font-size: 20px;" class="qodef-e-info-category">
 			{% if user.is_authenticated %}
 			<p>No details yet. Please <a href="{% url 'add_project_detail' project.id %}" style = "font-style: italic; color: #888b8b; padding-top: 0px; display: inline-block;">add</a> the details for the project.</p>
 			{% else %}
@@ -47,15 +47,17 @@
 
         </div>
     </div>
-    <div style = "margin: 4vh auto 4vh auto;" class="back-to-projects">
-		<a style = "font-style: italic;" href="{% url 'portfolio_page' %}">Back to all project </a>
-	</div>
+      <!-- Back to all projects link -->
+  <h5 style="text-align: center; margin-top: 20px;" itemprop="name" class="qodef-e-title entry-title">
+    <a href="{% url 'portfolio_page' %}">Back to all projects</a>
+  </h5>
+    
 {% else %}
 
 
 <!-- ############################################## -->
 
-<div style = "padding: 1vh 0 16vh 0" class="work-page slide delay01">
+<div style = "padding: 1vh 0 1vh 0" class="work-page slide delay01">
 	<div class="work-page-content">
         {% for detail in project_details %}
 		<h1 style="font-size: calc(1rem + 1vw);">{{ detail.code_title }}</h1>
@@ -86,8 +88,8 @@
           </a>
       
           {% if user.is_authenticated %}
-          <a style="color: #888b8d; outline: none;" hx-push-url="{% url 'edit_details' detail.id %}"
-                hx-get="{% url 'edit_details' detail.id %}" hx-target="#project_details">
+          <a style="color: #888b8d; outline: none;"
+                href="{% url 'edit_details' detail.id %}">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                   <!-- SVG paths -->
                   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502 .646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -101,11 +103,13 @@
 
         {% endfor %}
     </div>
-    <div class="back-to-projects">
-		<a href="{% url 'portfolio_page' %}">Back to all project </a>
-	</div>
-    
+
 </div>
+
+  <!-- Back to all projects link -->
+  <h5 style="text-align: center; margin-bottom: 200px;" itemprop="name" class="qodef-e-title entry-title">
+    <a href="{% url 'portfolio_page' %}">Back to all projects</a>
+  </h5>
     
 <!-- ############################################## -->
 
@@ -231,14 +235,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <style>
 /* Custom code block styling */
 pre[class*="language-python"] {
-
-    background-color: black; /* Remove background color */
-    box-shadow: none; /* Remove shadow */
-
+    background-color: inherit; /* Remove background color */
     color: #f5f5f5; /* Light gray text */
     padding: 10px; /* Padding for readability */
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 10px; /* Rounded corners */
     overflow-x: auto; /* Horizontal scrolling for long lines */
+
+    border: 1px solid blanchedalmond; /* Add a thin black border around the code block */
 }
 
 /* Customize syntax element colors */
