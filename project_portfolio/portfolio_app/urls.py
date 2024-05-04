@@ -26,6 +26,5 @@ urlpatterns = [
     path('about/discipline/add/', views.add_discipline_view, name='add_discipline'),
     path('about/discipline/edit/<int:discipline_id>/', views.edit_discipline_view, name='edit_discipline'),
     path('about/discipline/delete/<int:discipline_id>/', views.delete_discipline_view, name='delete_discipline'),
-    
 ]
 

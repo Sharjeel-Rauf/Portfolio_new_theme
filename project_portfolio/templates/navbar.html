@@ -1,121 +1,246 @@
 {% load static %}
 
-
-
-
-
-
 <header id="qodef-page-header">
-    <div id="qodef-page-header-inner" class>
-    <a itemprop="url" class="qodef-header-logo-link qodef-height--not-set qodef-source--image" href="{% url 'portfolio_page' %}" rel="home">
-    <img width="245" height="21" src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/uploads/2020/10/logo.png' %}" class="qodef-header-logo-image qodef--main" alt="logo main" itemprop="image" /></a>
-    <nav class="qodef-header-navigation" role="navigation" aria-label="Top Menu">
-    <ul id="menu-menu-1" class="menu">
+  <div id="qodef-page-header-inner" class>
+    <a
+      itemprop="url"
+      class="qodef-header-logo-link qodef-height--not-set qodef-source--image"
+      href="{% url 'portfolio_page' %}"
+      rel="home"
+    >
+      <img
+        width="245"
+        height="21"
+        src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/uploads/2020/10/logo.png' %}"
+        class="qodef-header-logo-image qodef--main"
+        alt="logo main"
+        itemprop="image"
+    /></a>
+    <nav
+      class="qodef-header-navigation"
+      role="navigation"
+      aria-label="Top Menu"
+    >
+      <ul id="menu-menu-1" class="menu">
         {% if user.is_authenticated %}
 
-    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-11"><a href="{% url 'portfolio_page' %}"><span class="qodef-menu-item-text">Home</span></a></li>
-    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"><a href="{% url 'create_project' %}"><span class="qodef-menu-item-text">Create Project</span></a></li>
-    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"><a href="{% url 'about_page' %}"><span class="qodef-menu-item-text">About</span></a></li>
-    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"><a href="{% url 'logout_user' %}"><span class="qodef-menu-item-text">Logout</span></a></li>
-    
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-11"
+        >
+          <a href="{% url 'portfolio_page' %}"
+            ><span class="qodef-menu-item-text">Home</span></a
+          >
+        </li>
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"
+        >
+          <a href="{% url 'create_project' %}"
+            ><span class="qodef-menu-item-text">Create Project</span></a
+          >
+        </li>
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"
+        >
+          <a href="{% url 'about_page' %}"
+            ><span class="qodef-menu-item-text">About</span></a
+          >
+        </li>
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"
+        >
+          <a href="{% url 'logout_user' %}"
+            ><span class="qodef-menu-item-text">Logout</span></a
+          >
+        </li>
 
-    {% else %}
+        {% else %}
 
-    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-11"><a href="{% url 'portfolio_page' %}"><span class="qodef-menu-item-text">Home</span></a></li>
-    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"><a href="{% url 'about_page' %}"><span class="qodef-menu-item-text">About</span></a></li>
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-11"
+        >
+          <a href="{% url 'portfolio_page' %}"
+            ><span class="qodef-menu-item-text">Home</span></a
+          >
+        </li>
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"
+        >
+          <a href="{% url 'about_page' %}"
+            ><span class="qodef-menu-item-text">About</span></a
+          >
+        </li>
 
-    {%  endif %}
-
-    </ul> </nav>
+        {% endif %}
+      </ul>
+    </nav>
     <div class="qodef-widget-holder qodef--one">
-    <div id="qode_essential_addons_side_area_opener-2" class="widget widget_qode_essential_addons_side_area_opener qodef-header-widget-area-one" data-area="header-widget-one"> <a href="javascript:void(0)" class="qodef-opener-icon qodef-m qodef-side-area-opener " style="margin: 0 0 0 0" aria-expanded="false" aria-label="Open the side area">
-    <span class="qodef-m-icon">
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="46px" height="29px" viewBox="0 0 46 29" style="enable-background:new 0 0 46 29;" xml:space="preserve">
-    <style type="text/css">
-        .st0{fill:#FFFFFF;}
-    </style>
-    <g>
-    <g>
-    <rect x="0.5" y="0.5" class="st0" width="45" height="9" />
-    <path d="M45,1v8H1V1H45 M46,0H0v10h46V0L46,0z" />
-    </g>
-    <g>
-    <rect x="0.5" y="19.5" class="st0" width="45" height="9" />
-    <path d="M45,20v8H1v-8H45 M46,19H0v10h46V19L46,19z" />
-    </g>
-    </g>
-    </svg>
-    </span>
-    </a>
-    </div> </div>
+      <div
+        id="qode_essential_addons_side_area_opener-2"
+        class="widget widget_qode_essential_addons_side_area_opener qodef-header-widget-area-one"
+        data-area="header-widget-one"
+      >
+        <a
+          href="javascript:void(0)"
+          class="qodef-opener-icon qodef-m qodef-side-area-opener"
+          style="margin: 0 0 0 0"
+          aria-expanded="false"
+          aria-label="Open the side area"
+        >
+          <span class="qodef-m-icon">
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              width="46px"
+              height="29px"
+              viewBox="0 0 46 29"
+              style="enable-background: new 0 0 46 29"
+              xml:space="preserve"
+            >
+              <style type="text/css">
+                .st0 {
+                  fill: #ffffff;
+                }
+              </style>
+              <g>
+                <g>
+                  <rect x="0.5" y="0.5" class="st0" width="45" height="9" />
+                  <path d="M45,1v8H1V1H45 M46,0H0v10h46V0L46,0z" />
+                </g>
+                <g>
+                  <rect x="0.5" y="19.5" class="st0" width="45" height="9" />
+                  <path d="M45,20v8H1v-8H45 M46,19H0v10h46V19L46,19z" />
+                </g>
+              </g>
+            </svg>
+          </span>
+        </a>
+      </div>
     </div>
-    </header>
+  </div>
+</header>
 <!-- Mobile Header Section -->
 <header id="qodef-page-mobile-header">
+  <!-- Mobile Header Inner Container -->
+  <div id="qodef-page-mobile-header-inner">
+    <!-- Logo Link -->
+    <a
+      href="../../index.html"
+      class="qodef-mobile-header-logo-link qodef-height--not-set qodef-source--image"
+      rel="home"
+      itemprop="url"
+    >
+      <img
+        src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/uploads/2020/10/logo.png' %}"
+        alt="logo main"
+        class="qodef-header-logo-image qodef--main"
+        width="245"
+        height="21"
+        itemprop="image"
+      />
+    </a>
 
-    <!-- Mobile Header Inner Container -->
-    <div id="qodef-page-mobile-header-inner">
+    <!-- Mobile Menu Button -->
+    <button
+      type="button"
+      class="qodef-mobile-header-opener"
+      aria-expanded="false"
+      aria-label="Open the menu"
+    >
+      <svg
+        class="qodef--initial"
+        width="20"
+        height="13"
+        viewBox="0 0 21.3 13.7"
+        xmlns="http://www.w3.org/2000/svg"
+        xml:space="preserve"
+        aria-hidden="true"
+      >
+        <rect
+          x="10.1"
+          y="-9.1"
+          transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 11.5 -9.75)"
+          width="1"
+          height="20"
+        />
+        <rect
+          x="10.1"
+          y="-3.1"
+          transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 17.5 -3.75)"
+          width="1"
+          height="20"
+        />
+        <rect
+          x="10.1"
+          y="2.9"
+          transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 23.5 2.25)"
+          width="1"
+          height="20"
+        />
+      </svg>
+    </button>
 
-        <!-- Logo Link -->
-        <a href="../../index.html" class="qodef-mobile-header-logo-link qodef-height--not-set qodef-source--image" rel="home" itemprop="url">
-            <img src="{% static 'portfolio_app_final/qi51.qodeinteractive.com/wp-content/uploads/2020/10/logo.png' %}" alt="logo main" class="qodef-header-logo-image qodef--main" width="245" height="21" itemprop="image" />
-        </a>
+    <!-- Mobile Navigation -->
+    <nav
+      class="qodef-mobile-header-navigation qodef-mobile-header-navigation-initial"
+      role="navigation"
+      aria-label="Mobile Menu"
+    >
+      <ul id="menu-menu-2">
+        {% if user.is_authenticated %}
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-11"
+        >
+          <a href="{% url 'portfolio_page' %}">
+            <span class="qodef-menu-item-text">Home</span>
+          </a>
+        </li>
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"
+        >
+          <a href="{% url 'create_project' %}">
+            <span class="qodef-menu-item-text">Create project</span>
+          </a>
+        </li>
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"
+        >
+          <a href="{% url 'about_page' %}">
+            <span class="qodef-menu-item-text">About</span>
+          </a>
+        </li>
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-11"
+        >
+          <a href="{% url 'logout_user' %}">
+            <span class="qodef-menu-item-text">Logout user</span>
+          </a>
+        </li>
 
-        <!-- Mobile Menu Button -->
-        <button type="button" class="qodef-mobile-header-opener" aria-expanded="false" aria-label="Open the menu">
-            <svg class="qodef--initial" width="20" height="13" viewBox="0 0 21.3 13.7" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" aria-hidden="true">
-                <rect x="10.1" y="-9.1" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 11.5 -9.75)" width="1" height="20" />
-                <rect x="10.1" y="-3.1" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 17.5 -3.75)" width="1" height="20" />
-                <rect x="10.1" y="2.9" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 23.5 2.25)" width="1" height="20" />
-            </svg>
-        </button>
+        {% else %}
 
-        <!-- Mobile Navigation -->
-        <nav class="qodef-mobile-header-navigation qodef-mobile-header-navigation-initial" role="navigation" aria-label="Mobile Menu">
-            <ul id="menu-menu-2">
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-11"
+        >
+          <a href="{% url 'portfolio_page' %}">
+            <span class="qodef-menu-item-text">Home</span>
+          </a>
+        </li>
+        <li
+          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"
+        >
+          <a href="{% url 'about_page' %}">
+            <span class="qodef-menu-item-text">About</span>
+          </a>
+        </li>
 
-
-
-                {% if user.is_authenticated %}
-                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-11">
-                    <a href="{% url 'portfolio_page' %}">
-                        <span class="qodef-menu-item-text">Home</span>
-                    </a>
-                </li>
-                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143">
-                    <a href="{% url 'create_project' %}">
-                        <span class="qodef-menu-item-text">Create project</span>
-                    </a>
-                </li>
-                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143">
-                    <a href="{% url 'about_page' %}">
-                        <span class="qodef-menu-item-text">About</span>
-                    </a>
-                </li>
-                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-11">
-                    <a href="{% url 'logout_user' %}">
-                        <span class="qodef-menu-item-text">Logout user</span>
-                    </a>
-                </li>
-                
-            
-                {% else %}
-        
-                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-11">
-                    <a href="{% url 'portfolio_page' %}">
-                        <span class="qodef-menu-item-text">Home</span>
-                    </a>
-                </li>
-                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143">
-                    <a href="{% url 'about_page' %}">
-                        <span class="qodef-menu-item-text">About</span>
-                    </a>
-                </li>
-
-                {%  endif %}
-            </ul>
-        </nav> <!-- End of Mobile Navigation -->
-
-    </div> <!-- End of Mobile Header Inner Container -->
-
-</header> <!-- End of Mobile Header Section -->
+        {% endif %}
+      </ul>
+    </nav>
+    <!-- End of Mobile Navigation -->
+  </div>
+  <!-- End of Mobile Header Inner Container -->
+</header>
+<!-- End of Mobile Header Section -->
